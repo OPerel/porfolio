@@ -24,6 +24,10 @@ export namespace Components {
   }
   interface AppRoot {}
   interface AppSkills {}
+  interface ArrowNav {
+    'currentPage': number;
+    'prevLink': number;
+  }
 }
 
 declare global {
@@ -64,6 +68,12 @@ declare global {
     prototype: HTMLAppSkillsElement;
     new (): HTMLAppSkillsElement;
   };
+
+  interface HTMLArrowNavElement extends Components.ArrowNav, HTMLStencilElement {}
+  var HTMLArrowNavElement: {
+    prototype: HTMLArrowNavElement;
+    new (): HTMLArrowNavElement;
+  };
   interface HTMLElementTagNameMap {
     'app-about': HTMLAppAboutElement;
     'app-home': HTMLAppHomeElement;
@@ -71,6 +81,7 @@ declare global {
     'app-portfolio': HTMLAppPortfolioElement;
     'app-root': HTMLAppRootElement;
     'app-skills': HTMLAppSkillsElement;
+    'arrow-nav': HTMLArrowNavElement;
   }
 }
 
@@ -90,6 +101,11 @@ declare namespace LocalJSX {
   }
   interface AppRoot {}
   interface AppSkills {}
+  interface ArrowNav {
+    'currentPage'?: number;
+    'onNavigate'?: (event: CustomEvent<any>) => void;
+    'prevLink'?: number;
+  }
 
   interface IntrinsicElements {
     'app-about': AppAbout;
@@ -98,6 +114,7 @@ declare namespace LocalJSX {
     'app-portfolio': AppPortfolio;
     'app-root': AppRoot;
     'app-skills': AppSkills;
+    'arrow-nav': ArrowNav;
   }
 }
 
@@ -113,6 +130,7 @@ declare module "@stencil/core" {
       'app-portfolio': LocalJSX.AppPortfolio & JSXBase.HTMLAttributes<HTMLAppPortfolioElement>;
       'app-root': LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
       'app-skills': LocalJSX.AppSkills & JSXBase.HTMLAttributes<HTMLAppSkillsElement>;
+      'arrow-nav': LocalJSX.ArrowNav & JSXBase.HTMLAttributes<HTMLArrowNavElement>;
     }
   }
 }

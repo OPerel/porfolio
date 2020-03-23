@@ -1,0 +1,44 @@
+@import '../../../global/app.scss';
+
+.arrow-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: calc(100vh - 45px);
+  width: 5vw;
+  background-color: transparent; // rgb(0, 0, 0, 0.2);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  .arrow-link {
+    margin: 1rem 0;
+    transform: translateX(0);
+    transition: transform 0.5s;
+  }
+
+  .hide {
+    transform: translateX(-300%);
+    transition: transform 0.5s;
+  }
+
+  .arrow-up {
+    width: 0; 
+    height: 0; 
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    
+    border-bottom: 15px solid $secondary-text-color;
+  }
+  
+  .arrow-down {
+    width: 0; 
+    height: 0; 
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    
+    border-top: 15px solid $secondary-text-color;
+  }
+}

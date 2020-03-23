@@ -10,35 +10,42 @@ import { appScroll } from '../../helpers/scroll';
 export class AppRoot {
   @State() currentPage: number;
   @State() prevPage: number;
+  @State() frame: boolean;
   @State() scrolling: boolean;
   @Listen('navigate')
   handleNavClicks(e: CustomEvent) {
-    e.detail > this.currentPage ? this.goToNextPage() : this.goToPrevPage();
+    this.prevPage = this.currentPage;
+    this.currentPage = e.detail;
+    // if (!this.scrolling && !this.frame) {
+      this.scroll(this.mapSectionNumToId(e.detail));
+    // }
   } 
 
   constructor() {
     this.prevPage = 0
     this.currentPage = 0;
+    this.frame = false;
     this.scrolling = false;
   }
 
   scroll(target: string) {
     const section = document.getElementById(target);
     appScroll(section, 500);
+
   }
 
   goToNextPage = (): void => {
     this.prevPage = this.currentPage;
     this.currentPage = this.prevPage < 3 ? this.prevPage + 1 : 3;
     this.scroll(this.mapSectionNumToId(this.currentPage))
-    this.scrolling = false;
+    this.frame = false;
   }
 
   goToPrevPage = (): void => {
     this.prevPage = this.currentPage;
     this.currentPage = this.prevPage > 0 ? this.prevPage - 1 : 0;
     this.scroll(this.mapSectionNumToId(this.currentPage))
-    this.scrolling = false;
+    this.frame = false;
   }
 
   mapSectionNumToId(num: number) {
@@ -53,20 +60,19 @@ export class AppRoot {
 
   onWheelEvent = (e) => {
     e.preventDefault();
-    if (!this.scrolling) {
+    if (!this.frame) {
       e.deltaY > 0 ? requestAnimationFrame(this.goToNextPage) : requestAnimationFrame(this.goToPrevPage);
     }
-    this.scrolling = true
+    this.frame = true
   }
 
   throttleWheel(callback, limit: number) {
-    let wait = false;
     return (...args) => {
-      if (!wait) {
+      if (!this.scrolling) {
         callback(...args);
-        wait = true;
+        this.scrolling = true;
         setTimeout(() => {
-          wait = false;
+          this.scrolling = false;
         }, limit);
       }
     }
@@ -74,6 +80,10 @@ export class AppRoot {
 
   componentWillLoad() {
     document.addEventListener('wheel', this.throttleWheel(this.onWheelEvent, 900), {passive: false});
+    // window.addEventListener('resize', () => {
+    //   this.currentPage = 0;
+    //   this.prevPage = 0;
+    // });
   }
 
   render() {
@@ -89,6 +99,8 @@ export class AppRoot {
         <app-about id='About' />
         <app-portfolio id='Portfolio' />
         <app-skills id='Skills' />
+
+        <arrow-nav currentPage={this.currentPage} />
         
       </main>
     );

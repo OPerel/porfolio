@@ -3,7 +3,7 @@ import { Component, h, Prop, Event, EventEmitter } from '@stencil/core';
 @Component({
   tag: 'app-nav',
   styleUrl: 'app-nav.scss',
-  // shadow: true
+  shadow: true
 })
 export class AppNav {
   @Prop() currentLink: number;
