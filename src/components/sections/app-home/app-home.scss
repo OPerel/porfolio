@@ -1,0 +1,33 @@
+@import '../../../global/app.scss';
+
+.app-home {
+  height: 120vh;
+  background-image: url('../../../assets/bg.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+
+  background-blend-mode: overlay;
+  color: $secondary-text-color;
+  background-color: #113433eb;
+
+  h1 {
+    margin: 1% 0;
+    font-size: 5rem;
+    z-index: 6;
+    // transform: translateY(calc(var(--scrollpos) * 5px));
+  }
+
+  h3 {
+    margin: 0;
+    font-weight: lighter;
+    // transform: translateY(calc(var(--scrollpos) * 2.5px));
+  }
+}
+
+// .hide {
+//   transform: translateY(-100%);
+//   transition: transform 1.2s linear;
+// }
+
+
+

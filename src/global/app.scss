@@ -1,0 +1,102 @@
+/*
+  Global App CSS
+  ----------------------
+  Use this file for styles that should be applied to all components.
+  For example, "font-family" within the "body" selector is a CSS property
+  most apps will want applied to all components.
+
+  Any global CSS variables should also be applied here.
+*/
+
+// Colors
+
+$main-text-color: #AED6D4;
+$secondary-text-color: #E8BF9E;
+
+$about-background-color: #226765;
+$skills-background-color: #0D5452;
+$portfolio-background-color: #151e1e;
+
+$color-complement-1: #608D8B;
+
+// Main Primary color */
+$color-primary-0: #AA6B39;	
+// $color-primary-1: #E8BF9E;
+$color-primary-2: #C99266;
+$color-primary-3: #8B4A16;
+$color-primary-4: #6C3000;
+
+// Main Secondary color (1) */
+$color-secondary-1-0: #AA8A39;
+$color-secondary-1-1: #E8D39E;
+$color-secondary-1-2: #C9AD66;
+$color-secondary-1-3: #8B6A16;
+$color-secondary-1-4: #6C4D00;
+
+// Main Secondary color (2) */
+$color-secondary-2-0: #313A75;
+$color-secondary-2-1: #73799F;
+$color-secondary-2-2: #4F578A;
+$color-secondary-2-3: #1A235F;
+$color-secondary-2-4: #09124A;
+
+// Main Complement color */
+
+
+$color-complement-2: #3E7A78;
+
+$color-complement-4: #00413F;
+
+// breakpoints
+
+$middle-bp: 768px;
+$small-bp: 420px;
+
+
+html, body {
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+  font-family: 'Londrina Solid', cursive;
+  color: $main-text-color;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0.5em 0;
+  font-family: 'Londrina Solid', cursive;
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 2.2rem;
+
+  @media only screen and (min-width: $small-bp) {
+    font-size: 2.3rem;
+  }
+}
+
+p {
+  font-size: 1.3rem;
+
+  @media only screen and (min-width: $small-bp) {
+    font-size: 1.5rem;
+  }
+}
+
+section {
+  display: grid;
+  align-content: center;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+
+.container {
+  width: 90%;
+  margin: 0% auto;
+
+  @media only screen and (min-width: $small-bp) {
+    width: 80%;
+  }
+  // z-index: 2;
+}
