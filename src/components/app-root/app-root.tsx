@@ -10,42 +10,35 @@ import { appScroll } from '../../helpers/scroll';
 export class AppRoot {
   @State() currentPage: number;
   @State() prevPage: number;
+  @State() scrolling: boolean;
   @Listen('navigate')
   handleNavClicks(e: CustomEvent) {
-    e.detail.sectionNumber > this.currentPage ? this.goToNextPage() : this.goToPrevPage();
-    // this.scroll(e.detail.targetId);
+    e.detail > this.currentPage ? this.goToNextPage() : this.goToPrevPage();
   } 
 
   constructor() {
     this.prevPage = 0
     this.currentPage = 0;
+    this.scrolling = false;
   }
-
-  // onNavigation(pp: number, cp: number) {
-  //   return {
-  //     0: <app-home />,
-  //     1: <app-profile from={pp} />,
-  //     2: <section-about from={pp} />
-  //   }[cp]
-  // }
 
   scroll(target: string) {
     const section = document.getElementById(target);
-    appScroll(section, 600);
+    appScroll(section, 500);
   }
 
-  goToNextPage(): void {
-    console.log('click next')
+  goToNextPage = (): void => {
     this.prevPage = this.currentPage;
     this.currentPage = this.prevPage < 3 ? this.prevPage + 1 : 3;
     this.scroll(this.mapSectionNumToId(this.currentPage))
+    this.scrolling = false;
   }
 
-  goToPrevPage(): void {
-    console.log('click prev')
+  goToPrevPage = (): void => {
     this.prevPage = this.currentPage;
     this.currentPage = this.prevPage > 0 ? this.prevPage - 1 : 0;
     this.scroll(this.mapSectionNumToId(this.currentPage))
+    this.scrolling = false;
   }
 
   mapSectionNumToId(num: number) {
@@ -58,15 +51,29 @@ export class AppRoot {
     }[num]
   }
 
-  componentWillLoad() {
-    document.addEventListener('wheel', (e) => {
-      e.preventDefault();
+  onWheelEvent = (e) => {
+    e.preventDefault();
+    if (!this.scrolling) {
+      e.deltaY > 0 ? requestAnimationFrame(this.goToNextPage) : requestAnimationFrame(this.goToPrevPage);
+    }
+    this.scrolling = true
+  }
 
-      // Throtlle needed for this
-      // console.log(e.deltaY);
-      // e.deltaY > 0 ? this.goToNextPage() : this.goToPrevPage(); 
-    
-    }, {passive: false});
+  throttleWheel(callback, limit: number) {
+    let wait = false;
+    return (...args) => {
+      if (!wait) {
+        callback(...args);
+        wait = true;
+        setTimeout(() => {
+          wait = false;
+        }, limit);
+      }
+    }
+  }
+
+  componentWillLoad() {
+    document.addEventListener('wheel', this.throttleWheel(this.onWheelEvent, 900), {passive: false});
   }
 
   render() {
@@ -78,12 +85,10 @@ export class AppRoot {
           <app-nav currentLink={this.currentPage} prevLink={this.prevPage} />
         </header>
 
-        {/* {this.onNavigation(this.prevPage, this.currentPage)} */}
         <app-home id='Home' />
         <app-about id='About' />
         <app-portfolio id='Portfolio' />
         <app-skills id='Skills' />
-        
         
       </main>
     );
@@ -91,25 +96,5 @@ export class AppRoot {
 }
 
 /***
- * {
-          this.currentPage === 0 ? 
-            <app-home /> : (
-              this.currentPage === 1 ? <app-profile /> : <section-about />
-            )
-        }
-
-
-        <stencil-router>
-          <stencil-route-switch>
-            <stencil-route url='/' component='app-home' exact={true} />
-            <stencil-route url='/profile' component='app-profile' />
-            <stencil-route url='/about' component='section-about' />
-          </stencil-route-switch>
-        </stencil-router>
-
-
-
-        <stencil-route-link url='/' onClick={() => this.onNavigation(0)}>Home</stencil-route-link>
-            <stencil-route-link url='/profile' onClick={() => this.onNavigation(1)}>Profile</stencil-route-link>
-            <stencil-route-link url='/about' onClick={() => this.onNavigation(2)}>About</stencil-route-link>
+ * 
  */

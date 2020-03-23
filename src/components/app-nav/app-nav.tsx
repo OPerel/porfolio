@@ -1,4 +1,4 @@
-import { Component, h, State, Prop, Event, EventEmitter } from '@stencil/core';
+import { Component, h, Prop, Event, EventEmitter } from '@stencil/core';
 
 @Component({
   tag: 'app-nav',
@@ -10,32 +10,11 @@ export class AppNav {
   @Prop() prevLink: number;
   @Event() navigate: EventEmitter;
 
-  // @Prop() cp: number;
-  // @Prop() pp: number;
-
-  constructor() {
-    // this.currentLink = 0;
-    // this.prevLink = 0;
-  }
+  constructor() {}
 
   handleNavClick(e: UIEvent, sec: number) {
-    // this.prevLink = this.currentLink;
-    // this.currentLink = sec;
-    this.navigate.emit({
-      sectionNumber: sec,
-      targetId: (e.target as HTMLElement).textContent,
-    })
-
-
-    // const sectionId = 
-    
+    this.navigate.emit(sec);
   }
-
-  // componentWillLoad() {
-  //   document.querySelectorAll('li').forEach((li: HTMLElement) => {
-
-  //   })
-  // }
 
   render() {
     // console.log(this.currentLink)
