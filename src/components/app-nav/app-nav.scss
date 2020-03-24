@@ -8,6 +8,14 @@ nav {
   width: 100vw;
   background-color: black;
 
+  display: flex;
+  justify-content: space-between;
+  
+  h1 {
+    font-size: 1.3rem;
+    padding-left: 3%;
+  }
+
   ul {
     display: flex;
     justify-content: space-evenly;

@@ -20,6 +20,7 @@ export class AppNav {
     // console.log(this.currentLink)
     return (
       <nav>
+        <h1>Ori Perelman</h1>
         <ul>
           <li class={this.currentLink === 0 ? 'active' : ''} onClick={(e) => this.handleNavClick(e, 0)}>Home</li>
           <li class={this.currentLink === 1 ? 'active' : ''} onClick={(e) => this.handleNavClick(e, 1)}>About</li>
