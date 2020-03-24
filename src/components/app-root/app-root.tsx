@@ -32,7 +32,7 @@ export class AppRoot {
 
   goToNextPage = (): void => {
     this.prevPage = this.currentPage;
-    this.currentPage = this.prevPage < 3 ? this.prevPage + 1 : 3;
+    this.currentPage = this.prevPage < 4 ? this.prevPage + 1 : 4;
     this.scroll(this.mapSectionNumToId(this.currentPage))
     this.scrolling = false;
   }
@@ -50,7 +50,7 @@ export class AppRoot {
       1: 'About',
       2: 'Portfolio',
       3: 'Skills',
-      // 4: 'Contact'
+      4: 'Contact'
     }[num]
   }
 
@@ -82,7 +82,7 @@ export class AppRoot {
 
   render() {
     // console.log('current: ', this.currentPage);
-    return (
+    return ([
       <main>
 
         <header>
@@ -94,8 +94,10 @@ export class AppRoot {
         <app-portfolio id='Portfolio' />
         <app-skills id='Skills' />
         
-      </main>
-    );
+        
+      </main>,
+      <contact-footer id='Contact' />
+    ]);
   }
 }
 

@@ -1,0 +1,15 @@
+@import '../../../global/app.scss';
+
+footer {
+  width: 100vw;
+  height: 75vh;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  display: grid;
+  align-content: center;
+
+  z-index: -1;
+  background-color: #394b4b;
+}

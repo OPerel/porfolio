@@ -24,6 +24,7 @@ export namespace Components {
   }
   interface AppRoot {}
   interface AppSkills {}
+  interface ContactFooter {}
   interface ParallaxEl {
     'from': number;
     'to': number;
@@ -69,6 +70,12 @@ declare global {
     new (): HTMLAppSkillsElement;
   };
 
+  interface HTMLContactFooterElement extends Components.ContactFooter, HTMLStencilElement {}
+  var HTMLContactFooterElement: {
+    prototype: HTMLContactFooterElement;
+    new (): HTMLContactFooterElement;
+  };
+
   interface HTMLParallaxElElement extends Components.ParallaxEl, HTMLStencilElement {}
   var HTMLParallaxElElement: {
     prototype: HTMLParallaxElElement;
@@ -81,6 +88,7 @@ declare global {
     'app-portfolio': HTMLAppPortfolioElement;
     'app-root': HTMLAppRootElement;
     'app-skills': HTMLAppSkillsElement;
+    'contact-footer': HTMLContactFooterElement;
     'parallax-el': HTMLParallaxElElement;
   }
 }
@@ -101,6 +109,7 @@ declare namespace LocalJSX {
   }
   interface AppRoot {}
   interface AppSkills {}
+  interface ContactFooter {}
   interface ParallaxEl {
     'from'?: number;
     'to'?: number;
@@ -113,6 +122,7 @@ declare namespace LocalJSX {
     'app-portfolio': AppPortfolio;
     'app-root': AppRoot;
     'app-skills': AppSkills;
+    'contact-footer': ContactFooter;
     'parallax-el': ParallaxEl;
   }
 }
@@ -129,6 +139,7 @@ declare module "@stencil/core" {
       'app-portfolio': LocalJSX.AppPortfolio & JSXBase.HTMLAttributes<HTMLAppPortfolioElement>;
       'app-root': LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
       'app-skills': LocalJSX.AppSkills & JSXBase.HTMLAttributes<HTMLAppSkillsElement>;
+      'contact-footer': LocalJSX.ContactFooter & JSXBase.HTMLAttributes<HTMLContactFooterElement>;
       'parallax-el': LocalJSX.ParallaxEl & JSXBase.HTMLAttributes<HTMLParallaxElElement>;
     }
   }

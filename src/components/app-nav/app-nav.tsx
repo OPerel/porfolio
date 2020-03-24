@@ -25,7 +25,7 @@ export class AppNav {
           <li class={this.currentLink === 1 ? 'active' : ''} onClick={(e) => this.handleNavClick(e, 1)}>About</li>
           <li class={this.currentLink === 2 ? 'active' : ''} onClick={(e) => this.handleNavClick(e, 2)}>Portfolio</li>
           <li class={this.currentLink === 3 ? 'active' : ''} onClick={(e) => this.handleNavClick(e, 3)}>Skills</li>
-          {/* <li class={this.currentLink === 4 ? 'active' : ''} onClick={(e) => this.handleNavClick(e, 4)}>Contact</li> */}
+          <li class={this.currentLink === 4 ? 'active' : ''} onClick={(e) => this.handleNavClick(e, 4)}>Contact</li>
         </ul>
       </nav>
     );
