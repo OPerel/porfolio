@@ -25,6 +25,11 @@ export namespace Components {
   interface AppRoot {}
   interface AppSkills {}
   interface ContactFooter {}
+  interface GrowingTri {
+    'color': string;
+    'growDir': string;
+    'to': number;
+  }
   interface ParallaxEl {
     'from': number;
     'to': number;
@@ -76,6 +81,12 @@ declare global {
     new (): HTMLContactFooterElement;
   };
 
+  interface HTMLGrowingTriElement extends Components.GrowingTri, HTMLStencilElement {}
+  var HTMLGrowingTriElement: {
+    prototype: HTMLGrowingTriElement;
+    new (): HTMLGrowingTriElement;
+  };
+
   interface HTMLParallaxElElement extends Components.ParallaxEl, HTMLStencilElement {}
   var HTMLParallaxElElement: {
     prototype: HTMLParallaxElElement;
@@ -89,6 +100,7 @@ declare global {
     'app-root': HTMLAppRootElement;
     'app-skills': HTMLAppSkillsElement;
     'contact-footer': HTMLContactFooterElement;
+    'growing-tri': HTMLGrowingTriElement;
     'parallax-el': HTMLParallaxElElement;
   }
 }
@@ -110,6 +122,11 @@ declare namespace LocalJSX {
   interface AppRoot {}
   interface AppSkills {}
   interface ContactFooter {}
+  interface GrowingTri {
+    'color'?: string;
+    'growDir'?: string;
+    'to'?: number;
+  }
   interface ParallaxEl {
     'from'?: number;
     'to'?: number;
@@ -123,6 +140,7 @@ declare namespace LocalJSX {
     'app-root': AppRoot;
     'app-skills': AppSkills;
     'contact-footer': ContactFooter;
+    'growing-tri': GrowingTri;
     'parallax-el': ParallaxEl;
   }
 }
@@ -140,6 +158,7 @@ declare module "@stencil/core" {
       'app-root': LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
       'app-skills': LocalJSX.AppSkills & JSXBase.HTMLAttributes<HTMLAppSkillsElement>;
       'contact-footer': LocalJSX.ContactFooter & JSXBase.HTMLAttributes<HTMLContactFooterElement>;
+      'growing-tri': LocalJSX.GrowingTri & JSXBase.HTMLAttributes<HTMLGrowingTriElement>;
       'parallax-el': LocalJSX.ParallaxEl & JSXBase.HTMLAttributes<HTMLParallaxElElement>;
     }
   }

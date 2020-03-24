@@ -19,6 +19,9 @@ export class AppHome {
             <h3>This is my example tagline. bla bla bla...</h3>
           </parallax-el>
         </div>
+        <growing-tri color={`#608D8B`} to={90} growDir={`left`} />
+        <growing-tri color={`#266f6d`} to={65} growDir={`left`} />
+        <growing-tri color={`#226765`} to={40} growDir={`left`} />
       </section>
     );
   }

@@ -1,22 +1,21 @@
-import { Component, Host, h, Element, State, Prop } from '@stencil/core';
+import { Component, h, Prop, State, Element } from '@stencil/core';
 
 @Component({
-  tag: 'parallax-el',
-  styleUrl: 'parallax-el.scss',
+  tag: 'growing-tri',
+  styleUrl: 'tri.scss',
   shadow: true
 })
-export class ParallaxEl {
-  @Element() parallaxEl: HTMLElement;
-
+export class Tri {
+  @Element() triEl: HTMLElement;
+  @Prop() color: string;
+  @Prop() to: number;
+  @Prop() growDir: string; 
+  // @Prop() name: string;
   @State() lastScrollY: number;
   @State() ticking: boolean;
 
-  // @Prop() color: string;
-  @Prop() to: number;
-  @Prop() from: number;
-
   constructor() {
-    this.lastScrollY = this.from;
+    this.lastScrollY = 0;
     this.ticking = false;
   }
 
@@ -35,22 +34,22 @@ export class ParallaxEl {
     this.ticking = true;
   }
 
-  animate = (): void => {
-    // console.log('animate is running');
+  animate = () => {
+    console.log('animate is running');
     // if (this.to > 98) throw new Error('Scrolling factor above 98');
 
     // reset the tick so we can capture the next onScroll
     this.ticking = false;
 
     let scrollpos: number;
-    
+
     const main = document.getElementsByTagName('main')[0];
-    scrollpos = (this.lastScrollY / (main.clientHeight - window.innerHeight) * this.to) + this.from;
-    this.setScrollPos(scrollpos);
+    scrollpos = (this.lastScrollY / (main.clientHeight - window.innerHeight) * this.to);
+    this.triEl.style.setProperty('--scrollpos', `${scrollpos}`);
   }
 
   setScrollPos(scrollPos: number): void {
-    this.parallaxEl.style.setProperty('--scrollpos', `${scrollPos}`);
+    this.triEl.style.setProperty('--scrollpos', `${scrollPos}`);
   }
 
   componentWillLoad() {
@@ -59,15 +58,16 @@ export class ParallaxEl {
   }
 
   componentDidLoad() {
-    this.setScrollPos(this.from);
+    this.setScrollPos(this.lastScrollY);
+    this.triEl.style.setProperty('--color', `${this.color}`);
+    // this.triEl.style.
   }
 
   render() {
-    return ( 
-      <Host>
-        <slot></slot>
-      </Host>
-    );
+    const borderStyles = this.growDir === 'left' ?
+    { borderRightWidth: '100vw', borderLeftWidth: '0' } : { borderLeftWidth: '100vw', borderRightWidth: '0' };
+
+    return <div class="tri" style={borderStyles}></div>;
   }
 
 }

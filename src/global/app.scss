@@ -19,6 +19,11 @@ $portfolio-background-color: #151e1e;
 
 $color-complement-1: #608D8B;
 
+// used directly via js
+$color-complement-2: #3E7A78;
+
+
+// not used so far
 // Main Primary color */
 $color-primary-0: #AA6B39;	
 // $color-primary-1: #E8BF9E;
@@ -43,7 +48,7 @@ $color-secondary-2-4: #09124A;
 // Main Complement color */
 
 
-$color-complement-2: #3E7A78;
+
 
 $color-complement-4: #00413F;
 
@@ -95,9 +100,9 @@ section {
 .container {
   width: 90%;
   margin: 10% auto 0;
+  z-index: 2;
 
   @media only screen and (min-width: $small-bp) {
     width: 80%;
   }
-  // z-index: 2;
 }
