@@ -11,9 +11,12 @@ export class AppRoot {
   @State() currentPage: number;
   @State() prevPage: number;
   @State() scrolling: boolean;
+  
   @Listen('navigate')
   handleNavClicks(e: CustomEvent) {
-    e.detail > this.currentPage ? this.goToNextPage() : this.goToPrevPage();
+    this.prevPage = this.currentPage;
+    this.currentPage = e.detail;
+    this.scroll(this.mapSectionNumToId(e.detail));
   } 
 
   constructor() {
@@ -60,6 +63,7 @@ export class AppRoot {
   }
 
   throttleWheel(callback, limit: number) {
+    // console.log('throttleWheel');
     let wait = false;
     return (...args) => {
       if (!wait) {

@@ -16,8 +16,8 @@ export const appScroll = (child: HTMLElement, duration: number): void => {
   } else if (clientBottom > parentBottom) {
     scrollTo(parent, clientBottom - parentBottom, duration);
   }
-  
 };
+
 function scrollTo(element: HTMLElement, to: number, duration: number): void {
   
   let start = element.scrollTop,
@@ -37,8 +37,10 @@ function scrollTo(element: HTMLElement, to: number, duration: number): void {
   
   animateScroll();
 }
+
 // Function for smooth scroll animation with the time duration
 function easeOutQuad(time: number, startPos: number, endPos: number, duration: number): number {
+
   time /= duration;
   return -endPos * time * (time - 2) + startPos;
 }

@@ -56,7 +56,8 @@ $small-bp: 420px;
 html, body {
   margin: 0px;
   padding: 0px;
-  overflow: hidden;
+  // overflow: hidden;
+  height: 100vh;
   font-family: 'Londrina Solid', cursive;
   color: $main-text-color;
 }

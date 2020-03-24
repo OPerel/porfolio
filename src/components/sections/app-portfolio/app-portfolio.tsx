@@ -21,7 +21,7 @@ export class AppPortfolio {
   componentWillUpdate() {
     // this.el.setAttribute('style', `--animation: ${this.setOnEnterAnimation()}`);
     // setInterval(() => {
-      console.log(this.el.style.overflowY);
+      // console.log(this.el.style.overflowY);
     // }, 100)
   }
 
