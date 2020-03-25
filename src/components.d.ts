@@ -13,7 +13,9 @@ export namespace Components {
   interface AppAbout {
     'from': number;
   }
-  interface AppHome {}
+  interface AppHome {
+    'scrollpos': number;
+  }
   interface AppNav {
     'currentLink': number;
     'prevLink': number;
@@ -109,7 +111,9 @@ declare namespace LocalJSX {
   interface AppAbout {
     'from'?: number;
   }
-  interface AppHome {}
+  interface AppHome {
+    'scrollpos'?: number;
+  }
   interface AppNav {
     'currentLink'?: number;
     'onNavigate'?: (event: CustomEvent<any>) => void;

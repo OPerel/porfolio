@@ -7,13 +7,14 @@ import { Component, h, Prop, State, Element } from '@stencil/core';
 })
 export class Tri {
   @Element() triEl: HTMLElement;
-  @Prop() color: string;
-  @Prop() to: number;
-  @Prop() growDir: string; 
-  // @Prop() name: string;
+
   @State() lastScrollY: number;
   @State() ticking: boolean;
 
+  @Prop() color: string;
+  @Prop() to: number;
+  @Prop() growDir: string;
+  
   constructor() {
     this.lastScrollY = 0;
     this.ticking = false;
@@ -35,7 +36,7 @@ export class Tri {
   }
 
   animate = () => {
-    console.log('animate is running');
+    // console.log('animate is running');
     // if (this.to > 98) throw new Error('Scrolling factor above 98');
 
     // reset the tick so we can capture the next onScroll

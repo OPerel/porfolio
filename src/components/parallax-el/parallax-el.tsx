@@ -11,7 +11,7 @@ export class ParallaxEl {
   @State() lastScrollY: number;
   @State() ticking: boolean;
 
-  // @Prop() color: string;
+  // @Prop() horizontal: boolean;
   @Prop() to: number;
   @Prop() from: number;
 
@@ -55,7 +55,7 @@ export class ParallaxEl {
 
   componentWillLoad() {
     const body = document.getElementsByTagName('body')[0];
-    body.addEventListener('scroll', this.onScroll, {passive: false});
+    body.addEventListener('scroll', this.onScroll, { passive: false });
   }
 
   componentDidLoad() {
