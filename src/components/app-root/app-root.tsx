@@ -1,6 +1,6 @@
-import { Component, h, Prop, Listen } from '@stencil/core';
+import { Component, h, State, Listen } from '@stencil/core';
 
-import { Navi } from '../../helpers/navigation';
+import { Navigation } from '../../helpers/navigation';
 
 @Component({
   tag: 'app-root',
@@ -8,13 +8,13 @@ import { Navi } from '../../helpers/navigation';
   // shadow: true
 })
 export class AppRoot {
-  @Prop() currentPage: number;
-  @Prop() prevPage: number;
+  @State() currentPage: number;
+  @State() prevPage: number;
   // @State() scrolling: boolean;
   
   @Listen('navigate')
   handleNavClicks(e: CustomEvent) {
-    let { cp, pp } = Navi.scroll(e.detail);
+    let { cp, pp } = Navigation.scroll(e.detail);
     this.currentPage = cp;
     this.prevPage = pp;
   } 
@@ -26,34 +26,41 @@ export class AppRoot {
 
   /*********** throttle wheel events **************/
 
-  // onWheelEvent = (e) => {
-  //   e.preventDefault();
-  //   e.deltaY > 0 ? this.goToNextPage() : this.goToPrevPage();
-  // }
+  onWheelEvent = (e) => {
+    e.preventDefault();
+    let { cp, pp } = e.deltaY > 0
+    ? Navigation.scroll(this.currentPage < 4 ? this.currentPage + 1 : 4)
+    : Navigation.scroll(this.currentPage > 0 ? this.currentPage - 1 : 0);
 
-  // throttleWheel(callback, limit: number) {
-  //   // console.log('throttleWheel');
-  //   let wait = false;
-  //   return (...args) => {
-  //     if (!wait) {
-  //       callback(...args);
-  //       wait = true;
-  //       setTimeout(() => {
-  //         wait = false;
-  //       }, limit);
-  //     }
-  //   }
-  // }
+    this.currentPage = cp;
+    this.prevPage = pp;
+  }
+
+  throttleWheel(callback, limit: number) {
+    // console.log('throttleWheel');
+    let wait = false;
+    return (...args) => {
+      if (!wait) {
+        console.log('!wait')
+        callback(...args);
+        wait = true;
+        setTimeout(() => {
+          console.log('end timeout')
+          wait = false;
+        }, limit);
+      }
+    }
+  }
 
   /******** end throttle wheel events ************/
 
   componentWillLoad() {
     // wheel event handler to enable controlled scrolling
-    // document.addEventListener('wheel', this.throttleWheel(this.onWheelEvent, 900), {passive: false});
+    document.addEventListener('wheel', this.throttleWheel(this.onWheelEvent, 1500), {passive: false});
   }
 
   render() {
-    console.log('navi current: ', this.currentPage);
+    console.log('Navigation current: ', this.currentPage);
     return ([
       <main>
 

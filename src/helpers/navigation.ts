@@ -1,43 +1,44 @@
 import { appScroll } from './scroll';
 
-class Navigation {
-  currentPage: number;
-  prevPage: number;
+class NavigationController {
+  private currentPage: number;
+  private prevPage: number;
   // scrolling: boolean;
 
   constructor() {
-    this.prevPage = 0
+    this.prevPage = 0;
     this.currentPage = 0;
     // this.scrolling = false;
   }
 
-  scroll(target: number): any {
+  public scroll(target: number): {cp: number, pp: number} {
     this.prevPage = this.currentPage;
     this.currentPage = target;
     const stringTarget = this.mapSectionNumToId(target);
     
-    console.log('nav cp: ', this.currentPage)
-    console.log('nav pp: ', this.prevPage)
+    // console.log('nav cp: ', this.currentPage)
+    // console.log('nav pp: ', this.prevPage)
     const section = document.getElementById(stringTarget);
     appScroll(section, 500);
     return { cp: this.currentPage, pp: this.prevPage }
   }
 
+  // does not return new page # to root
   // goToNextPage = (): void => {
-  //   this.prevPage = this.currentPage;
-  //   this.currentPage = this.prevPage < 4 ? this.prevPage + 1 : 4;
-  //   this.scroll(this.mapSectionNumToId(this.currentPage))
+  //   // this.prevPage = this.currentPage;
+  //   // this.currentPage = this.prevPage < 4 ? this.prevPage + 1 : 4;
+  //   this.scroll(this.currentPage < 4 ? this.currentPage + 1 : 4)
   //   // this.scrolling = false;
   // }
 
   // goToPrevPage = (): void => {
-  //   this.prevPage = this.currentPage;
-  //   this.currentPage = this.prevPage > 0 ? this.prevPage - 1 : 0;
-  //   this.scroll(this.mapSectionNumToId(this.currentPage))
+  //   // this.prevPage = this.currentPage;
+  //   // this.currentPage = this.prevPage > 0 ? this.prevPage - 1 : 0;
+  //   this.scroll(this.currentPage > 0 ? this.currentPage - 1 : 0)
   //   // this.scrolling = false;
   // }
 
-  mapSectionNumToId(num: number): string {
+  private mapSectionNumToId(num: number): string {
     return {
       0: 'Home',
       1: 'About',
@@ -48,4 +49,4 @@ class Navigation {
   }
 }
 
-export const Navi = new Navigation();
+export const Navigation = new NavigationController();
