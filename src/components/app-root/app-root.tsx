@@ -1,6 +1,6 @@
-import { Component, h, State, Listen } from '@stencil/core';
+import { Component, h, Prop, Listen } from '@stencil/core';
 
-import { appScroll } from '../../helpers/scroll';
+import { Navi } from '../../helpers/navigation';
 
 @Component({
   tag: 'app-root',
@@ -8,80 +8,52 @@ import { appScroll } from '../../helpers/scroll';
   // shadow: true
 })
 export class AppRoot {
-  @State() currentPage: number;
-  @State() prevPage: number;
-  @State() scrolling: boolean;
+  @Prop() currentPage: number;
+  @Prop() prevPage: number;
+  // @State() scrolling: boolean;
   
   @Listen('navigate')
   handleNavClicks(e: CustomEvent) {
-    this.prevPage = this.currentPage;
-    this.currentPage = e.detail;
-    this.scroll(this.mapSectionNumToId(e.detail));
+    let { cp, pp } = Navi.scroll(e.detail);
+    this.currentPage = cp;
+    this.prevPage = pp;
   } 
 
   constructor() {
     this.prevPage = 0
     this.currentPage = 0;
-    this.scrolling = false;
   }
 
-  scroll(target: string) {
-    const section = document.getElementById(target);
-    appScroll(section, 500);
-  }
+  /*********** throttle wheel events **************/
 
-  goToNextPage = (): void => {
-    this.prevPage = this.currentPage;
-    this.currentPage = this.prevPage < 4 ? this.prevPage + 1 : 4;
-    this.scroll(this.mapSectionNumToId(this.currentPage))
-    this.scrolling = false;
-  }
+  // onWheelEvent = (e) => {
+  //   e.preventDefault();
+  //   e.deltaY > 0 ? this.goToNextPage() : this.goToPrevPage();
+  // }
 
-  goToPrevPage = (): void => {
-    this.prevPage = this.currentPage;
-    this.currentPage = this.prevPage > 0 ? this.prevPage - 1 : 0;
-    this.scroll(this.mapSectionNumToId(this.currentPage))
-    this.scrolling = false;
-  }
+  // throttleWheel(callback, limit: number) {
+  //   // console.log('throttleWheel');
+  //   let wait = false;
+  //   return (...args) => {
+  //     if (!wait) {
+  //       callback(...args);
+  //       wait = true;
+  //       setTimeout(() => {
+  //         wait = false;
+  //       }, limit);
+  //     }
+  //   }
+  // }
 
-  mapSectionNumToId(num: number) {
-    return {
-      0: 'Home',
-      1: 'About',
-      2: 'Portfolio',
-      3: 'Skills',
-      4: 'Contact'
-    }[num]
-  }
-
-  onWheelEvent = (e) => {
-    e.preventDefault();
-    if (!this.scrolling) {
-      e.deltaY > 0 ? requestAnimationFrame(this.goToNextPage) : requestAnimationFrame(this.goToPrevPage);
-    }
-    this.scrolling = true
-  }
-
-  throttleWheel(callback, limit: number) {
-    // console.log('throttleWheel');
-    let wait = false;
-    return (...args) => {
-      if (!wait) {
-        callback(...args);
-        wait = true;
-        setTimeout(() => {
-          wait = false;
-        }, limit);
-      }
-    }
-  }
+  /******** end throttle wheel events ************/
 
   componentWillLoad() {
-    document.addEventListener('wheel', this.throttleWheel(this.onWheelEvent, 900), {passive: false});
+    // wheel event handler to enable controlled scrolling
+    // document.addEventListener('wheel', this.throttleWheel(this.onWheelEvent, 900), {passive: false});
   }
 
   render() {
-    // console.log('current: ', this.currentPage);
+    console.log('navi current: ', this.currentPage);
     return ([
       <main>
 

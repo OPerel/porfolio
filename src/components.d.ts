@@ -24,7 +24,10 @@ export namespace Components {
     'cp': number;
     'from': number;
   }
-  interface AppRoot {}
+  interface AppRoot {
+    'currentPage': number;
+    'prevPage': number;
+  }
   interface AppSkills {}
   interface ContactFooter {}
   interface GrowingTri {
@@ -123,7 +126,10 @@ declare namespace LocalJSX {
     'cp'?: number;
     'from'?: number;
   }
-  interface AppRoot {}
+  interface AppRoot {
+    'currentPage'?: number;
+    'prevPage'?: number;
+  }
   interface AppSkills {}
   interface ContactFooter {}
   interface GrowingTri {
