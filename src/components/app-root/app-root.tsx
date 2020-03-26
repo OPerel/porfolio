@@ -33,8 +33,8 @@ export class AppRoot {
   onWheelEvent = (e) => {
     e.preventDefault();
     const { cp, pp } = e.deltaY > 0
-    ? Navigation.scroll(this.currentPage < 4 ? this.currentPage + 1 : 4)
-    : Navigation.scroll(this.currentPage > 0 ? this.currentPage - 1 : 0);
+      ? Navigation.scroll(this.currentPage < 4 ? this.currentPage + 1 : 4)
+      : Navigation.scroll(this.currentPage > 0 ? this.currentPage - 1 : 0);
 
     this.currentPage = cp;
     this.prevPage = pp;
