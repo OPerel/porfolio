@@ -30,31 +30,31 @@ export class AppRoot {
 
   /*********** throttle wheel events **************/
 
-  onWheelEvent = (e) => {
-    e.preventDefault();
-    const { cp, pp } = e.deltaY > 0
-      ? Navigation.scroll(this.currentPage < 4 ? this.currentPage + 1 : 4)
-      : Navigation.scroll(this.currentPage > 0 ? this.currentPage - 1 : 0);
+  // onWheelEvent = (e) => {
+  //   e.preventDefault();
+  //   const { cp, pp } = e.deltaY > 0
+  //     ? Navigation.scroll(this.currentPage < 4 ? this.currentPage + 1 : 4)
+  //     : Navigation.scroll(this.currentPage > 0 ? this.currentPage - 1 : 0);
 
-    this.currentPage = cp;
-    this.prevPage = pp;
-  }
+  //   this.currentPage = cp;
+  //   this.prevPage = pp;
+  // }
 
-  throttleWheel(callback, limit: number) {
-    // console.log('throttleWheel');
-    let wait = false;
-    return (...args) => {
-      if (!wait) {
-        console.log('!wait')
-        callback(...args);
-        wait = true;
-        setTimeout(() => {
-          console.log('end timeout')
-          wait = false;
-        }, limit);
-      }
-    }
-  }
+  // throttleWheel(callback, limit: number) {
+  //   // console.log('throttleWheel');
+  //   let wait = false;
+  //   return (...args) => {
+  //     if (!wait) {
+  //       console.log('!wait')
+  //       callback(...args);
+  //       wait = true;
+  //       setTimeout(() => {
+  //         console.log('end timeout')
+  //         wait = false;
+  //       }, limit);
+  //     }
+  //   }
+  // }
 
   /******** end throttle wheel events ************/
 
@@ -62,8 +62,8 @@ export class AppRoot {
 
   onScroll = () => {
     // console.log('onScroll is running');
-    const body = document.getElementsByTagName('body')[0];
-    this.lastScrollY = body.scrollTop;
+    // const body = document.getElementsByTagName('body')[0];
+    this.lastScrollY = window.scrollY;
     this.requestTick();
   }
 
@@ -84,8 +84,8 @@ export class AppRoot {
 
     let scrollpos: number;
 
-    const main = document.getElementsByTagName('main')[0];
-    scrollpos = (this.lastScrollY / (main.clientHeight - window.innerHeight));
+    // const main = document.getElementsByTagName('main')[0];
+    scrollpos = (this.lastScrollY / (document.body.clientHeight - window.innerHeight));
     this.setScrollPos(scrollpos);
   }
 
@@ -97,11 +97,11 @@ export class AppRoot {
 
   componentWillLoad() {
     // wheel event listener to enable controlled scrolling
-    document.addEventListener('wheel', this.throttleWheel(this.onWheelEvent, 1000), {passive: false});
+    // document.addEventListener('wheel', this.throttleWheel(this.onWheelEvent, 1000), {passive: false});
 
     // scroll event listener for global scrollpos
-    const body = document.getElementsByTagName('body')[0];
-    body.addEventListener('scroll', this.onScroll, { passive: false })
+    // const body = document.getElementsByTagName('body')[0];
+    document.addEventListener('scroll', this.onScroll, { passive: false })
   }
 
   render() {
