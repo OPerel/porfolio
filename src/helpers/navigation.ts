@@ -17,8 +17,8 @@ class NavigationController {
     const stringTarget = this.mapSectionNumToId(target);
 
     const section = document.getElementById(stringTarget);
-    // section.scrollIntoView({behavior: 'smooth', block: 'start'});
-    appScroll(section, 600);
+    section.scrollIntoView({behavior: 'smooth', block: 'start'});
+    // appScroll(section, 600);
 
     return { cp: this.currentPage, pp: this.prevPage }
   }

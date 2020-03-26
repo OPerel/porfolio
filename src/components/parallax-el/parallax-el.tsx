@@ -14,7 +14,6 @@ export class ParallaxEl {
   constructor() {}
 
   componentDidLoad() {
-    console.log('parael from: ', this.from);
     this.parallaxEl.style.setProperty('--to', `${this.to}`);
     this.parallaxEl.style.setProperty('--from', `${this.from}`);
   }

@@ -1,7 +1,7 @@
 // This is the main function where which pass two ref parameters of Parent element & Child element
 export const appScroll = (child: HTMLElement, duration: number): void => {
 
-  const parent = document.getElementsByTagName('body')[0];
+  const parent = document.body;
   
   const parentBounding = parent.getBoundingClientRect(),
     clientBounding = child.getBoundingClientRect();

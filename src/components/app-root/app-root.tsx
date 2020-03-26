@@ -19,6 +19,7 @@ export class AppRoot {
   @Listen('navigate')
   handleNavClicks(e: CustomEvent) {
     const { cp, pp } = Navigation.scroll(e.detail);
+    console.log(cp, pp)
     this.currentPage = cp;
     this.prevPage = pp;
   } 
@@ -27,36 +28,6 @@ export class AppRoot {
     this.prevPage = 0
     this.currentPage = 0;
   }
-
-  /*********** throttle wheel events **************/
-
-  // onWheelEvent = (e) => {
-  //   e.preventDefault();
-  //   const { cp, pp } = e.deltaY > 0
-  //     ? Navigation.scroll(this.currentPage < 4 ? this.currentPage + 1 : 4)
-  //     : Navigation.scroll(this.currentPage > 0 ? this.currentPage - 1 : 0);
-
-  //   this.currentPage = cp;
-  //   this.prevPage = pp;
-  // }
-
-  // throttleWheel(callback, limit: number) {
-  //   // console.log('throttleWheel');
-  //   let wait = false;
-  //   return (...args) => {
-  //     if (!wait) {
-  //       console.log('!wait')
-  //       callback(...args);
-  //       wait = true;
-  //       setTimeout(() => {
-  //         console.log('end timeout')
-  //         wait = false;
-  //       }, limit);
-  //     }
-  //   }
-  // }
-
-  /******** end throttle wheel events ************/
 
   /************ set global scrollpos **************/
 
@@ -96,11 +67,7 @@ export class AppRoot {
   /************ end setting global scrollpos *************/
 
   componentWillLoad() {
-    // wheel event listener to enable controlled scrolling
-    // document.addEventListener('wheel', this.throttleWheel(this.onWheelEvent, 1000), {passive: false});
-
     // scroll event listener for global scrollpos
-    // const body = document.getElementsByTagName('body')[0];
     document.addEventListener('scroll', this.onScroll, { passive: false })
   }
 

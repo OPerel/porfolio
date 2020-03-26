@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h } from '@stencil/core';
 
 @Component({
   tag: 'app-home',
@@ -6,10 +6,8 @@ import { Component, h, Prop } from '@stencil/core';
   // shadow: true
 })
 export class AppHome {
-  @Prop() scrollpos: number
 
   render() {
-    console.log('home scrollpos: ', this.scrollpos)
     return (
       <section class="app-home">
         <div class="container">
