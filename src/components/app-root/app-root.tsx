@@ -97,7 +97,7 @@ export class AppRoot {
 
   componentWillLoad() {
     // wheel event listener to enable controlled scrolling
-    document.addEventListener('wheel', this.throttleWheel(this.onWheelEvent, 1500), {passive: false});
+    document.addEventListener('wheel', this.throttleWheel(this.onWheelEvent, 1000), {passive: false});
 
     // scroll event listener for global scrollpos
     const body = document.getElementsByTagName('body')[0];
@@ -107,20 +107,18 @@ export class AppRoot {
   render() {
     // console.log('Navigation current: ', this.currentPage);
     return ([
-      <main>
-
         <header>
           <app-nav currentLink={this.currentPage} prevLink={this.prevPage} />
-        </header>
+        </header>,
+        <main>
 
-        <app-home id='Home' />
-        <app-about id='About' />
-        <app-portfolio id='Portfolio' />
-        <app-skills id='Skills' />
-        
-        
-      </main>,
-      <contact-footer id='Contact' />
+            <app-home id='Home' />
+            <app-about id='About' />
+            <app-portfolio id='Portfolio' />
+            <app-skills id='Skills' />
+          
+        </main>,
+        <contact-footer id='Contact' />
     ]);
   }
 }
