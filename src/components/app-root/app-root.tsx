@@ -1,4 +1,4 @@
-import { Component, h, State, Listen } from '@stencil/core';
+import { Component, h, State, Listen, Element } from '@stencil/core';
 
 import { Navigation } from '../../helpers/navigation';
 
@@ -8,13 +8,17 @@ import { Navigation } from '../../helpers/navigation';
   // shadow: true
 })
 export class AppRoot {
+  @Element() root: HTMLElement;
   @State() currentPage: number;
   @State() prevPage: number;
+
+  @State() lastScrollY: number;
+  @State() ticking: boolean;
   // @State() scrolling: boolean;
   
   @Listen('navigate')
   handleNavClicks(e: CustomEvent) {
-    let { cp, pp } = Navigation.scroll(e.detail);
+    const { cp, pp } = Navigation.scroll(e.detail);
     this.currentPage = cp;
     this.prevPage = pp;
   } 
@@ -28,7 +32,7 @@ export class AppRoot {
 
   onWheelEvent = (e) => {
     e.preventDefault();
-    let { cp, pp } = e.deltaY > 0
+    const { cp, pp } = e.deltaY > 0
     ? Navigation.scroll(this.currentPage < 4 ? this.currentPage + 1 : 4)
     : Navigation.scroll(this.currentPage > 0 ? this.currentPage - 1 : 0);
 
@@ -54,13 +58,54 @@ export class AppRoot {
 
   /******** end throttle wheel events ************/
 
+  /************ set global scrollpos **************/
+
+  onScroll = () => {
+    // console.log('onScroll is running');
+    const body = document.getElementsByTagName('body')[0];
+    this.lastScrollY = body.scrollTop;
+    this.requestTick();
+  }
+
+  requestTick = () => {
+    // console.log('requestTick is running');
+    if(!this.ticking) {
+      requestAnimationFrame(this.animate);
+    }
+    this.ticking = true;
+  }
+
+  animate = () => {
+    // console.log('animate is running');
+    // if (this.to > 98) throw new Error('Scrolling factor above 98');
+
+    // reset the tick so we can capture the next onScroll
+    this.ticking = false;
+
+    let scrollpos: number;
+
+    const main = document.getElementsByTagName('main')[0];
+    scrollpos = (this.lastScrollY / (main.clientHeight - window.innerHeight));
+    this.setScrollPos(scrollpos);
+  }
+
+  setScrollPos(scrollPos: number): void {
+    this.root.style.setProperty('--scrollpos', `${scrollPos}`);
+  }
+
+  /************ end setting global scrollpos *************/
+
   componentWillLoad() {
-    // wheel event handler to enable controlled scrolling
+    // wheel event listener to enable controlled scrolling
     document.addEventListener('wheel', this.throttleWheel(this.onWheelEvent, 1500), {passive: false});
+
+    // scroll event listener for global scrollpos
+    const body = document.getElementsByTagName('body')[0];
+    body.addEventListener('scroll', this.onScroll, { passive: false })
   }
 
   render() {
-    console.log('Navigation current: ', this.currentPage);
+    // console.log('Navigation current: ', this.currentPage);
     return ([
       <main>
 

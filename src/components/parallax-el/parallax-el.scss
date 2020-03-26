@@ -1,4 +1,12 @@
-:host {
-  transform: translateY(calc(var(--scrollpos) * 1px));
-  position: absolute;
+div {
+  transform: translate(0, 
+    calc(
+      calc(
+        calc(
+          var(--scrollpos) * var(--to)
+        ) + var(--from)
+      ) * 1px
+    )
+  );
+  // position: absolute;
 }

@@ -19,7 +19,7 @@ class NavigationController {
     // console.log('nav cp: ', this.currentPage)
     // console.log('nav pp: ', this.prevPage)
     const section = document.getElementById(stringTarget);
-    appScroll(section, 500);
+    appScroll(section, 600);
     return { cp: this.currentPage, pp: this.prevPage }
   }
 
