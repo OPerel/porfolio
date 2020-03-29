@@ -1,15 +1,19 @@
 const puppeteer = require('puppeteer');
 let browser, page;
 
-const scrollToSection = async (linkId: string) => {
+const scrollToSection = async (linkId: string): Promise<void> => {
   await page.click(linkId);
   await page.waitFor(1300);
 }
 
-const isVisible = async (sectionId: string, bool: boolean) => {
+const isVisible = async (sectionId: string, bool: boolean): Promise<void> => {
   const section = await page.$(sectionId);
   const visible = await section.isIntersectingViewport();
   expect(visible).toBe(bool);
+}
+
+const getSectionTitle = async (sectionTag: string): Promise<string> => {
+  return await page.$eval(`${sectionTag} h2`, title => title.textContent);
 }
 
 describe('scrolling through the page', () => {
@@ -29,6 +33,7 @@ describe('scrolling through the page', () => {
     }
   });
 
+  // Hero section
   test('should see Home section', async () => {
     await scrollToSection('#h');
     await isVisible('#Home', true);
@@ -41,7 +46,7 @@ describe('scrolling through the page', () => {
     await isVisible('#Contact', false);
   })
 
-  test('should see welcome message in header', async () => {
+  test('should see user name in header', async () => {
     await page.waitForSelector('h1');
     const h = await page.$('h1');
     const text = await page.evaluate(h => h.textContent, h);
@@ -52,6 +57,11 @@ describe('scrolling through the page', () => {
     await isVisible('#About', false);
   });
 
+  test('should read "Welcome!" in main title', async () => {
+    expect(await getSectionTitle('app-home')).toEqual('Welcome');
+  })
+
+  // About section
   test('should scroll to About section', async () => {
     await scrollToSection('#a');
     await isVisible('#About', true);
@@ -61,11 +71,21 @@ describe('scrolling through the page', () => {
     await isVisible('#Home', false);
   });
 
+  test('should read about section title', async () => {
+    expect(await getSectionTitle('app-about')).toEqual('About');
+  });
+
+  // Portfolio section
   test('should scroll to Portfolio section', async () => {
     await scrollToSection('#p');
     await isVisible('#Portfolio', true);
   });
 
+  test('should read portfolio section title', async () => {
+    expect(await getSectionTitle('app-portfolio')).toEqual('Portfolio');
+  });
+
+  // Skills  section
   test('should scroll to Skills section', async () => {
     await scrollToSection('#s');
     await isVisible('#Skills', true);
@@ -75,12 +95,21 @@ describe('scrolling through the page', () => {
     await isVisible('#Portfolio', false);
   });
 
-  // TODO
+  test('should read skills section title', async () => {
+    expect(await getSectionTitle('app-skills')).toEqual('Skills');
+  });
+
+  // Contact footer
   test('should scroll to Contact footer', async () => {
     await scrollToSection('#c');
     await isVisible('#Contact', true);
-  })
+  });
 
+  test('should read contact section title', async () => {
+    expect(await getSectionTitle('contact-footer')).toEqual('Contact Me!');
+  });
+
+  // back to top
   test('should scroll back home', async () => {
     await scrollToSection('#h');
     await isVisible('#Home', true);

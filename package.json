@@ -6,7 +6,7 @@
   "scripts": {
     "build": "stencil build",
     "start": "stencil build --dev --watch --serve",
-    "test": "stencil test --e2e",
+    "test": "stencil test --e2e test.e2e.ts",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate"
   },

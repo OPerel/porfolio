@@ -12,7 +12,7 @@ export class AppHome {
       <section class="app-home">
         <div class="container">
           <parallax-el to={600} from={0}>
-            <h1>Welcome</h1>
+            <h2>Welcome</h2>
           </parallax-el>
           <parallax-el to={-550} from={0}>
             <h3>This is my example tagline. bla bla bla...</h3>
