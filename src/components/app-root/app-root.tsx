@@ -68,7 +68,7 @@ export class AppRoot {
 
   componentWillLoad() {
     // scroll event listener for global scrollpos
-    document.addEventListener('scroll', this.onScroll, { passive: false })
+    document.addEventListener('scroll', this.onScroll, { passive: false });
   }
 
   render() {
