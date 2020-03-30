@@ -1,9 +1,9 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, h } from '@stencil/core';
 
 @Component({
   tag: 'contact-footer',
   styleUrl: 'footer.scss',
-  shadow: true
+  // shadow: true
 })
 export class Footer {
 
@@ -11,7 +11,7 @@ export class Footer {
     return (
       <footer>
         <div class="container">
-          <h4>Contact Me!</h4>
+          <h2>Contact Me!</h2>
           <p>bla bla bla bla bla bla bla ddaddaddad</p>
         </div>
       </footer>

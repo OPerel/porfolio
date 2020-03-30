@@ -1,6 +1,6 @@
-import { Component, h, State, Listen } from '@stencil/core';
+import { Component, h, State, Listen, Element } from '@stencil/core';
 
-import { appScroll } from '../../helpers/scroll';
+import { Navigation } from '../../helpers/navigation';
 
 @Component({
   tag: 'app-root',
@@ -8,95 +8,84 @@ import { appScroll } from '../../helpers/scroll';
   // shadow: true
 })
 export class AppRoot {
+  @Element() root: HTMLElement;
   @State() currentPage: number;
   @State() prevPage: number;
-  @State() scrolling: boolean;
+
+  @State() lastScrollY: number;
+  @State() ticking: boolean;
+  // @State() scrolling: boolean;
   
   @Listen('navigate')
   handleNavClicks(e: CustomEvent) {
-    this.prevPage = this.currentPage;
-    this.currentPage = e.detail;
-    this.scroll(this.mapSectionNumToId(e.detail));
+    const { cp, pp } = Navigation.scroll(e.detail);
+    console.log(cp, pp)
+    this.currentPage = cp;
+    this.prevPage = pp;
   } 
 
   constructor() {
     this.prevPage = 0
     this.currentPage = 0;
-    this.scrolling = false;
   }
 
-  scroll(target: string) {
-    const section = document.getElementById(target);
-    appScroll(section, 500);
+  /************ set global scrollpos **************/
+
+  onScroll = () => {
+    // console.log('onScroll is running');
+    // const body = document.getElementsByTagName('body')[0];
+    this.lastScrollY = window.scrollY;
+    this.requestTick();
   }
 
-  goToNextPage = (): void => {
-    this.prevPage = this.currentPage;
-    this.currentPage = this.prevPage < 4 ? this.prevPage + 1 : 4;
-    this.scroll(this.mapSectionNumToId(this.currentPage))
-    this.scrolling = false;
-  }
-
-  goToPrevPage = (): void => {
-    this.prevPage = this.currentPage;
-    this.currentPage = this.prevPage > 0 ? this.prevPage - 1 : 0;
-    this.scroll(this.mapSectionNumToId(this.currentPage))
-    this.scrolling = false;
-  }
-
-  mapSectionNumToId(num: number) {
-    return {
-      0: 'Home',
-      1: 'About',
-      2: 'Portfolio',
-      3: 'Skills',
-      4: 'Contact'
-    }[num]
-  }
-
-  onWheelEvent = (e) => {
-    e.preventDefault();
-    if (!this.scrolling) {
-      e.deltaY > 0 ? requestAnimationFrame(this.goToNextPage) : requestAnimationFrame(this.goToPrevPage);
+  requestTick = () => {
+    // console.log('requestTick is running');
+    if(!this.ticking) {
+      requestAnimationFrame(this.animate);
     }
-    this.scrolling = true
+    this.ticking = true;
   }
 
-  throttleWheel(callback, limit: number) {
-    // console.log('throttleWheel');
-    let wait = false;
-    return (...args) => {
-      if (!wait) {
-        callback(...args);
-        wait = true;
-        setTimeout(() => {
-          wait = false;
-        }, limit);
-      }
-    }
+  animate = () => {
+    // console.log('animate is running');
+    // if (this.to > 98) throw new Error('Scrolling factor above 98');
+
+    // reset the tick so we can capture the next onScroll
+    this.ticking = false;
+
+    let scrollpos: number;
+
+    // const main = document.getElementsByTagName('main')[0];
+    scrollpos = (this.lastScrollY / (document.body.clientHeight - window.innerHeight));
+    this.setScrollPos(scrollpos);
   }
+
+  setScrollPos(scrollPos: number): void {
+    this.root.style.setProperty('--scrollpos', `${scrollPos}`);
+  }
+
+  /************ end setting global scrollpos *************/
 
   componentWillLoad() {
-    document.addEventListener('wheel', this.throttleWheel(this.onWheelEvent, 900), {passive: false});
+    // scroll event listener for global scrollpos
+    document.addEventListener('scroll', this.onScroll, { passive: false });
   }
 
   render() {
-    // console.log('current: ', this.currentPage);
+    // console.log('Navigation current: ', this.currentPage);
     return ([
-      <main>
-
         <header>
           <app-nav currentLink={this.currentPage} prevLink={this.prevPage} />
-        </header>
+        </header>,
+        <main>
 
-        <app-home id='Home' />
-        <app-about id='About' />
-        <app-portfolio id='Portfolio' />
-        <app-skills id='Skills' />
-        
-        
-      </main>,
-      <contact-footer id='Contact' />
+            <app-home id='Home' />
+            <app-about id='About' />
+            <app-portfolio id='Portfolio' />
+            <app-skills id='Skills' />
+          
+        </main>,
+        <contact-footer id='Contact' />
     ]);
   }
 }

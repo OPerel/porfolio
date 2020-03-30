@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, State, Prop } from '@stencil/core';
+import { Component, h, Element, Prop } from '@stencil/core';
 
 @Component({
   tag: 'parallax-el',
@@ -8,65 +8,21 @@ import { Component, Host, h, Element, State, Prop } from '@stencil/core';
 export class ParallaxEl {
   @Element() parallaxEl: HTMLElement;
 
-  @State() lastScrollY: number;
-  @State() ticking: boolean;
-
-  // @Prop() horizontal: boolean;
   @Prop() to: number;
   @Prop() from: number;
 
-  constructor() {
-    this.lastScrollY = this.from;
-    this.ticking = false;
-  }
-
-  onScroll = () => {
-    // console.log('onScroll is running');
-    const body = document.getElementsByTagName('body')[0];
-    this.lastScrollY = body.scrollTop;
-    this.requestTick();
-  }
-
-  requestTick = () => {
-    // console.log('requestTick is running');
-    if(!this.ticking) {
-      requestAnimationFrame(this.animate);
-    }
-    this.ticking = true;
-  }
-
-  animate = (): void => {
-    // console.log('animate is running');
-    // if (this.to > 98) throw new Error('Scrolling factor above 98');
-
-    // reset the tick so we can capture the next onScroll
-    this.ticking = false;
-
-    let scrollpos: number;
-    
-    const main = document.getElementsByTagName('main')[0];
-    scrollpos = (this.lastScrollY / (main.clientHeight - window.innerHeight) * this.to) + this.from;
-    this.setScrollPos(scrollpos);
-  }
-
-  setScrollPos(scrollPos: number): void {
-    this.parallaxEl.style.setProperty('--scrollpos', `${scrollPos}`);
-  }
-
-  componentWillLoad() {
-    const body = document.getElementsByTagName('body')[0];
-    body.addEventListener('scroll', this.onScroll, { passive: false });
-  }
+  constructor() {}
 
   componentDidLoad() {
-    this.setScrollPos(this.from);
+    this.parallaxEl.style.setProperty('--to', `${this.to}`);
+    this.parallaxEl.style.setProperty('--from', `${this.from}`);
   }
 
   render() {
     return ( 
-      <Host>
+      <div>
         <slot></slot>
-      </Host>
+      </div>
     );
   }
 
