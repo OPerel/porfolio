@@ -1,5 +1,5 @@
-const puppeteer = require('puppeteer');
-let browser, page;
+import puppeteer, { Browser, Page } from 'puppeteer';
+let browser: Browser, page: Page;
 
 const scrollToSection = async (linkId: string): Promise<void> => {
   await page.click(linkId);
