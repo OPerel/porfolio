@@ -1,0 +1,60 @@
+.gallery {
+  position: relative;
+  height: 60vh;
+  margin-bottom: 0;
+  // background-color: $color-complement-1;
+  opacity: calc((var(--scrollpos) * 200 - 90)  / 25); // maybe use regular animation istead of scrolling for this.
+  overflow-x: auto;
+
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+
+  // display: grid;
+  // gap: 30px;
+  // grid-template-columns: 20px;
+  // grid-auto-flow: column;
+  // grid-auto-columns: calc(50% - 60px * 2);
+
+  .scroll-x {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: 3vw;
+    display: grid;
+    align-content: center;
+
+    background-color: #000;
+
+    .gallery-arrow {
+      height: 40%;
+      width: 75%;
+    }
+
+    .scroll-left {
+      left: 0;
+    }
+
+    .left-arrow {
+      border-style: solid;
+      border-color: #0000 #fffa #0000 #0000;
+      border-width: 60px 21px 60px 0px;
+    }
+
+    .scroll-right {
+      right: 0;
+    }
+
+    .right-arrow {
+      border-style: solid;
+      border-color: #0000 #0000 #fffa  #0000;
+      border-width: 60px 0px 60px 21px;
+    }
+  }
+}
+
+
+
+
+

@@ -1,29 +1,7 @@
 @import '../../../global/app.scss';
 
-.app-profile {
+.app-portfolio {
   background-color: $portfolio-background-color;
 }
 
 
-// @mixin in-or-out() {
-//   @if $prevPageNumber < $pageNumber {
-//     animation: slideIn 1s;
-//   } @else {
-//     animation: slideOut 1s;
-//   }
-// }
-
-// @keyframes slideInDown {
-//   from { transform: translateY(-100%); }
-//   to { transform: translateY(0); }
-// }
-
-// @keyframes slideOutUp {
-//   from { transform: translateY(0); }
-//   to { transform: translateY(100%); }
-// }
-
-// @keyframes slideOutDown {
-//   from { transform: translateY(0); }
-//   to { transform: translateY(-100%); }
-// }

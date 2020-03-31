@@ -94,8 +94,9 @@ section {
   display: grid;
   align-content: center;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   position: relative;
+  z-index: 2;
 }
 
 .container {

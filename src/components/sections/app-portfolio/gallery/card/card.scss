@@ -1,0 +1,24 @@
+@import '../../../../../global/app.scss';
+
+:host {
+  height: 100%;
+  width: 40%;
+  background-color: $color-complement-1;
+  border-radius: 5px;
+
+  flex: 0 0 auto;
+
+  margin: 0 3%;
+  display: inline-block;
+
+  position: relative;
+}
+
+:host:after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: -2rem;
+  width: 3.5rem;
+  height: 1px;
+}

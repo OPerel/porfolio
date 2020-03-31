@@ -34,6 +34,8 @@ export namespace Components {
     'from': number;
     'to': number;
   }
+  interface ProjectCard {}
+  interface ProjectsGallery {}
 }
 
 declare global {
@@ -92,6 +94,18 @@ declare global {
     prototype: HTMLParallaxElElement;
     new (): HTMLParallaxElElement;
   };
+
+  interface HTMLProjectCardElement extends Components.ProjectCard, HTMLStencilElement {}
+  var HTMLProjectCardElement: {
+    prototype: HTMLProjectCardElement;
+    new (): HTMLProjectCardElement;
+  };
+
+  interface HTMLProjectsGalleryElement extends Components.ProjectsGallery, HTMLStencilElement {}
+  var HTMLProjectsGalleryElement: {
+    prototype: HTMLProjectsGalleryElement;
+    new (): HTMLProjectsGalleryElement;
+  };
   interface HTMLElementTagNameMap {
     'app-about': HTMLAppAboutElement;
     'app-home': HTMLAppHomeElement;
@@ -102,6 +116,8 @@ declare global {
     'contact-footer': HTMLContactFooterElement;
     'growing-tri': HTMLGrowingTriElement;
     'parallax-el': HTMLParallaxElElement;
+    'project-card': HTMLProjectCardElement;
+    'projects-gallery': HTMLProjectsGalleryElement;
   }
 }
 
@@ -131,6 +147,8 @@ declare namespace LocalJSX {
     'from'?: number;
     'to'?: number;
   }
+  interface ProjectCard {}
+  interface ProjectsGallery {}
 
   interface IntrinsicElements {
     'app-about': AppAbout;
@@ -142,6 +160,8 @@ declare namespace LocalJSX {
     'contact-footer': ContactFooter;
     'growing-tri': GrowingTri;
     'parallax-el': ParallaxEl;
+    'project-card': ProjectCard;
+    'projects-gallery': ProjectsGallery;
   }
 }
 
@@ -160,6 +180,8 @@ declare module "@stencil/core" {
       'contact-footer': LocalJSX.ContactFooter & JSXBase.HTMLAttributes<HTMLContactFooterElement>;
       'growing-tri': LocalJSX.GrowingTri & JSXBase.HTMLAttributes<HTMLGrowingTriElement>;
       'parallax-el': LocalJSX.ParallaxEl & JSXBase.HTMLAttributes<HTMLParallaxElElement>;
+      'project-card': LocalJSX.ProjectCard & JSXBase.HTMLAttributes<HTMLProjectCardElement>;
+      'projects-gallery': LocalJSX.ProjectsGallery & JSXBase.HTMLAttributes<HTMLProjectsGalleryElement>;
     }
   }
 }
