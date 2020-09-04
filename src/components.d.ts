@@ -36,6 +36,7 @@ export namespace Components {
   }
   interface ProjectCard {}
   interface ProjectsGallery {}
+  interface RotatingTri {}
 }
 
 declare global {
@@ -106,6 +107,12 @@ declare global {
     prototype: HTMLProjectsGalleryElement;
     new (): HTMLProjectsGalleryElement;
   };
+
+  interface HTMLRotatingTriElement extends Components.RotatingTri, HTMLStencilElement {}
+  var HTMLRotatingTriElement: {
+    prototype: HTMLRotatingTriElement;
+    new (): HTMLRotatingTriElement;
+  };
   interface HTMLElementTagNameMap {
     'app-about': HTMLAppAboutElement;
     'app-home': HTMLAppHomeElement;
@@ -118,6 +125,7 @@ declare global {
     'parallax-el': HTMLParallaxElElement;
     'project-card': HTMLProjectCardElement;
     'projects-gallery': HTMLProjectsGalleryElement;
+    'rotating-tri': HTMLRotatingTriElement;
   }
 }
 
@@ -149,6 +157,7 @@ declare namespace LocalJSX {
   }
   interface ProjectCard {}
   interface ProjectsGallery {}
+  interface RotatingTri {}
 
   interface IntrinsicElements {
     'app-about': AppAbout;
@@ -162,6 +171,7 @@ declare namespace LocalJSX {
     'parallax-el': ParallaxEl;
     'project-card': ProjectCard;
     'projects-gallery': ProjectsGallery;
+    'rotating-tri': RotatingTri;
   }
 }
 
@@ -182,6 +192,7 @@ declare module "@stencil/core" {
       'parallax-el': LocalJSX.ParallaxEl & JSXBase.HTMLAttributes<HTMLParallaxElElement>;
       'project-card': LocalJSX.ProjectCard & JSXBase.HTMLAttributes<HTMLProjectCardElement>;
       'projects-gallery': LocalJSX.ProjectsGallery & JSXBase.HTMLAttributes<HTMLProjectsGalleryElement>;
+      'rotating-tri': LocalJSX.RotatingTri & JSXBase.HTMLAttributes<HTMLRotatingTriElement>;
     }
   }
 }

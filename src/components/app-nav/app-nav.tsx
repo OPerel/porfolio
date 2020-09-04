@@ -12,7 +12,7 @@ export class AppNav {
 
   constructor() {}
 
-  handleNavClick(e: UIEvent, sec: number) {
+  handleNavClick(sec: number) {
     this.navigate.emit(sec);
   }
 
@@ -22,11 +22,11 @@ export class AppNav {
       <nav>
         <h1>Ori Perelman</h1>
         <ul>
-          <li id="h" class={this.currentLink === 0 ? 'active' : ''} onClick={(e) => this.handleNavClick(e, 0)}>Home</li>
-          <li id="a" class={this.currentLink === 1 ? 'active' : ''} onClick={(e) => this.handleNavClick(e, 1)}>About</li>
-          <li id="p" class={this.currentLink === 2 ? 'active' : ''} onClick={(e) => this.handleNavClick(e, 2)}>Portfolio</li>
-          <li id="s" class={this.currentLink === 3 ? 'active' : ''} onClick={(e) => this.handleNavClick(e, 3)}>Skills</li>
-          <li id="c" class={this.currentLink === 4 ? 'active' : ''} onClick={(e) => this.handleNavClick(e, 4)}>Contact</li>
+          <li id="h" class={this.currentLink === 0 ? 'active' : ''} onClick={() => this.handleNavClick(0)}>Home</li>
+          <li id="a" class={this.currentLink === 1 ? 'active' : ''} onClick={() => this.handleNavClick(1)}>About</li>
+          <li id="p" class={this.currentLink === 2 ? 'active' : ''} onClick={() => this.handleNavClick(2)}>Portfolio</li>
+          <li id="s" class={this.currentLink === 3 ? 'active' : ''} onClick={() => this.handleNavClick(3)}>Skills</li>
+          <li id="c" class={this.currentLink === 4 ? 'active' : ''} onClick={() => this.handleNavClick(4)}>Contact</li>
         </ul>
       </nav>
     );

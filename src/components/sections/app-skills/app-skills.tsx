@@ -13,6 +13,7 @@ export class AppSkills {
         <div class="container">
           <h2>Skills</h2>
         </div>
+        <rotating-tri />
       </section>
     );
   }

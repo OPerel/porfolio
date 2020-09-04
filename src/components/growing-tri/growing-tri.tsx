@@ -2,7 +2,7 @@ import { Component, h, Prop, Element } from '@stencil/core';
 
 @Component({
   tag: 'growing-tri',
-  styleUrl: 'tri.scss',
+  styleUrl: 'growing-tri.scss',
   shadow: true
 })
 export class Tri {

@@ -1,4 +1,4 @@
-import { appScroll } from './scroll';
+// import { appScroll } from './scroll';
 
 class NavigationController {
   private currentPage: number;

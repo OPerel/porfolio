@@ -19,7 +19,7 @@ export class AppRoot {
   @Listen('navigate')
   handleNavClicks(e: CustomEvent) {
     const { cp, pp } = Navigation.scroll(e.detail);
-    console.log(cp, pp)
+    console.log(`current page: ${cp}, next page:  ${pp}`);
     this.currentPage = cp;
     this.prevPage = pp;
   } 
