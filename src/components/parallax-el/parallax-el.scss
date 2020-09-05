@@ -1,5 +1,7 @@
+@import '../../global/app.scss';
+
 div {
-  transition: 0.6s linear;
+  transition: $scroll;
 }
 
 .over {

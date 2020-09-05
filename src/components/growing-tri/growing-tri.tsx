@@ -5,7 +5,7 @@ import { Component, h, Prop, Element } from '@stencil/core';
   styleUrl: 'growing-tri.scss',
   shadow: true
 })
-export class Tri {
+export class GrowingTri {
   @Prop() cp: number;
   @Prop() on: number;
   @Prop() over: number;

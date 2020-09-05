@@ -1,3 +1,5 @@
+@import '../../global/app.scss';
+
 .tri {
   border-style: solid;
   position: absolute;
@@ -7,7 +9,7 @@
   border-top-width: 0vh;
   border-color: transparent transparent var(--color) transparent;
   z-index: 1;
-  transition: 0.6s linear;
+  transition: $scroll;
 }
 
 .on {border-bottom-width: calc(var(--on) * 1vh);}
