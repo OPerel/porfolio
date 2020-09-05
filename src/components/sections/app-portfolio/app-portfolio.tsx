@@ -19,9 +19,9 @@ export class AppPortfolio {
         <div class="container">
           <h2>Portfolio</h2>
         </div>
-        <parallax-el from={400} to={-700}>
+        {/* <parallax-el from={400} to={-700}> */}
           <projects-gallery />
-        </parallax-el>
+        {/* </parallax-el> */}
       </section>
     );
   }

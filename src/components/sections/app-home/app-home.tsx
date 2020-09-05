@@ -1,4 +1,4 @@
-import { Component, h } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 
 @Component({
   tag: 'app-home',
@@ -6,23 +6,24 @@ import { Component, h } from '@stencil/core';
   // shadow: true
 })
 export class AppHome {
+  @Prop() cp: number;
 
   render() {
     return (
       <section class="app-home">
         <div class="container">
-          <parallax-el to={600} from={0}>
+          <parallax-el page={0} cp={this.cp} on={0} over={-30} under={0}>
             <h2>Welcome</h2>
           </parallax-el>
-          <parallax-el to={-550} from={0}>
+          <parallax-el page={0} cp={this.cp} on={0} over={40} under={0}>
             <h3>This is my example tagline. bla bla bla...</h3>
           </parallax-el>
         </div>
 
-        <growing-tri color={`#608D8B`} to={90} growDir={`left`} />
-        <growing-tri color={`#3E7A78`} to={75} growDir={`left`} />
-        <growing-tri color={`#266f6d`} to={60} growDir={`left`} />
-        <growing-tri color={`#226765`} to={45} growDir={`left`} />
+        <growing-tri color={`#608D8B`} growDir={`left`} on={0} over={30} under={0} cp={this.cp} page={0} />
+        <growing-tri color={`#3E7A78`} growDir={`left`} on={0} over={15} under={0} cp={this.cp} page={0} />
+        <growing-tri color={`#266f6d`} growDir={`left`} on={0} over={10} under={0} cp={this.cp} page={0} />
+        <growing-tri color={`#226765`} growDir={`left`} on={0} over={5} under={0} cp={this.cp} page={0} />
         
       </section>
     );

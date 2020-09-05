@@ -79,8 +79,8 @@ export class AppRoot {
         </header>,
         <main>
 
-            <app-home id='Home' />
-            <app-about id='About' pages={{ cp: this.currentPage, pp: this.prevPage }} />
+            <app-home id='Home' cp={this.currentPage} />
+            <app-about id='About' cp={this.currentPage} />
             <app-portfolio id='Portfolio' />
             <app-skills id='Skills' />
           

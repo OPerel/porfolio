@@ -6,24 +6,29 @@ import { Component, h, Prop, Element } from '@stencil/core';
   shadow: true
 })
 export class Tri {
-  @Element() triEl: HTMLElement;
-
-  @Prop() color: string;
-  @Prop() to: number;
+  @Prop() cp: number;
+  @Prop() on: number;
+  @Prop() over: number;
+  @Prop() under: number;
+  @Prop() page: number;
   @Prop() growDir: string;
-  
-  constructor() {}
+  @Prop() color: string;
+  @Element() tri: HTMLElement;
+
+  getClassName = (): string => this.cp === this.page ? 'on' : (this.cp > this.page ? 'over' : 'under');
 
   componentDidLoad() {
-    this.triEl.style.setProperty('--color', `${this.color}`);
-    this.triEl.style.setProperty('--to', `${this.to}`);
+    this.tri.style.setProperty('--on', `${this.on}`);
+    this.tri.style.setProperty('--over', `${this.over}`);
+    this.tri.style.setProperty('--under', `${this.under}`);
+    this.tri.style.setProperty('--color', `${this.color}`);
   }
 
   render() {
     const borderStyles = this.growDir === 'left' ?
     { borderRightWidth: '100vw', borderLeftWidth: '0' } : { borderLeftWidth: '100vw', borderRightWidth: '0' };
 
-    return <div class="tri" style={borderStyles}></div>;
+    return <div class={'tri ' + this.getClassName()} style={borderStyles}></div>;
   }
 
 }

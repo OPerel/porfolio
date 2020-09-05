@@ -1,14 +1,17 @@
-div {
+.tri {
   border-style: solid;
   position: absolute;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 3;
   border-top-width: 0vh;
-  // border-right-width: 100vw;
-  border-bottom-width: calc(calc(var(--scrollpos) * var(--to)) * 1vh);
-  // border-left-width: 0;
   border-color: transparent transparent var(--color) transparent;
-  z-index: 1; 
+  z-index: 1;
+  transition: 0.6s linear;
 }
+
+.on {border-bottom-width: calc(var(--on) * 1vh);}
+
+.over {border-bottom-width: calc(var(--over) * 1vh);}
+
+.under {border-bottom-width: calc(var(--under) * 1vh);}

@@ -11,9 +11,11 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 export namespace Components {
   interface AppAbout {
-    'pages': { cp: number, pp: number };
+    'cp': number;
   }
-  interface AppHome {}
+  interface AppHome {
+    'cp': number;
+  }
   interface AppNav {
     'currentLink': number;
     'prevLink': number;
@@ -27,12 +29,19 @@ export namespace Components {
   interface ContactFooter {}
   interface GrowingTri {
     'color': string;
+    'cp': number;
     'growDir': string;
-    'to': number;
+    'on': number;
+    'over': number;
+    'page': number;
+    'under': number;
   }
   interface ParallaxEl {
-    'from': number;
-    'to': number;
+    'cp': number;
+    'on': number;
+    'over': number;
+    'page': number;
+    'under': number;
   }
   interface ProjectCard {}
   interface ProjectsGallery {}
@@ -131,9 +140,11 @@ declare global {
 
 declare namespace LocalJSX {
   interface AppAbout {
-    'pages'?: { cp: number, pp: number };
+    'cp'?: number;
   }
-  interface AppHome {}
+  interface AppHome {
+    'cp'?: number;
+  }
   interface AppNav {
     'currentLink'?: number;
     'onNavigate'?: (event: CustomEvent<any>) => void;
@@ -148,12 +159,19 @@ declare namespace LocalJSX {
   interface ContactFooter {}
   interface GrowingTri {
     'color'?: string;
+    'cp'?: number;
     'growDir'?: string;
-    'to'?: number;
+    'on'?: number;
+    'over'?: number;
+    'page'?: number;
+    'under'?: number;
   }
   interface ParallaxEl {
-    'from'?: number;
-    'to'?: number;
+    'cp'?: number;
+    'on'?: number;
+    'over'?: number;
+    'page'?: number;
+    'under'?: number;
   }
   interface ProjectCard {}
   interface ProjectsGallery {}
