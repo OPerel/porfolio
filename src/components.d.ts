@@ -11,7 +11,7 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 export namespace Components {
   interface AppAbout {
-    'from': number;
+    'pages': { cp: number, pp: number };
   }
   interface AppHome {}
   interface AppNav {
@@ -131,7 +131,7 @@ declare global {
 
 declare namespace LocalJSX {
   interface AppAbout {
-    'from'?: number;
+    'pages'?: { cp: number, pp: number };
   }
   interface AppHome {}
   interface AppNav {

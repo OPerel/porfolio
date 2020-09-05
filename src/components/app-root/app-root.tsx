@@ -15,19 +15,19 @@ export class AppRoot {
   @State() lastScrollY: number;
   @State() ticking: boolean;
   // @State() scrolling: boolean;
-  
-  @Listen('navigate')
-  handleNavClicks(e: CustomEvent) {
-    const { cp, pp } = Navigation.scroll(e.detail);
-    console.log(`current page: ${cp}, next page:  ${pp}`);
-    this.currentPage = cp;
-    this.prevPage = pp;
-  } 
 
   constructor() {
     this.prevPage = 0
     this.currentPage = 0;
   }
+  
+  @Listen('navigate')
+  handleNavClicks(e: CustomEvent) {
+    const { cp, pp } = Navigation.scroll(e.detail);
+    console.log(`cp: ${cp}, pp: ${pp}`);
+    this.currentPage = cp;
+    this.prevPage = pp;
+  } 
 
   /************ set global scrollpos **************/
 
@@ -68,7 +68,7 @@ export class AppRoot {
 
   componentWillLoad() {
     // scroll event listener for global scrollpos
-    document.addEventListener('scroll', this.onScroll, { passive: false });
+    document.addEventListener('wheel', (e) => {e.preventDefault()}, { passive: false });
   }
 
   render() {
@@ -80,7 +80,7 @@ export class AppRoot {
         <main>
 
             <app-home id='Home' />
-            <app-about id='About' />
+            <app-about id='About' pages={{ cp: this.currentPage, pp: this.prevPage }} />
             <app-portfolio id='Portfolio' />
             <app-skills id='Skills' />
           

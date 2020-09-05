@@ -3,3 +3,52 @@
 .about {
   background-color: $about-background-color;
 }
+
+
+// tri
+.test-tri {
+  border-style: solid;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  // z-index: 3;
+  border-top-width: 0vh;
+  border-right-width: 0;
+  
+  border-left-width: 100vw;
+  border-color: transparent transparent #3E7A78 transparent;
+  z-index: 1;
+
+  transition: 0.6s linear;
+}
+
+.tri-over {
+  border-bottom-width: 85vh;
+}
+
+.tri-under {
+  border-bottom-width: 0;
+}
+
+.tri-on {
+  border-bottom-width: 60vh;
+}
+
+
+// heading
+.heading {
+  transition: 0.6s linear;
+}
+
+.heading-over {
+  transform: translateY(-40vh);
+}
+
+.heading-under {
+  transform: translateY(50vh);
+}
+
+.heading-on {
+  transform: translateY(0);
+}
