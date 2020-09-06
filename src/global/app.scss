@@ -59,7 +59,7 @@ $small-bp: 420px;
 
 // Animations
 
-$scroll: 0.4s linear;
+$scroll: 1s cubic-bezier(0.65, 0, 0.35, 1); /* easeInOutCubic */
 
 html, body {
   margin: 0px;
@@ -93,6 +93,10 @@ p {
   }
 }
 
+a {
+  text-decoration: none;
+}
+
 section {
   display: grid;
   align-content: center;
@@ -101,6 +105,72 @@ section {
   position: relative;
   z-index: 2;
 }
+
+.section-on {
+  // display: grid;
+}
+
+.section-off {
+  // display: none;
+}
+
+.enter-up {
+  // display: grid;
+  animation: enterUp $scroll
+}
+
+.enter-down {
+  // display: grid;
+  animation: enterDown $scroll
+}
+
+.exit-up {
+  // display: none;
+  animation: exitUp $scroll
+}
+
+.exit-down {
+  // display: none;
+  animation: exitDown $scroll
+}
+
+@keyframes enterUp {
+  0% {
+    transform: translateY(100vh);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes enterDown {
+  0% {
+    transform: translateY(-100vh);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes exitUp {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-100vh);
+  }
+}
+@keyframes exitDown {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
 
 .container {
   width: 90%;

@@ -7,14 +7,18 @@
 
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
-
+import {
+  LocationSegments,
+} from '@stencil/router';
 
 export namespace Components {
   interface AppAbout {
     'cp': number;
+    'location': LocationSegments;
   }
   interface AppHome {
     'cp': number;
+    'location': LocationSegments;
   }
   interface AppNav {
     'currentLink': number;
@@ -24,7 +28,9 @@ export namespace Components {
     'cp': number;
     'from': number;
   }
-  interface AppRoot {}
+  interface AppRoot {
+    'location': LocationSegments;
+  }
   interface AppSkills {}
   interface ContactFooter {}
   interface GrowingTri {
@@ -141,9 +147,11 @@ declare global {
 declare namespace LocalJSX {
   interface AppAbout {
     'cp'?: number;
+    'location'?: LocationSegments;
   }
   interface AppHome {
     'cp'?: number;
+    'location'?: LocationSegments;
   }
   interface AppNav {
     'currentLink'?: number;
@@ -154,7 +162,9 @@ declare namespace LocalJSX {
     'cp'?: number;
     'from'?: number;
   }
-  interface AppRoot {}
+  interface AppRoot {
+    'location'?: LocationSegments;
+  }
   interface AppSkills {}
   interface ContactFooter {}
   interface GrowingTri {

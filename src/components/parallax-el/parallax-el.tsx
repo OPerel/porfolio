@@ -1,4 +1,4 @@
-import { Component, h, Element, Prop } from '@stencil/core';
+import { Component, h, Element, Prop, Watch, State } from '@stencil/core';
 
 @Component({
   tag: 'parallax-el',
@@ -6,6 +6,7 @@ import { Component, h, Element, Prop } from '@stencil/core';
   shadow: true
 })
 export class ParallaxEl {
+  @State() className: string;
   @Element() parallaxEl: HTMLElement;
 
   @Prop() cp: number;
@@ -14,9 +15,14 @@ export class ParallaxEl {
   @Prop() over: number;
   @Prop() under: number;
 
+  @Watch('cp')
+  onPageChange(newCp: number, oldCp: number) {
+    this.className = newCp === this.page ? 'on' : (newCp > this.page ? 'over' : 'under');
+  }
+
   constructor() {}
 
-  getClassName = (): string => this.cp === this.page ? 'on' : (this.cp > this.page ? 'over' : 'under');
+  // getClassName = (): string => this.cp === this.page ? 'on' : (this.cp > this.page ? 'over' : 'under');
 
   componentDidLoad() {
     this.parallaxEl.style.setProperty('--on', `${this.on}`);
@@ -26,7 +32,7 @@ export class ParallaxEl {
 
   render() {
     return ( 
-      <div class={this.getClassName()}>
+      <div class={this.className}>
         <slot></slot>
       </div>
     );

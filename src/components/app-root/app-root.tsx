@@ -1,5 +1,5 @@
-import { Component, h, State, Listen, Element } from '@stencil/core';
-
+import { Component, h, State, Listen, Element, Prop, Watch } from '@stencil/core';
+import { LocationSegments, injectHistory } from '@stencil/router';
 import { Navigation } from '../../helpers/navigation';
 
 @Component({
@@ -16,6 +16,14 @@ export class AppRoot {
   @State() ticking: boolean;
   // @State() scrolling: boolean;
 
+  @Prop() location: LocationSegments;
+
+  // @Watch('location')
+  // onRouteChange(newPage: LocationSegments, oldPage: LocationSegments) {
+  //   console.log('new: ', newPage);
+  //   console.log('old: ', oldPage);
+  // }
+
   constructor() {
     this.prevPage = 0
     this.currentPage = 0;
@@ -27,48 +35,38 @@ export class AppRoot {
     console.log(`cp: ${cp}, pp: ${pp}`);
     this.currentPage = cp;
     this.prevPage = pp;
-  } 
-
-  /************ set global scrollpos **************/
-
-  onScroll = () => {
-    // console.log('onScroll is running');
-    // const body = document.getElementsByTagName('body')[0];
-    this.lastScrollY = window.scrollY;
-    this.requestTick();
   }
 
-  requestTick = () => {
-    // console.log('requestTick is running');
-    if(!this.ticking) {
-      requestAnimationFrame(this.animate);
+  // isOn = (pageIdx: number) => pageIdx === this.currentPage ? 'section-on' : 'section-off';
+
+  getClassName = (pageIdx: number): string => {
+    let animeClass: string = '';
+
+    if (this.prevPage === pageIdx) {
+      if (this.currentPage > this.prevPage) {
+        console.log('exitUp(): ', pageIdx);
+        animeClass = 'exit-up';
+      } else {
+        animeClass = 'exit-down';
+        console.log('exitDown(): ', pageIdx);
+      }
     }
-    this.ticking = true;
-  }
+    if (this.currentPage === pageIdx) {
+      if (this.currentPage > this.prevPage) {
+        console.log('enterUp(): ', pageIdx);
+        animeClass = 'enter-up';
+      } else {
+        console.log('enterDown(): ', pageIdx);
+        animeClass = 'enter-down';
+      }
+    } 
 
-  animate = () => {
-    // console.log('animate is running');
-    // if (this.to > 98) throw new Error('Scrolling factor above 98');
-
-    // reset the tick so we can capture the next onScroll
-    this.ticking = false;
-
-    let scrollpos: number;
-
-    // const main = document.getElementsByTagName('main')[0];
-    scrollpos = (this.lastScrollY / (document.body.clientHeight - window.innerHeight));
-    this.setScrollPos(scrollpos);
-  }
-
-  setScrollPos(scrollPos: number): void {
-    this.root.style.setProperty('--scrollpos', `${scrollPos}`);
-  }
-
-  /************ end setting global scrollpos *************/
+    return animeClass;
+  };
 
   componentWillLoad() {
     // scroll event listener for global scrollpos
-    document.addEventListener('wheel', (e) => {e.preventDefault()}, { passive: false });
+    // document.addEventListener('wheel', (e) => {e.preventDefault()}, { passive: false });
   }
 
   render() {
@@ -78,11 +76,25 @@ export class AppRoot {
           <app-nav currentLink={this.currentPage} prevLink={this.prevPage} />
         </header>,
         <main>
-
-            <app-home id='Home' cp={this.currentPage} />
-            <app-about id='About' cp={this.currentPage} />
-            <app-portfolio id='Portfolio' />
-            <app-skills id='Skills' />
+          {/* <ion-router>
+            <ion-route url="/" component="app-home" />
+            <ion-route url="/about" component="app-about" />
+            <ion-route url="/portfolio" component="app-portfolio" />
+            <ion-route url="/skills" component="app-skills" />
+          </ion-router> */}
+          {/* {this.page()} */}
+          <stencil-router>
+            <stencil-route-switch scrollTopOffset={0}>
+              <stencil-route exact={true} url="/" component="app-home" />
+              <stencil-route exact={true} url="/about" component="app-about" />
+              <stencil-route exact={true} url="/portfolio" component="app-portfolio" />
+              <stencil-route exact={true} url="/skills" component="app-skills" />
+            </stencil-route-switch>
+          </stencil-router>
+          {/* <app-home id='Home' class={`${this.isOn(0)} ${this.getClassName(0)}`} cp={this.currentPage} />;
+          <app-about id='About' class={`${this.isOn(1)} ${this.getClassName(1)}`} cp={this.currentPage} />;
+          <app-portfolio id='Portfolio' class={`${this.isOn(2)} ${this.getClassName(2)}`} />;
+          <app-skills id='Skills' class={`${this.isOn(3)} ${this.getClassName(3)}`} />; */}
           
         </main>,
         <contact-footer id='Contact' />
@@ -90,6 +102,16 @@ export class AppRoot {
   }
 }
 
+injectHistory(AppRoot);
 /***
  * 
  */
+
+// const Page = (props) => {
+//   switch(this.currentPage) {
+//     case 0: return <app-home id='Home' class={`${this.isOn(0)} ${this.getClassName(0)}`} cp={this.currentPage} />;
+//     case 1: return <app-about id='About' class={`${this.isOn(1)} ${this.getClassName(1)}`} cp={this.currentPage} />;
+//     case 2: return <app-portfolio id='Portfolio' class={`${this.isOn(2)} ${this.getClassName(2)}`} />;
+//     case 3: return <app-skills id='Skills' class={`${this.isOn(3)} ${this.getClassName(3)}`} />;
+//   }
+// }

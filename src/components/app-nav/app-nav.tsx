@@ -22,11 +22,29 @@ export class AppNav {
       <nav>
         <h1>Ori Perelman</h1>
         <ul>
-          <li id="h" class={this.currentLink === 0 ? 'active' : ''} onClick={() => this.handleNavClick(0)}>Home</li>
-          <li id="a" class={this.currentLink === 1 ? 'active' : ''} onClick={() => this.handleNavClick(1)}>About</li>
-          <li id="p" class={this.currentLink === 2 ? 'active' : ''} onClick={() => this.handleNavClick(2)}>Portfolio</li>
-          <li id="s" class={this.currentLink === 3 ? 'active' : ''} onClick={() => this.handleNavClick(3)}>Skills</li>
-          <li id="c" class={this.currentLink === 4 ? 'active' : ''} onClick={() => this.handleNavClick(4)}>Contact</li>
+          <stencil-route-link exact={true} url="/" activeClass="active">
+            <li id="h" onClick={() => this.handleNavClick(0)}>
+              Home
+            </li>
+          </stencil-route-link>
+          <stencil-route-link url="/about" activeClass="active">
+            <li id="a" onClick={() => this.handleNavClick(1)}>
+              About
+            </li>
+          </stencil-route-link>
+          <stencil-route-link url="/portfolio" activeClass="active">
+            <li id="p" onClick={() => this.handleNavClick(2)}>
+              Portfolio
+            </li>
+          </stencil-route-link>
+          <stencil-route-link url="/skills" activeClass="active">
+            <li id="s" onClick={() => this.handleNavClick(3)}>
+              Skills
+            </li>
+          </stencil-route-link>
+          <li id="c" onClick={() => this.handleNavClick(4)}>
+            Contact
+          </li>
         </ul>
       </nav>
     );

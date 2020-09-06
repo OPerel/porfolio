@@ -20,5 +20,9 @@
     "jest-cli": "24.9.0",
     "puppeteer": "1.19.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "ip-stencil-route-listener": "^2.0.0",
+    "jump.js": "^1.0.2"
+  }
 }

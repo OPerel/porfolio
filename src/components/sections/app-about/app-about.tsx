@@ -1,20 +1,55 @@
-import { Component, Prop, h } from '@stencil/core';
+import { Component, Prop, h, State, Watch } from '@stencil/core';
+import { LocationSegments, injectHistory } from '@stencil/router';
 
 @Component({
   tag: 'app-about',
   styleUrl: 'app-about.scss',
 })
 export class AppAbout {
-  @Prop() cp: number;
+  @State() className: string;
 
-  getClassName(): string {
-    const { cp } = this;
-    return cp === 1 ? 'on' : (cp > 1 ? 'over' : 'under');
-  } 
+  @Prop() cp: number;
+  @Prop() location: LocationSegments;
+
+  // @Watch('location')
+  // onRouteChange(newPage: LocationSegments, oldPage: LocationSegments) {
+  //   console.log('new: ', newPage);
+  //   console.log('old: ', oldPage);
+  //   if (newPage.pathname === '/about') {
+      
+  //     if (oldPage.pathname === '/') {
+  //       console.log('about enter-up');
+  //       this.className === 'enter-up';
+  //     }
+  //     if (oldPage.pathname === '/portfolio') {
+  //       console.log('about enter-down');
+  //       this.className === 'enter-down';
+  //     }
+      
+  //   }
+
+  //   if (oldPage.pathname === '/about') {
+      
+  //     if (newPage.pathname === '/') {
+  //       console.log('about exit-down');
+  //       this.className === 'exit-down';
+  //     }
+  //     if (newPage.pathname === '/portfolio') {
+  //       console.log('about exit-up');
+  //       this.className === 'exit-up';
+  //     }
+      
+  //   }
+  // }
+
+  // getClassName(): string {
+  //   const { cp } = this;
+  //   return cp === 1 ? 'on' : (cp > 1 ? 'over' : 'under');
+  // } 
 
   render() {
     return (
-      <section class="about">
+      <section class={`about ${this.className}`}>
         <div class="container">
           
           <parallax-el page={1} cp={this.cp} on={0} under={50} over={-40}>
@@ -26,5 +61,6 @@ export class AppAbout {
       </section>
     );
   }
-
 }
+
+injectHistory(AppAbout);

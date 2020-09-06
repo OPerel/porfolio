@@ -1,6 +1,7 @@
 @import '../../global/app.scss';
 
 div {
+  z-index: 0;
   transition: $scroll;
 }
 
