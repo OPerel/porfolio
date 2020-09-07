@@ -1,4 +1,4 @@
-import { Component, h, Prop, Event, EventEmitter } from '@stencil/core';
+import { Component, h, State, Event, EventEmitter } from '@stencil/core';
 
 @Component({
   tag: 'app-nav',
@@ -6,8 +6,6 @@ import { Component, h, Prop, Event, EventEmitter } from '@stencil/core';
   // shadow: true
 })
 export class AppNav {
-  @Prop() currentLink: number;
-  @Prop() prevLink: number;
   @Event() navigate: EventEmitter;
 
   constructor() {}
@@ -17,31 +15,30 @@ export class AppNav {
   }
 
   render() {
-    // console.log(this.currentLink)
     return (
       <nav>
         <h1>Ori Perelman</h1>
         <ul>
-          <stencil-route-link exact={true} url="/" activeClass="active">
+          <ion-router-link href="/">
             <li id="h" onClick={() => this.handleNavClick(0)}>
               Home
             </li>
-          </stencil-route-link>
-          <stencil-route-link url="/about" activeClass="active">
+          </ion-router-link>
+          <ion-router-link href="/about">
             <li id="a" onClick={() => this.handleNavClick(1)}>
               About
             </li>
-          </stencil-route-link>
-          <stencil-route-link url="/portfolio" activeClass="active">
+          </ion-router-link>
+          <ion-router-link href="/portfolio">
             <li id="p" onClick={() => this.handleNavClick(2)}>
               Portfolio
             </li>
-          </stencil-route-link>
-          <stencil-route-link url="/skills" activeClass="active">
+          </ion-router-link>
+          <ion-router-link href="/skills">
             <li id="s" onClick={() => this.handleNavClick(3)}>
               Skills
             </li>
-          </stencil-route-link>
+          </ion-router-link>
           <li id="c" onClick={() => this.handleNavClick(4)}>
             Contact
           </li>

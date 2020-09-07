@@ -1,5 +1,5 @@
 // import { appScroll } from './scroll';
-import jump from 'jump.js';
+// import jump from 'jump.js';
 
 class NavigationController {
   private currentPage: number;
@@ -15,10 +15,10 @@ class NavigationController {
   public scroll(target: number): {cp: number, pp: number} {
     this.prevPage = this.currentPage;
     this.currentPage = target;
-    const stringTarget = this.mapSectionNumToId(target);
+    // const stringTarget = this.mapSectionNumToId(target);
 
-    const section = document.getElementById(stringTarget);
-    // section.scrollIntoView({beavior: 'smooth', block: 'start'});
+    // const section = document.getElementById(stringTarget);
+    // section.scrollIntoView({behavior: 'smooth', block: 'start'});
     // appScroll(section, 600);
     // jump(section, {
     //   duration: 1000,
@@ -35,15 +35,15 @@ class NavigationController {
     return { cp: this.currentPage, pp: this.prevPage }
   }
 
-  private mapSectionNumToId(num: number): string {
-    return {
-      0: 'Home',
-      1: 'About',
-      2: 'Portfolio',
-      3: 'Skills',
-      4: 'Contact'
-    }[num]
-  }
+  // private mapSectionNumToId(num: number): string {
+  //   return {
+  //     0: 'Home',
+  //     1: 'About',
+  //     2: 'Portfolio',
+  //     3: 'Skills',
+  //     4: 'Contact'
+  //   }[num]
+  // }
 }
 
 export const Navigation = new NavigationController();

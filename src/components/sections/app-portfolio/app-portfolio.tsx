@@ -6,9 +6,9 @@ import { Component, h, Prop, Element } from '@stencil/core';
   // shadow: true
 })
 export class AppPortfolio {
-  @Prop() cp: number;
-  @Prop() from: number;
-  @Element() el: HTMLElement;
+  // @Prop() cp: number;
+  // @Prop() from: number;
+  // @Element() el: HTMLElement;
 
   componentWillUpdate() {
   }

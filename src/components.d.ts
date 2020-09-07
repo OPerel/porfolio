@@ -7,31 +7,21 @@
 
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
-import {
-  LocationSegments,
-} from '@stencil/router';
+
 
 export namespace Components {
   interface AppAbout {
-    'cp': number;
-    'location': LocationSegments;
+    'pages': {cp: number, pp: number};
   }
   interface AppHome {
-    'cp': number;
-    'location': LocationSegments;
+    'pages': {cp: number, pp: number};
   }
-  interface AppNav {
-    'currentLink': number;
-    'prevLink': number;
+  interface AppNav {}
+  interface AppPortfolio {}
+  interface AppRoot {}
+  interface AppSkills {
+    'pages': {cp: number, pp: number};
   }
-  interface AppPortfolio {
-    'cp': number;
-    'from': number;
-  }
-  interface AppRoot {
-    'location': LocationSegments;
-  }
-  interface AppSkills {}
   interface ContactFooter {}
   interface GrowingTri {
     'color': string;
@@ -146,26 +136,19 @@ declare global {
 
 declare namespace LocalJSX {
   interface AppAbout {
-    'cp'?: number;
-    'location'?: LocationSegments;
+    'pages'?: {cp: number, pp: number};
   }
   interface AppHome {
-    'cp'?: number;
-    'location'?: LocationSegments;
+    'pages'?: {cp: number, pp: number};
   }
   interface AppNav {
-    'currentLink'?: number;
     'onNavigate'?: (event: CustomEvent<any>) => void;
-    'prevLink'?: number;
   }
-  interface AppPortfolio {
-    'cp'?: number;
-    'from'?: number;
+  interface AppPortfolio {}
+  interface AppRoot {}
+  interface AppSkills {
+    'pages'?: {cp: number, pp: number};
   }
-  interface AppRoot {
-    'location'?: LocationSegments;
-  }
-  interface AppSkills {}
   interface ContactFooter {}
   interface GrowingTri {
     'color'?: string;

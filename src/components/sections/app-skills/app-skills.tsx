@@ -1,4 +1,5 @@
-import { Component, h } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
+// import {  } from '@ionic/core/dist/types/stencil-public-runtime';
 
 @Component({
   tag: 'app-skills',
@@ -6,6 +7,7 @@ import { Component, h } from '@stencil/core';
   // shadow: true
 })
 export class AppSkills {
+  @Prop() pages: {cp: number, pp: number};
 
   render() {
     return (
