@@ -12,6 +12,8 @@ export class AppRoot {
   @State() currentPage: number;
   @State() prevPage: number;
 
+  public navCtrl: HTMLIonRouterElement;
+
   constructor() {
     this.prevPage = 0
     this.currentPage = 0;
@@ -25,25 +27,33 @@ export class AppRoot {
     this.prevPage = pp;
   }
 
+  componentDidLoad() {
+    this.navCtrl = document.querySelector('ion-router');
+    this.navCtrl.addEventListener('ionRouteWillChange', e => {
+      Navigation.handleRouteEvent(e);
+    })
+  }
+
   render() {
-    const routeProps = { pages: { cp: this.currentPage, pp: this.prevPage } }
+    // const routeProps = { pages: { cp: this.currentPage, pp: this.prevPage } }
     return (
       <ion-app>
-        <h1>hello</h1>
-        <header>
-          <app-nav />
-        </header>
-          
-          <ion-router useHash={false}>
-            <ion-route url="/" component="app-home" />
-            <ion-route url="/about" component="app-about" componentProps={routeProps} />
-            <ion-route url="/portfolio" component="app-portfolio" componentProps={routeProps} />
-            <ion-route url="/skills" component="app-skills" componentProps={routeProps} />
-          </ion-router>
-          
-          <ion-nav />
-          
-        <contact-footer id='Contact' />
+
+          <header>
+            <app-nav />
+          </header>
+            
+            <ion-router useHash={false}>
+              <ion-route url="/" component="app-home" />
+              <ion-route url="/about" component="app-about" />
+              <ion-route url="/portfolio" component="app-portfolio" />
+              <ion-route url="/skills" component="app-skills" />
+            </ion-router>
+            
+            <ion-nav />
+            
+          <contact-footer id='Contact' />
+
       </ion-app>
     );
   }

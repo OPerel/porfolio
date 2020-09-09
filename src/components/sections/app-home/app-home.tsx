@@ -11,10 +11,6 @@ export class AppHome {
 
   @Element() el: HTMLElement;
 
-  disconnectedCallback() {
-    console.log('leave home: ')
-    // this.el.classList.add(this.className);
-  }
   render() {
     return (
       <section class={`app-home`}>
