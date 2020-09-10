@@ -30,7 +30,7 @@ export class AppRoot {
   componentDidLoad() {
     this.navCtrl = document.querySelector('ion-router');
     this.navCtrl.addEventListener('ionRouteWillChange', e => {
-      Navigation.handleRouteEvent(e);
+      Navigation.handleRouteEvent(e as CustomEvent);
     })
   }
 

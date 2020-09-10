@@ -1,26 +1,28 @@
 import { Component, h, State, Event, EventEmitter } from '@stencil/core';
 // import { createAnimation } from '@ionic/core';
 
-// const animation = () => {
-//   return createAnimation()
-//     .addElement(document.querySelectorAll('h2'))
-//     .duration(500)
-//     .fromTo('transform', 'translateY(0)', `${'translateY(-200px)'}`)
-// };
-
 @Component({
   tag: 'app-nav',
   styleUrl: 'app-nav.scss',
   // shadow: true
 })
 export class AppNav {
-  // @State() current: number;
-  // @State() prev: number;
+  @State() current: number;
+  @State() prev: number;
 
   @Event() navigate: EventEmitter;
 
+  // private animation = (n: number) => {
+  //   const dir = n > this.current ? 'reverse' : 'normal';
+  //   return createAnimation()
+  //     .addElement(document.querySelectorAll('h2'))
+  //     .duration(500)
+  //     .direction(dir)
+  //     .fromTo('transform', 'translateY(0)', `${'translateY(-200px)'}`)
+  // }; 
+
   constructor() {
-    // this.current = 0;
+    this.current = 0;
     // this.prev = 0;
   }
 
@@ -28,7 +30,7 @@ export class AppNav {
     this.navigate.emit(sec);
 
     // this.prev = this.current;
-    // this.current = sec;
+    this.current = sec;
   }
 
   render() {
