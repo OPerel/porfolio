@@ -15,11 +15,11 @@ import { Component, Prop, h } from '@stencil/core';
 })
 export class AppAbout {
 
-  // @Prop() pages: {cp: number, pp: number};
+  @Prop() className: string;
 
   render() {
     return (
-      <section class={`about`}>
+      <section class={`app-about ${this.className}`}>
         <div class="container">
           
           {/* <parallax-el page={1} cp={this.cp} on={0} under={50} over={-40}> */}

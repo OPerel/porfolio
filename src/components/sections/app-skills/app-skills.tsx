@@ -7,11 +7,11 @@ import { Component, h, Prop } from '@stencil/core';
   // shadow: true
 })
 export class AppSkills {
-  @Prop() pages: {cp: number, pp: number};
+  @Prop() className: string;
 
   render() {
     return (
-      <section class="app-skills">
+      <section class={`app-skills ${this.className}`}>
         <div class="container">
           <h2>Skills</h2>
         </div>

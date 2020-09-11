@@ -66,9 +66,8 @@ $scroll: 1s cubic-bezier(0.65, 0, 0.35, 1); /* easeInOutCubic */
 html, body {
   margin: 0px;
   padding: 0px;
-  overflow-x: hidden;
-  // overflow-y: hidden;
-  // height: 100vh;
+  overflow: hidden;
+  height: 100vh;
   font-family: 'Londrina Solid', cursive;
   color: $main-text-color;
 }
@@ -105,9 +104,19 @@ section {
   height: 100vh;
   width: 100%;
   position: relative;
-  // z-index: 2;
 }
 
+.container {
+  width: 90%;
+  margin: 5% auto 0;
+
+  @media only screen and (min-width: $small-bp) {
+    width: 80%;
+  }
+}
+
+
+// Animations
 
 .enter-up {
   // display: grid;
@@ -121,12 +130,14 @@ section {
 
 .exit-up {
   // display: none;
-  animation: exitUp $scroll
+  // animation: exitUp $scroll
+  transform: translateY(-100vh);
 }
 
 .exit-down {
   // display: none;
-  animation: exitDown $scroll
+  // animation: exitDown $scroll
+  transform: translateY(100vh);
 }
 
 @keyframes enterUp {
@@ -167,12 +178,3 @@ section {
 }
 
 
-.container {
-  width: 90%;
-  margin: 5% auto 0;
-  // z-index: 2;
-
-  @media only screen and (min-width: $small-bp) {
-    width: 80%;
-  }
-}

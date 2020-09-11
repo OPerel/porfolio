@@ -19,7 +19,7 @@
     grid-auto-columns: calc(40%);
 
     overflow-x: hidden;
-    opacity: calc((var(--scrollpos) * 200 - 90)  / 25); // maybe use regular animation istead of scrolling for this.
+    // opacity: calc((var(--scrollpos) * 200 - 90)  / 25); // maybe use regular animation istead of scrolling for this.
   }
 
   .scroll-x {

@@ -7,7 +7,7 @@ import { Component, h, Prop, Element } from '@stencil/core';
 })
 export class AppPortfolio {
   // @Prop() cp: number;
-  // @Prop() from: number;
+  @Prop() className: string;
   // @Element() el: HTMLElement;
 
   componentWillUpdate() {
@@ -15,7 +15,7 @@ export class AppPortfolio {
 
   render() {
     return (
-      <section class="app-portfolio">
+      <section class={`app-portfolio ${this.className}`}>
         <div class="container">
           <h2>Portfolio</h2>
         </div>

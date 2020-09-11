@@ -10,15 +10,19 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
-  interface AppAbout {}
+  interface AppAbout {
+    'className': string;
+  }
   interface AppHome {
-    'pages': {cp: number, pp: number};
+    'cp': number;
   }
   interface AppNav {}
-  interface AppPortfolio {}
+  interface AppPortfolio {
+    'className': string;
+  }
   interface AppRoot {}
   interface AppSkills {
-    'pages': {cp: number, pp: number};
+    'className': string;
   }
   interface ContactFooter {}
   interface GrowingTri {
@@ -133,17 +137,21 @@ declare global {
 }
 
 declare namespace LocalJSX {
-  interface AppAbout {}
+  interface AppAbout {
+    'className'?: string;
+  }
   interface AppHome {
-    'pages'?: {cp: number, pp: number};
+    'cp'?: number;
   }
   interface AppNav {
     'onNavigate'?: (event: CustomEvent<any>) => void;
   }
-  interface AppPortfolio {}
+  interface AppPortfolio {
+    'className'?: string;
+  }
   interface AppRoot {}
   interface AppSkills {
-    'pages'?: {cp: number, pp: number};
+    'className'?: string;
   }
   interface ContactFooter {}
   interface GrowingTri {

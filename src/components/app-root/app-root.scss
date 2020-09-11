@@ -1,6 +1,9 @@
 main {
   // position: relative;
   margin-bottom: 75vh;
-  overflow: hidden;
+  // overflow: hidden;
   height: 100vh;
+  transform: translateY(calc(var(--scrollpos) * 1vh));
+
+  transition: 1.2s ease-in-out;
 }

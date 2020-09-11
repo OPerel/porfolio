@@ -10,10 +10,11 @@
   color: $secondary-text-color;
   background-color: #113433eb;
 
+  z-index: -1;
+
   h2 {
     margin: 1% 0;
     font-size: 5rem;
-    z-index: 6;
     // transform: translateY(calc(var(--scrollpos) * 5px));
   }
 
@@ -24,10 +25,10 @@
   }
 }
 
-// .hide {
-//   transform: translateY(-100%);
-//   transition: transform 1.2s linear;
-// }
+.back {
+  z-index: -3;
+}
+
 
 
 

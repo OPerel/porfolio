@@ -25,42 +25,70 @@ export class AppRoot {
     console.log(`ROOT - cp: ${cp}, pp: ${pp}`);
     this.currentPage = cp;
     this.prevPage = pp;
+
+    this.getTranslateY()
   }
 
-  componentDidLoad() {
-    this.navCtrl = document.querySelector('ion-router');
-    this.navCtrl.addEventListener('ionRouteWillChange', e => {
-      Navigation.handleRouteEvent(e as CustomEvent);
-    })
+  getClassName = (pageIdx: number): string => {
+
+    // if (this.prevPage === pageIdx) {
+    //   if (this.currentPage > this.prevPage) {
+    //     console.log('exitUp(): ', pageIdx);
+    //     animeClass = 'exit-up';
+    //   } else {
+    //     animeClass = 'exit-down';
+    //     console.log('exitDown(): ', pageIdx);
+    //   }
+    // }
+    // if (this.currentPage === pageIdx) {
+    //   if (this.currentPage > this.prevPage) {
+    //     console.log('enterUp(): ', pageIdx);
+    //     animeClass = 'enter-up';
+    //   } else {
+    //     console.log('enterDown(): ', pageIdx);
+    //     animeClass = 'enter-down';
+    //   }
+    // } 
+
+    if (this.currentPage === pageIdx) {
+      return 'on';
+    }
+    if (this.currentPage > pageIdx) {
+      return 'over';
+    }
+    if (this.currentPage < pageIdx) {
+      return 'under';
+    }
+
+    return '';
+  };
+
+  getTranslateY() {
+    const scrollpos = this.currentPage === 4 ? -395 : this.currentPage * -100 - 20;
+    this.root.style.setProperty('--scrollpos', `${scrollpos}`);
   }
 
   render() {
     // const routeProps = { pages: { cp: this.currentPage, pp: this.prevPage } }
-    return (
-      <ion-app>
-
-          <header>
-            <app-nav />
-          </header>
-            
-            <ion-router useHash={false}>
-              <ion-route url="/" component="app-home" />
-              <ion-route url="/about" component="app-about" />
-              <ion-route url="/portfolio" component="app-portfolio" />
-              <ion-route url="/skills" component="app-skills" />
-            </ion-router>
-            
-            <ion-nav />
-            
-          <contact-footer id='Contact' />
-
-      </ion-app>
-    );
+    return ([
+      <header>
+        <app-nav />
+      </header>,
+      <app-home cp={this.currentPage} />,
+      <main>
+        
+        <app-about className={this.getClassName(1)} />
+        <app-portfolio className={this.getClassName(2)} />
+        <app-skills className={this.getClassName(3)} />
+      </main>,
+        
+      <contact-footer id='Contact' />
+    ]);
   }
 }
 
 /***
- * 
+ *  style={{ transform: `translateY(${this.getTranslateY()}vh)` }}
  */
 
 // const Page = (props) => {
@@ -72,27 +100,13 @@ export class AppRoot {
 //   }
 // }
 
-// getClassName = (pageIdx: number): string => {
-//   let animeClass: string = '';
 
-//   if (this.prevPage === pageIdx) {
-//     if (this.currentPage > this.prevPage) {
-//       console.log('exitUp(): ', pageIdx);
-//       animeClass = 'exit-up';
-//     } else {
-//       animeClass = 'exit-down';
-//       console.log('exitDown(): ', pageIdx);
-//     }
-//   }
-//   if (this.currentPage === pageIdx) {
-//     if (this.currentPage > this.prevPage) {
-//       console.log('enterUp(): ', pageIdx);
-//       animeClass = 'enter-up';
-//     } else {
-//       console.log('enterDown(): ', pageIdx);
-//       animeClass = 'enter-down';
-//     }
-//   } 
 
-//   return animeClass;
-// };
+{/* <ion-router useHash={false}>
+              <ion-route url="/" component="app-home" />
+              <ion-route url="/about" component="app-about" />
+              <ion-route url="/portfolio" component="app-portfolio" />
+              <ion-route url="/skills" component="app-skills" />
+            </ion-router>
+            
+            <ion-nav /> */}

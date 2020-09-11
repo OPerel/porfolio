@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element } from '@stencil/core';
+import { Component, h, Prop, Element, State, Watch } from '@stencil/core';
 
 @Component({
   tag: 'app-home',
@@ -7,13 +7,20 @@ import { Component, h, Prop, Element } from '@stencil/core';
 })
 export class AppHome {
   
-  @Prop() pages: {cp: number, pp: number};
-
+  @Prop() cp: number;
+  @State() homeClass: string;
   @Element() el: HTMLElement;
+
+  @Watch('cp')
+  moveToBack(): void {
+    setTimeout(() => {
+      this.homeClass = this.cp > 1 ? 'back' : '';
+    }, 500)
+  }
 
   render() {
     return (
-      <section class={`app-home`}>
+      <section class={`app-home ${this.homeClass}`}>
         <div class="container">
           {/* <parallax-el page={0} cp={this.cp} on={0} over={30} under={0}> */}
             <h2>Welcome</h2>
