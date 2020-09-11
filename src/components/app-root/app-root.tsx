@@ -23,10 +23,11 @@ export class AppRoot {
     this.currentPage = cp;
     this.prevPage = pp;
 
-    this.getTranslateY()
+    this.getTranslateY();
+    this.setAnimationDuration();
   }
 
-  getClassName = (pageIdx: number): string => {
+  private getClassName = (pageIdx: number): string => {
 
     if (this.currentPage === pageIdx) {
       return 'on';
@@ -41,9 +42,14 @@ export class AppRoot {
     return '';
   };
 
-  getTranslateY() {
+  private getTranslateY(): void {
     const scrollpos = this.currentPage === 4 ? -395 : this.currentPage * -100 - 20;
     this.root.style.setProperty('--scrollpos', `${scrollpos}`);
+  }
+
+  private setAnimationDuration(): void {
+    const sectionGap = Math.abs(this.prevPage - this.currentPage);
+    this.root.style.setProperty('--sectionGap', `${sectionGap}`);
   }
 
   render() {

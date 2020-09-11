@@ -18,7 +18,7 @@ export class AppSkills {
           </parallax-el>
           <p>I've got SKILLS!</p>
         </div>
-        {/* <rotating-tri /> */}
+        <rotating-tri />
       </section>
     );
   }

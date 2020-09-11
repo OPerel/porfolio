@@ -14,8 +14,8 @@ export class AppHome {
   @Watch('cp')
   moveToBack(newCp: number): void {
     setTimeout(() => {
-      this.homeClass = newCp > 1 ? 'back' : '';
-    }, 500)
+      this.homeClass = newCp > 2 ? 'back' : '';
+    }, 2200)
   }
 
   render() {
