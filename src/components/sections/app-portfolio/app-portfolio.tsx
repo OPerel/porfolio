@@ -6,7 +6,7 @@ import { Component, h, Prop, Element } from '@stencil/core';
   // shadow: true
 })
 export class AppPortfolio {
-  // @Prop() cp: number;
+  @Prop() cp: number;
   @Prop() className: string;
   // @Element() el: HTMLElement;
 
@@ -19,9 +19,9 @@ export class AppPortfolio {
         <div class="container">
           <h2>Portfolio</h2>
         </div>
-        {/* <parallax-el from={400} to={-700}> */}
+        <parallax-el page={2} cp={this.cp} on={0} over={-50} under={60}>
           <projects-gallery />
-        {/* </parallax-el> */}
+        </parallax-el>
       </section>
     );
   }

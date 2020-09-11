@@ -12,6 +12,7 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 export namespace Components {
   interface AppAbout {
     'className': string;
+    'cp': number;
   }
   interface AppHome {
     'cp': number;
@@ -19,10 +20,12 @@ export namespace Components {
   interface AppNav {}
   interface AppPortfolio {
     'className': string;
+    'cp': number;
   }
   interface AppRoot {}
   interface AppSkills {
     'className': string;
+    'cp': number;
   }
   interface ContactFooter {}
   interface GrowingTri {
@@ -139,6 +142,7 @@ declare global {
 declare namespace LocalJSX {
   interface AppAbout {
     'className'?: string;
+    'cp'?: number;
   }
   interface AppHome {
     'cp'?: number;
@@ -148,10 +152,12 @@ declare namespace LocalJSX {
   }
   interface AppPortfolio {
     'className'?: string;
+    'cp'?: number;
   }
   interface AppRoot {}
   interface AppSkills {
     'className'?: string;
+    'cp'?: number;
   }
   interface ContactFooter {}
   interface GrowingTri {

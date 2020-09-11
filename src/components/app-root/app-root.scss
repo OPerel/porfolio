@@ -1,3 +1,5 @@
+@import '../../global/app.scss';
+
 main {
   // position: relative;
   margin-bottom: 75vh;
@@ -5,5 +7,5 @@ main {
   height: 100vh;
   transform: translateY(calc(var(--scrollpos) * 1vh));
 
-  transition: 1.2s ease-in-out;
+  transition: $scroll;
 }

@@ -1,3 +1,5 @@
+@import '../../global/app.scss';
+
 .rotating-tri {
   border-style: solid;
   position: absolute;
@@ -11,9 +13,11 @@
   border-bottom-width: 100vh;
   border-left-width: 0vw;
   border-color: transparent transparent #023a38 transparent;
-  z-index: -1;
+  z-index: 0;
+  transform: rotateZ(calc(calc(var(--scrollpos) * -1) * 1.125deg)); 
 
-  transform: rotateY(calc(calc(var(--scrollpos) * 200) * 1.8deg));  // scale(calc(calc(var(--scrollpos) * 200) - 100) / 100);
+  transition: $scroll;
+  // transform: rotateY(calc(calc(var(--scrollpos) * 200) * 1.8deg));  // scale(calc(calc(var(--scrollpos) * 200) - 100) / 100);
   transform-origin: top left;
   // opacity: calc((var((--scrollpos) - 100) * 200) / 100);
 }

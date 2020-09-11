@@ -77,9 +77,9 @@ export class AppRoot {
       <app-home cp={this.currentPage} />,
       <main>
         
-        <app-about className={this.getClassName(1)} />
-        <app-portfolio className={this.getClassName(2)} />
-        <app-skills className={this.getClassName(3)} />
+        <app-about className={this.getClassName(1)} cp={this.currentPage} />
+        <app-portfolio className={this.getClassName(2)} cp={this.currentPage} />
+        <app-skills className={this.getClassName(3)} cp={this.currentPage} />
       </main>,
         
       <contact-footer id='Contact' />

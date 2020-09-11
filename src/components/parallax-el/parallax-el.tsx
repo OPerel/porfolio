@@ -16,13 +16,15 @@ export class ParallaxEl {
   @Prop() under: number;
 
   @Watch('cp')
-  onPageChange(newCp: number, oldCp: number) {
+  onPageChange(newCp: number) {
+    console.log('watch cp')
     this.className = newCp === this.page ? 'on' : (newCp > this.page ? 'over' : 'under');
   }
 
-  constructor() {}
+  constructor() {
+    this.className = this.page === 0 ? 'on' : 'under';
+  }
 
-  // getClassName = (): string => this.cp === this.page ? 'on' : (this.cp > this.page ? 'over' : 'under');
 
   componentDidLoad() {
     this.parallaxEl.style.setProperty('--on', `${this.on}`);

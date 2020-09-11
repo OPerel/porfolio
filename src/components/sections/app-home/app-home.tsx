@@ -12,9 +12,9 @@ export class AppHome {
   @Element() el: HTMLElement;
 
   @Watch('cp')
-  moveToBack(): void {
+  moveToBack(newCp: number): void {
     setTimeout(() => {
-      this.homeClass = this.cp > 1 ? 'back' : '';
+      this.homeClass = newCp > 1 ? 'back' : '';
     }, 500)
   }
 
@@ -22,12 +22,12 @@ export class AppHome {
     return (
       <section class={`app-home ${this.homeClass}`}>
         <div class="container">
-          {/* <parallax-el page={0} cp={this.cp} on={0} over={30} under={0}> */}
+          <parallax-el page={0} cp={this.cp} on={0} over={-60} under={0}>
             <h2>Welcome</h2>
-          {/* </parallax-el> */}
-          {/* <parallax-el page={0} cp={this.cp} on={0} over={-30} under={0}> */}
+          </parallax-el>
+          <parallax-el page={0} cp={this.cp} on={0} over={-90} under={0}>
             <h3>This is my example tagline. bla bla bla...</h3>
-          {/* </parallax-el> */}
+          </parallax-el>
         </div>
 
         {/* <growing-tri color={`#608D8B`} growDir={`left`} on={0} over={30} under={0} cp={this.cp} page={0} />
