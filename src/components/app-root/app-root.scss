@@ -1,9 +1,7 @@
 @import '../../global/app.scss';
 
 main {
-  // position: relative;
   margin-bottom: 75vh;
-  // overflow: hidden;
   height: 100vh;
   transform: translateY(calc(var(--scrollpos) * 1vh));
 

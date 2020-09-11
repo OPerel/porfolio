@@ -1,5 +1,4 @@
 import { Component, h, Prop } from '@stencil/core';
-// import {  } from '@ionic/core/dist/types/stencil-public-runtime';
 
 @Component({
   tag: 'app-skills',

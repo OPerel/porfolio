@@ -1,5 +1,4 @@
 import { Component, h, State, Event, EventEmitter } from '@stencil/core';
-// import { createAnimation } from '@ionic/core';
 
 @Component({
   tag: 'app-nav',
@@ -10,31 +9,18 @@ export class AppNav {
   @State() current: number;
   @State() prev: number;
 
-  @Event() navigate: EventEmitter;
-
-  // private animation = (n: number) => {
-  //   const dir = n > this.current ? 'reverse' : 'normal';
-  //   return createAnimation()
-  //     .addElement(document.querySelectorAll('h2'))
-  //     .duration(500)
-  //     .direction(dir)
-  //     .fromTo('transform', 'translateY(0)', `${'translateY(-200px)'}`)
-  // }; 
+  @Event() navigate: EventEmitter; 
 
   constructor() {
     this.current = 0;
-    // this.prev = 0;
   }
 
   handleNavClick(sec: number) {
     this.navigate.emit(sec);
-
-    // this.prev = this.current;
     this.current = sec;
   }
 
   render() {
-    // const { current, prev } = this;
     return (
       <nav>
         <h1>Ori Perelman</h1>

@@ -8,8 +8,6 @@
   Any global CSS variables should also be applied here.
 */
 
-@import 'node_modules/@ionic/core/css/core';
-
 // Colors
 
 $main-text-color: #AED6D4;
@@ -116,68 +114,6 @@ section {
 
   @media only screen and (min-width: $small-bp) {
     width: 80%;
-  }
-}
-
-
-// Animations
-
-.enter-up {
-  // display: grid;
-  animation: enterUp $scroll
-}
-
-.enter-down {
-  // display: grid;
-  animation: enterDown $scroll
-}
-
-.exit-up {
-  // display: none;
-  // animation: exitUp $scroll
-  transform: translateY(-100vh);
-}
-
-.exit-down {
-  // display: none;
-  // animation: exitDown $scroll
-  transform: translateY(100vh);
-}
-
-@keyframes enterUp {
-  0% {
-    transform: translateY(100vh);
-  }
-
-  100% {
-    transform: translateY(0);
-  }
-}
-@keyframes enterDown {
-  0% {
-    transform: translateY(-100vh);
-  }
-
-  100% {
-    transform: translateY(0);
-  }
-}
-@keyframes exitUp {
-  0% {
-    transform: translateY(0);
-  }
-
-  100% {
-    transform: translateY(-100vh);
-  }
-}
-@keyframes exitDown {
-  0% {
-    transform: translateY(0);
-  }
-
-  100% {
-    transform: translateY(100vh);
   }
 }
 

@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 
 @Component({
   tag: 'app-portfolio',
@@ -8,7 +8,6 @@ import { Component, h, Prop, Element } from '@stencil/core';
 export class AppPortfolio {
   @Prop() cp: number;
   @Prop() className: string;
-  // @Element() el: HTMLElement;
 
   componentWillUpdate() {
   }

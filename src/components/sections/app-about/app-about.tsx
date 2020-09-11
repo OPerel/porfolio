@@ -1,14 +1,5 @@
 import { Component, Prop, h } from '@stencil/core';
 
-// import { createAnimation, Animation } from '@ionic/core';
-
-// const aboutEnterAnimation = (cp: number, pp: number): Animation => createAnimation('about-enter')
-//   .addElement(document.getElementById('heading'))
-//   .delay(700)
-//   .duration(700)
-//   .iterations(1)
-//   .fromTo('transform', `${pp > cp ? 'translateY(100vh)' : 'translateY(-100vh)'}`, 'translateY(0)')
-
 @Component({
   tag: 'app-about',
   styleUrl: 'app-about.scss',
