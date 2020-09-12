@@ -19,6 +19,7 @@ export class AppSkills {
           <p>I've got SKILLS!</p>
         </div>
         <rotating-tri />
+        <growing-tri color={`#394b4b`} cp={this.cp} page={3} on={15} over={20} under={0} growDir={`right`} />
       </section>
     );
   }
