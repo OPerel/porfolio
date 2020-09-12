@@ -18,8 +18,9 @@ export class AppSkills {
           </parallax-el>
           <p>I've got SKILLS!</p>
         </div>
-        <rotating-tri />
-        <growing-tri color={`#394b4b`} cp={this.cp} page={3} on={15} over={20} under={0} growDir={`right`} />
+        <rotating-tri color="#023a38" dir="left" page={3} cp={this.cp} height={110} origin="top left" on={0} under={-90} over={90} />
+        <rotating-tri color="#394b4b" dir="right" page={3} cp={this.cp} height={20} origin="bottom left" on={0} under={0} over={0} />
+        {/* <growing-tri color={`#394b4b`} cp={this.cp} page={3} on={15} over={20} under={0} growDir={`right`} /> */}
       </section>
     );
   }

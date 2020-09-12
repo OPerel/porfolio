@@ -3,21 +3,28 @@
 .rotating-tri {
   border-style: solid;
   position: absolute;
-  top: 0;
+  // top: 0;
   right: 0;
-  // bottom: 0;
+  bottom: 0;
   left: 0;
   
   border-top-width: 0vh;
-  border-right-width: 110vw;
-  border-bottom-width: 110vh;
-  border-left-width: 0vw;
-  border-color: transparent transparent #023a38 transparent;
+  // border-right-width: 110vw;
+  border-bottom-width: calc(var(--height) * 1vh);
+  // border-left-width: 0vw;
+  border-color: transparent transparent var(--color) transparent;
   z-index: 0;
-  transform: rotateZ(calc(calc(var(--scrollpos) * -1) * 1.2deg)); 
+  // transform: rotateZ(calc(calc(var(--scrollpos) * -1) * 1.2deg)); 
 
   transition: $scroll;
   // transform: scale(calc(calc(var(--scrollpos) * 200) - 100) / 100);
-  transform-origin: top left;
+  transform-origin: var(--origin);
   // opacity: calc((var((--scrollpos) - 100) * 200) / 100);
 }
+
+
+.on {transform: rotateZ(calc(var(--on) * 1.2deg));}
+
+.over {transform: rotateZ(calc(var(--over) * 1.2deg));}
+
+.under {transform: rotateZ(calc(var(--under) * 1.2deg));}

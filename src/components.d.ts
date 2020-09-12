@@ -47,7 +47,17 @@ export namespace Components {
   }
   interface ProjectCard {}
   interface ProjectsGallery {}
-  interface RotatingTri {}
+  interface RotatingTri {
+    'color': string;
+    'cp': number;
+    'dir': string;
+    'height': number;
+    'on': number;
+    'origin': string;
+    'over': number;
+    'page': number;
+    'under': number;
+  }
   interface SectionContainer {
     'cp': number;
   }
@@ -190,7 +200,17 @@ declare namespace LocalJSX {
   }
   interface ProjectCard {}
   interface ProjectsGallery {}
-  interface RotatingTri {}
+  interface RotatingTri {
+    'color'?: string;
+    'cp'?: number;
+    'dir'?: string;
+    'height'?: number;
+    'on'?: number;
+    'origin'?: string;
+    'over'?: number;
+    'page'?: number;
+    'under'?: number;
+  }
   interface SectionContainer {
     'cp'?: number;
   }
