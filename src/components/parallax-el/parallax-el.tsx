@@ -17,7 +17,6 @@ export class ParallaxEl {
 
   @Watch('cp')
   onPageChange(newCp: number) {
-    console.log('watch cp')
     this.className = newCp === this.page ? 'on' : (newCp > this.page ? 'over' : 'under');
   }
 

@@ -1,0 +1,19 @@
+@import '../../../global/app.scss';
+
+.home-background {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+  background-image: url('../../../assets/bg.jpg');
+  background-size: cover;
+  position: fixed;
+
+  background-blend-mode: overlay;
+  color: $secondary-text-color;
+  background-color: #113433eb;
+  z-index: -1;
+}
+
+.back {
+  z-index: -3;
+}

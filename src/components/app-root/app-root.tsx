@@ -43,7 +43,7 @@ export class AppRoot {
   };
 
   private getTranslateY(): void {
-    const scrollpos = this.currentPage === 4 ? -395 : this.currentPage * -100 - 20;
+    const scrollpos = this.currentPage === 4 ? -375 : (this.currentPage) * -100;
     this.root.style.setProperty('--scrollpos', `${scrollpos}`);
   }
 
@@ -57,13 +57,14 @@ export class AppRoot {
       <header>
         <app-nav />
       </header>,
-      <app-home cp={this.currentPage} />,
-      <main> 
-        <app-about className={this.getClassName(1)} cp={this.currentPage} />
-        <app-portfolio className={this.getClassName(2)} cp={this.currentPage} />
-        <app-skills className={this.getClassName(3)} cp={this.currentPage} />
-      </main>,
-      <contact-footer id='Contact' />
+      <section-container cp={this.currentPage}>
+        <main>
+          <app-home className={this.getClassName(0)} cp={this.currentPage} />
+          <app-about className={this.getClassName(1)} cp={this.currentPage} />
+          <app-portfolio className={this.getClassName(2)} cp={this.currentPage} id="middle"/>
+          <app-skills className={this.getClassName(3)} cp={this.currentPage} />
+        </main>
+      </section-container>
     ]);
   }
 }
