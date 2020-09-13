@@ -57,14 +57,14 @@ export class AppRoot {
       <header>
         <app-nav />
       </header>,
-      <section-container cp={this.currentPage}>
-        <main>
-          <app-home className={this.getClassName(0)} cp={this.currentPage} />
-          <app-about className={this.getClassName(1)} cp={this.currentPage} />
-          <app-portfolio className={this.getClassName(2)} cp={this.currentPage} id="middle"/>
-          <app-skills className={this.getClassName(3)} cp={this.currentPage} />
-        </main>
-      </section-container>
+      
+      <main>
+        <app-home className={this.getClassName(0)} cp={this.currentPage} id="start" />
+        <app-about className={this.getClassName(1)} cp={this.currentPage} />
+        <app-portfolio className={this.getClassName(2)} cp={this.currentPage} id="middle" />
+        <app-skills className={this.getClassName(3)} cp={this.currentPage} id="end" />
+      </main>,
+      <contact-footer />
     ]);
   }
 }

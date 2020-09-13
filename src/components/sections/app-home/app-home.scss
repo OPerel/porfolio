@@ -1,6 +1,7 @@
 @import '../../../global/app.scss';
 
 .app-home {
+  // position: relative;
   color: $secondary-text-color;
 
   h2 {
@@ -14,6 +15,16 @@
   }
 }
 
+.home-background {
+  position: fixed;
+  height: 120vh;
+  background-image: url('../../../assets/bg.jpg');
+  background-size: cover;
+  background-blend-mode: overlay;
 
+  color: $secondary-text-color;
+  background-color: #113433eb;
+  z-index: -1;
+}
 
 

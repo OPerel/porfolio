@@ -58,9 +58,6 @@ export namespace Components {
     'page': number;
     'under': number;
   }
-  interface SectionContainer {
-    'cp': number;
-  }
 }
 
 declare global {
@@ -137,12 +134,6 @@ declare global {
     prototype: HTMLRotatingTriElement;
     new (): HTMLRotatingTriElement;
   };
-
-  interface HTMLSectionContainerElement extends Components.SectionContainer, HTMLStencilElement {}
-  var HTMLSectionContainerElement: {
-    prototype: HTMLSectionContainerElement;
-    new (): HTMLSectionContainerElement;
-  };
   interface HTMLElementTagNameMap {
     'app-about': HTMLAppAboutElement;
     'app-home': HTMLAppHomeElement;
@@ -156,7 +147,6 @@ declare global {
     'project-card': HTMLProjectCardElement;
     'projects-gallery': HTMLProjectsGalleryElement;
     'rotating-tri': HTMLRotatingTriElement;
-    'section-container': HTMLSectionContainerElement;
   }
 }
 
@@ -211,9 +201,6 @@ declare namespace LocalJSX {
     'page'?: number;
     'under'?: number;
   }
-  interface SectionContainer {
-    'cp'?: number;
-  }
 
   interface IntrinsicElements {
     'app-about': AppAbout;
@@ -228,7 +215,6 @@ declare namespace LocalJSX {
     'project-card': ProjectCard;
     'projects-gallery': ProjectsGallery;
     'rotating-tri': RotatingTri;
-    'section-container': SectionContainer;
   }
 }
 
@@ -250,7 +236,6 @@ declare module "@stencil/core" {
       'project-card': LocalJSX.ProjectCard & JSXBase.HTMLAttributes<HTMLProjectCardElement>;
       'projects-gallery': LocalJSX.ProjectsGallery & JSXBase.HTMLAttributes<HTMLProjectsGalleryElement>;
       'rotating-tri': LocalJSX.RotatingTri & JSXBase.HTMLAttributes<HTMLRotatingTriElement>;
-      'section-container': LocalJSX.SectionContainer & JSXBase.HTMLAttributes<HTMLSectionContainerElement>;
     }
   }
 }

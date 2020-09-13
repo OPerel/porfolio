@@ -3,7 +3,7 @@
 .rotating-tri {
   border-style: solid;
   position: absolute;
-  // top: 0;
+  top: 0;
   right: 0;
   bottom: 0;
   left: 0;
@@ -23,8 +23,12 @@
 }
 
 
-.on {transform: rotateZ(calc(var(--on) * 1.2deg));}
+.on {
+  transform: rotateZ(calc(var(--on) * 1.2deg));
+}
 
-.over {transform: rotateZ(calc(var(--over) * 1.2deg));}
+.over {
+  transform: rotateZ(calc(var(--over) * 1.2deg));
+}
 
 .under {transform: rotateZ(calc(var(--under) * 1.2deg));}
