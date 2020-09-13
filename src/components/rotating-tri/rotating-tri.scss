@@ -25,10 +25,15 @@
 
 .on {
   transform: rotateZ(calc(var(--on) * 1.2deg));
+  transition: $scroll;
 }
 
 .over {
   transform: rotateZ(calc(var(--over) * 1.2deg));
+  transition: $scroll;
 }
 
-.under {transform: rotateZ(calc(var(--under) * 1.2deg));}
+.under {
+  transform: rotateZ(calc(var(--under) * 1.2deg));
+  transition: $scroll;
+}
