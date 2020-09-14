@@ -59,10 +59,10 @@ export class AppRoot {
       </header>,
       
       <main>
-        <app-home className={this.getClassName(0)} cp={this.currentPage} id="start" />
+        <app-home className={this.getClassName(0)} cp={this.currentPage} />
         <app-about className={this.getClassName(1)} cp={this.currentPage} />
-        <app-portfolio className={this.getClassName(2)} cp={this.currentPage} id="middle" />
-        <app-skills className={this.getClassName(3)} cp={this.currentPage} id="end" />
+        <app-portfolio className={this.getClassName(2)} cp={this.currentPage} />
+        <app-skills className={this.getClassName(3)} cp={this.currentPage} />
       </main>,
       <contact-footer />
     ]);

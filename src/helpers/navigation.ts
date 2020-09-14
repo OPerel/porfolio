@@ -1,5 +1,3 @@
-
-
 class NavigationController {
   private currentPage: number;
   private prevPage: number;
@@ -15,16 +13,6 @@ class NavigationController {
 
     return { cp: this.currentPage, pp: this.prevPage }
   }
-
-  // private mapSectionNumToId(num: number): string {
-  //   return {
-  //     0: 'Home',
-  //     1: 'About',
-  //     2: 'Portfolio',
-  //     3: 'Skills',
-  //     4: 'Contact'
-  //   }[num]
-  // }
 }
 
 export const Navigation = new NavigationController();

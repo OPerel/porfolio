@@ -9,9 +9,6 @@ export class AppPortfolio {
   @Prop() cp: number;
   @Prop() className: string;
 
-  componentWillUpdate() {
-  }
-
   render() {
     return (
       <section class={`app-portfolio ${this.className}`}>

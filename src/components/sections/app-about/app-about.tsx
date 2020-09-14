@@ -9,10 +9,6 @@ export class AppAbout {
   @Prop() className: string;
   @Prop() cp: number;
 
-  constructor() {
-    this.cp = 0;
-  }
-
   render() {
     return (
       <section class={`app-about ${this.className}`}>
