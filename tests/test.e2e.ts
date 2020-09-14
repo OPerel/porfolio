@@ -3,11 +3,11 @@ let browser: Browser, page: Page;
 
 const scrollToSection = async (linkId: string): Promise<void> => {
   await page.click(linkId);
-  await page.waitFor(1300);
+  await page.waitFor(1800);
 }
 
-const isVisible = async (sectionId: string, bool: boolean): Promise<void> => {
-  const section = await page.$(sectionId);
+const isVisible = async (sectionTag: string, bool: boolean): Promise<void> => {
+  const section = await page.$(sectionTag);
   const visible = await section.isIntersectingViewport();
   expect(visible).toBe(bool);
 }
@@ -35,15 +35,14 @@ describe('scrolling through the page', () => {
 
   // Hero section
   test('should see Home section', async () => {
-    await scrollToSection('#h');
-    await isVisible('#Home', true);
+    await isVisible('app-home', true);
   });
 
   test('should not see any other section', async () => {
-    await isVisible('#About', false);
-    await isVisible('#Portfolio', false);
-    await isVisible('#Skills', false);
-    await isVisible('#Contact', false);
+    await isVisible('app-about', false);
+    await isVisible('app-portfolio', false);
+    await isVisible('app-skills', false);
+    await isVisible('contact-footer', false);
   })
 
   test('should see user name in header', async () => {
@@ -54,7 +53,7 @@ describe('scrolling through the page', () => {
   });
 
   test('should not see About', async () => {
-    await isVisible('#About', false);
+    await isVisible('app-about', false);
   });
 
   test('should read "Welcome!" in main title', async () => {
@@ -64,11 +63,11 @@ describe('scrolling through the page', () => {
   // About section
   test('should scroll to About section', async () => {
     await scrollToSection('#a');
-    await isVisible('#About', true);
+    await isVisible('app-about', true);
   });
 
   test('should not see Home after scrolling', async () => {
-    await isVisible('#Home', false);
+    await isVisible('app-home', false);
   });
 
   test('should read about section title', async () => {
@@ -78,7 +77,7 @@ describe('scrolling through the page', () => {
   // Portfolio section
   test('should scroll to Portfolio section', async () => {
     await scrollToSection('#p');
-    await isVisible('#Portfolio', true);
+    await isVisible('app-portfolio', true);
   });
 
   test('should read portfolio section title', async () => {
@@ -88,11 +87,11 @@ describe('scrolling through the page', () => {
   // Skills  section
   test('should scroll to Skills section', async () => {
     await scrollToSection('#s');
-    await isVisible('#Skills', true);
+    await isVisible('app-skills', true);
   });
 
   test('should not see portfolio section', async () => {
-    await isVisible('#Portfolio', false);
+    await isVisible('app-portfolio', false);
   });
 
   test('should read skills section title', async () => {
@@ -102,7 +101,7 @@ describe('scrolling through the page', () => {
   // Contact footer
   test('should scroll to Contact footer', async () => {
     await scrollToSection('#c');
-    await isVisible('#Contact', true);
+    await isVisible('contact-footer', true);
   });
 
   test('should read contact section title', async () => {
@@ -112,13 +111,13 @@ describe('scrolling through the page', () => {
   // back to top
   test('should scroll back home', async () => {
     await scrollToSection('#h');
-    await isVisible('#Home', true);
+    await isVisible('app-home', true);
   });
 
   test('should not see any other section', async () => {
-    await isVisible('#About', false);
-    await isVisible('#Portfolio', false);
-    await isVisible('#Skills', false);
-    await isVisible('#Contact', false);
+    await isVisible('app-about', false);
+    await isVisible('app-portfolio', false);
+    await isVisible('app-skills', false);
+    await isVisible('contact-footer', false);
   });
 });

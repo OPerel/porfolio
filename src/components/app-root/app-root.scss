@@ -1,5 +1,10 @@
+@import '../../global/app.scss';
+
 main {
-  // position: relative;
+  position: relative;
   margin-bottom: 75vh;
-  overflow: hidden;
+  transform: translateY(calc(var(--scrollpos) * 1vh));
+
+  transition: $scroll;
 }
+

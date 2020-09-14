@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 
 @Component({
   tag: 'app-portfolio',
@@ -7,19 +7,15 @@ import { Component, h, Prop, Element } from '@stencil/core';
 })
 export class AppPortfolio {
   @Prop() cp: number;
-  @Prop() from: number;
-  @Element() el: HTMLElement;
-
-  componentWillUpdate() {
-  }
+  @Prop() className: string;
 
   render() {
     return (
-      <section class="app-portfolio">
+      <section class={`app-portfolio ${this.className}`}>
         <div class="container">
           <h2>Portfolio</h2>
         </div>
-        <parallax-el from={400} to={-700}>
+        <parallax-el page={2} cp={this.cp} on={0} over={-50} under={60}>
           <projects-gallery />
         </parallax-el>
       </section>

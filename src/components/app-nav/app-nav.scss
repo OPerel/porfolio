@@ -38,9 +38,10 @@ nav {
     }
   }
 
-  .active {
-    color: $secondary-text-color;
-    text-decoration: underline;
-    pointer-events: none; 
-  }
+}
+
+.active {
+  color: $secondary-text-color;
+  text-decoration: underline;
+  pointer-events: none; 
 }

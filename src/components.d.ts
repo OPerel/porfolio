@@ -11,32 +11,53 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 export namespace Components {
   interface AppAbout {
-    'from': number;
-  }
-  interface AppHome {}
-  interface AppNav {
-    'currentLink': number;
-    'prevLink': number;
-  }
-  interface AppPortfolio {
+    'className': string;
     'cp': number;
-    'from': number;
+  }
+  interface AppHome {
+    'className': string;
+    'cp': number;
+  }
+  interface AppNav {}
+  interface AppPortfolio {
+    'className': string;
+    'cp': number;
   }
   interface AppRoot {}
-  interface AppSkills {}
+  interface AppSkills {
+    'className': string;
+    'cp': number;
+  }
   interface ContactFooter {}
   interface GrowingTri {
     'color': string;
+    'cp': number;
     'growDir': string;
-    'to': number;
+    'on': number;
+    'over': number;
+    'page': number;
+    'under': number;
   }
   interface ParallaxEl {
-    'from': number;
-    'to': number;
+    'cp': number;
+    'on': number;
+    'over': number;
+    'page': number;
+    'under': number;
   }
   interface ProjectCard {}
   interface ProjectsGallery {}
-  interface RotatingTri {}
+  interface RotatingTri {
+    'color': string;
+    'cp': number;
+    'dir': string;
+    'height': number;
+    'on': number;
+    'origin': string;
+    'over': number;
+    'page': number;
+    'under': number;
+  }
 }
 
 declare global {
@@ -131,33 +152,55 @@ declare global {
 
 declare namespace LocalJSX {
   interface AppAbout {
-    'from'?: number;
+    'className'?: string;
+    'cp'?: number;
   }
-  interface AppHome {}
+  interface AppHome {
+    'className'?: string;
+    'cp'?: number;
+  }
   interface AppNav {
-    'currentLink'?: number;
     'onNavigate'?: (event: CustomEvent<any>) => void;
-    'prevLink'?: number;
   }
   interface AppPortfolio {
+    'className'?: string;
     'cp'?: number;
-    'from'?: number;
   }
   interface AppRoot {}
-  interface AppSkills {}
+  interface AppSkills {
+    'className'?: string;
+    'cp'?: number;
+  }
   interface ContactFooter {}
   interface GrowingTri {
     'color'?: string;
+    'cp'?: number;
     'growDir'?: string;
-    'to'?: number;
+    'on'?: number;
+    'over'?: number;
+    'page'?: number;
+    'under'?: number;
   }
   interface ParallaxEl {
-    'from'?: number;
-    'to'?: number;
+    'cp'?: number;
+    'on'?: number;
+    'over'?: number;
+    'page'?: number;
+    'under'?: number;
   }
   interface ProjectCard {}
   interface ProjectsGallery {}
-  interface RotatingTri {}
+  interface RotatingTri {
+    'color'?: string;
+    'cp'?: number;
+    'dir'?: string;
+    'height'?: number;
+    'on'?: number;
+    'origin'?: string;
+    'over'?: number;
+    'page'?: number;
+    'under'?: number;
+  }
 
   interface IntrinsicElements {
     'app-about': AppAbout;

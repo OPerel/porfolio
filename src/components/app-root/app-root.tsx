@@ -1,5 +1,4 @@
 import { Component, h, State, Listen, Element } from '@stencil/core';
-
 import { Navigation } from '../../helpers/navigation';
 
 @Component({
@@ -12,84 +11,60 @@ export class AppRoot {
   @State() currentPage: number;
   @State() prevPage: number;
 
-  @State() lastScrollY: number;
-  @State() ticking: boolean;
-  // @State() scrolling: boolean;
-  
-  @Listen('navigate')
-  handleNavClicks(e: CustomEvent) {
-    const { cp, pp } = Navigation.scroll(e.detail);
-    console.log(`current page: ${cp}, next page:  ${pp}`);
-    this.currentPage = cp;
-    this.prevPage = pp;
-  } 
-
   constructor() {
     this.prevPage = 0
     this.currentPage = 0;
   }
+  
+  @Listen('navigate')
+  handleNavClicks(e: CustomEvent) {
+    const { cp, pp } = Navigation.scroll(e.detail);
+    console.log(`ROOT - cp: ${cp}, pp: ${pp}`);
+    this.currentPage = cp;
+    this.prevPage = pp;
 
-  /************ set global scrollpos **************/
-
-  onScroll = () => {
-    // console.log('onScroll is running');
-    // const body = document.getElementsByTagName('body')[0];
-    this.lastScrollY = window.scrollY;
-    this.requestTick();
+    this.getTranslateY();
+    this.setAnimationDuration();
   }
 
-  requestTick = () => {
-    // console.log('requestTick is running');
-    if(!this.ticking) {
-      requestAnimationFrame(this.animate);
+  private getClassName = (pageIdx: number): string => {
+
+    if (this.currentPage === pageIdx) {
+      return 'on';
     }
-    this.ticking = true;
+    if (this.currentPage > pageIdx) {
+      return 'over';
+    }
+    if (this.currentPage < pageIdx) {
+      return 'under';
+    }
+
+    return '';
+  };
+
+  private getTranslateY(): void {
+    const scrollpos = this.currentPage === 4 ? -375 : (this.currentPage) * -100;
+    this.root.style.setProperty('--scrollpos', `${scrollpos}`);
   }
 
-  animate = () => {
-    // console.log('animate is running');
-    // if (this.to > 98) throw new Error('Scrolling factor above 98');
-
-    // reset the tick so we can capture the next onScroll
-    this.ticking = false;
-
-    let scrollpos: number;
-
-    // const main = document.getElementsByTagName('main')[0];
-    scrollpos = (this.lastScrollY / (document.body.clientHeight - window.innerHeight));
-    this.setScrollPos(scrollpos);
-  }
-
-  setScrollPos(scrollPos: number): void {
-    this.root.style.setProperty('--scrollpos', `${scrollPos}`);
-  }
-
-  /************ end setting global scrollpos *************/
-
-  componentWillLoad() {
-    // scroll event listener for global scrollpos
-    document.addEventListener('scroll', this.onScroll, { passive: false });
+  private setAnimationDuration(): void {
+    const sectionGap = Math.abs(this.prevPage - this.currentPage);
+    this.root.style.setProperty('--sectionGap', `${sectionGap}`);
   }
 
   render() {
-    // console.log('Navigation current: ', this.currentPage);
     return ([
-        <header>
-          <app-nav currentLink={this.currentPage} prevLink={this.prevPage} />
-        </header>,
-        <main>
-
-            <app-home id='Home' />
-            <app-about id='About' />
-            <app-portfolio id='Portfolio' />
-            <app-skills id='Skills' />
-          
-        </main>,
-        <contact-footer id='Contact' />
+      <header>
+        <app-nav />
+      </header>,
+      
+      <main>
+        <app-home className={this.getClassName(0)} cp={this.currentPage} />
+        <app-about className={this.getClassName(1)} cp={this.currentPage} />
+        <app-portfolio className={this.getClassName(2)} cp={this.currentPage} />
+        <app-skills className={this.getClassName(3)} cp={this.currentPage} />
+      </main>,
+      <contact-footer />
     ]);
   }
 }
-
-/***
- * 
- */

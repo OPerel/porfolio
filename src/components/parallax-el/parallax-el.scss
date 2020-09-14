@@ -1,12 +1,21 @@
+@import '../../global/app.scss';
+
 div {
-  transform: translate(0, 
-    calc(
-      calc(
-        calc(
-          var(--scrollpos) * var(--to)
-        ) + var(--from)
-      ) * 1px
-    )
-  );
-  // position: absolute;
+  z-index: 0;
+  transition: $scroll;
+}
+
+.over {
+  transform: translateY(calc(var(--over) * 1vh));
+  transition: $scroll;
+}
+
+.under {
+  transform: translateY(calc(var(--under) * 1vh));
+  transition: $scroll;
+}
+
+.on {
+  transform: translateY(calc(var(--on) * 1vh));
+  transition: $scroll;
 }

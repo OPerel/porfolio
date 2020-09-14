@@ -54,16 +54,18 @@ $color-complement-4: #00413F;
 
 // breakpoints
 
-$middle-bp: 768px;
+$medium-bp: 768px;
 $small-bp: 420px;
 
+// Animations
+
+$scroll: calc(calc(var(--sectionGap) / 1.4) * 1.8s) cubic-bezier(0.65, 0, 0.35, 1); /* easeInOutCubic --- calc(var(--sectionGap) * 1.s) */
 
 html, body {
   margin: 0px;
   padding: 0px;
-  overflow-x: hidden;
-  // overflow-y: hidden;
-  // height: 100vh;
+  overflow: hidden;
+  height: 100vh;
   font-family: 'Londrina Solid', cursive;
   color: $main-text-color;
 }
@@ -90,21 +92,33 @@ p {
   }
 }
 
+a {
+  text-decoration: none;
+}
+
 section {
   display: grid;
   align-content: center;
   height: 100vh;
   width: 100%;
   position: relative;
-  z-index: 2;
+  overflow: hidden;
+  z-index: 1;
 }
 
 .container {
   width: 90%;
   margin: 5% auto 0;
+  
   z-index: 2;
 
   @media only screen and (min-width: $small-bp) {
     width: 80%;
   }
+
+  @media only screen and (min-width: $medium-bp) {
+    width: 70%;
+  }
 }
+
+

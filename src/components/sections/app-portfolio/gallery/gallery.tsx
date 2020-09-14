@@ -68,11 +68,11 @@ export class Gallery {
   }
 
   componentDidLoad() {
-    this.gallery = this.el.shadowRoot.querySelector('.gallery');
-    this.gallery.addEventListener('wheel', (e) => {
+    // this.gallery = this.el.shadowRoot.querySelector('.gallery');
+    // this.gallery.addEventListener('wheel', (e) => {
       // const { scrollLeft, offsetWidth, scrollWidth } = this.gallery;
-      this.trackXScrolling(e);
-    });
+      // this.trackXScrolling(e);
+    // });
   }
 
   render() {
