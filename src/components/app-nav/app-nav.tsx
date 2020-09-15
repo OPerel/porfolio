@@ -9,7 +9,7 @@ export class AppNav {
   @State() current: number;
   @State() prev: number;
 
-  @Event() navigate: EventEmitter; 
+  @Event() navigate: EventEmitter<number>; 
 
   constructor() {
     this.current = 0;

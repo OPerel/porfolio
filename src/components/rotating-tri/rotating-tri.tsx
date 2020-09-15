@@ -6,18 +6,16 @@ import { Component, h, Prop, Element } from '@stencil/core';
   shadow: true
 })
 export class Tri {
-  @Prop() cp: number;
+  @Element() tri: HTMLElement;
+  
+  @Prop() animeClass: string;
   @Prop() on: number;
   @Prop() over: number;
   @Prop() under: number;
-  @Prop() page: number;
   @Prop() dir: string;
- @Prop() origin: string;
+  @Prop() origin: string;
   @Prop() height: number;
   @Prop() color: string;
-  @Element() tri: HTMLElement;
-
-  getClassName = (): string => this.cp === this.page ? 'on' : (this.cp > this.page ? 'over' : 'under');
 
   componentDidLoad() {
     this.tri.style.setProperty('--on', `${this.on}`);
@@ -32,7 +30,7 @@ export class Tri {
     const borderStyles = this.dir === 'left' ?
     { borderRightWidth: '110vw', borderLeftWidth: '0' } : { borderLeftWidth: '110vw', borderRightWidth: '0' };
 
-    return <div class={`rotating-tri ${this.getClassName()}`} style={borderStyles}></div>;
+    return <div class={`rotating-tri ${this.animeClass}`} style={borderStyles}></div>;
   }
 
 }

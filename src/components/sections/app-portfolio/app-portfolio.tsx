@@ -6,16 +6,15 @@ import { Component, h, Prop } from '@stencil/core';
   // shadow: true
 })
 export class AppPortfolio {
-  @Prop() cp: number;
-  @Prop() className: string;
+  @Prop() animeClass: string;
 
   render() {
     return (
-      <section class={`app-portfolio ${this.className}`}>
+      <section class="app-portfolio">
         <div class="container">
           <h2>Portfolio</h2>
         </div>
-        <parallax-el page={2} cp={this.cp} on={0} over={-50} under={60}>
+        <parallax-el animeClass={this.animeClass} on={0} over={-50} under={60}>
           <projects-gallery />
         </parallax-el>
       </section>

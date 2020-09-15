@@ -17,7 +17,7 @@ export class AppRoot {
   }
   
   @Listen('navigate')
-  handleNavClicks(e: CustomEvent) {
+  handleNavClicks(e: CustomEvent<number>) {
     const { cp, pp } = Navigation.scroll(e.detail);
     console.log(`ROOT - cp: ${cp}, pp: ${pp}`);
     this.currentPage = cp;
@@ -27,7 +27,7 @@ export class AppRoot {
     this.setAnimationDuration();
   }
 
-  private getClassName = (pageIdx: number): string => {
+  private getAnimeClass = (pageIdx: number): string => {
 
     if (this.currentPage === pageIdx) {
       return 'on';
@@ -59,10 +59,10 @@ export class AppRoot {
       </header>,
       
       <main>
-        <app-home className={this.getClassName(0)} cp={this.currentPage} />
-        <app-about className={this.getClassName(1)} cp={this.currentPage} />
-        <app-portfolio className={this.getClassName(2)} cp={this.currentPage} />
-        <app-skills className={this.getClassName(3)} cp={this.currentPage} />
+        <app-home animeClass={this.getAnimeClass(0)} />
+        <app-about animeClass={this.getAnimeClass(1)} />
+        <app-portfolio animeClass={this.getAnimeClass(2)} />
+        <app-skills animeClass={this.getAnimeClass(3)} />
       </main>,
       <contact-footer />
     ]);

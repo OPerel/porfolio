@@ -11,22 +11,18 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 export namespace Components {
   interface AppAbout {
-    'className': string;
-    'cp': number;
+    'animeClass': string;
   }
   interface AppHome {
-    'className': string;
-    'cp': number;
+    'animeClass': string;
   }
   interface AppNav {}
   interface AppPortfolio {
-    'className': string;
-    'cp': number;
+    'animeClass': string;
   }
   interface AppRoot {}
   interface AppSkills {
-    'className': string;
-    'cp': number;
+    'animeClass': string;
   }
   interface ContactFooter {}
   interface GrowingTri {
@@ -39,23 +35,21 @@ export namespace Components {
     'under': number;
   }
   interface ParallaxEl {
-    'cp': number;
+    'animeClass': string;
     'on': number;
     'over': number;
-    'page': number;
     'under': number;
   }
   interface ProjectCard {}
   interface ProjectsGallery {}
   interface RotatingTri {
+    'animeClass': string;
     'color': string;
-    'cp': number;
     'dir': string;
     'height': number;
     'on': number;
     'origin': string;
     'over': number;
-    'page': number;
     'under': number;
   }
 }
@@ -152,24 +146,20 @@ declare global {
 
 declare namespace LocalJSX {
   interface AppAbout {
-    'className'?: string;
-    'cp'?: number;
+    'animeClass'?: string;
   }
   interface AppHome {
-    'className'?: string;
-    'cp'?: number;
+    'animeClass'?: string;
   }
   interface AppNav {
-    'onNavigate'?: (event: CustomEvent<any>) => void;
+    'onNavigate'?: (event: CustomEvent<number>) => void;
   }
   interface AppPortfolio {
-    'className'?: string;
-    'cp'?: number;
+    'animeClass'?: string;
   }
   interface AppRoot {}
   interface AppSkills {
-    'className'?: string;
-    'cp'?: number;
+    'animeClass'?: string;
   }
   interface ContactFooter {}
   interface GrowingTri {
@@ -182,23 +172,21 @@ declare namespace LocalJSX {
     'under'?: number;
   }
   interface ParallaxEl {
-    'cp'?: number;
+    'animeClass'?: string;
     'on'?: number;
     'over'?: number;
-    'page'?: number;
     'under'?: number;
   }
   interface ProjectCard {}
   interface ProjectsGallery {}
   interface RotatingTri {
+    'animeClass'?: string;
     'color'?: string;
-    'cp'?: number;
     'dir'?: string;
     'height'?: number;
     'on'?: number;
     'origin'?: string;
     'over'?: number;
-    'page'?: number;
     'under'?: number;
   }
 
