@@ -23,7 +23,7 @@ export class AppNav {
   render() {
     return (
       <nav>
-        <h1>Ori Perelman</h1>
+        {/* <h1>Ori Perelman</h1> */}
         <ul>
         <li id="h" class={this.current === 0 ? 'active' : ''} onClick={() => this.handleNavClick(0)}>Home</li>
           <li id="a" class={this.current === 1 ? 'active' : ''} onClick={() => this.handleNavClick(1)}>About</li>
