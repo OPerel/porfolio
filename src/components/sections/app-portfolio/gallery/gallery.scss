@@ -1,0 +1,84 @@
+:host {
+  // position: relative;
+  // height: 60vh;
+  // margin-bottom: 0;
+  // background-color: $color-complement-1;
+  
+  
+
+  // display: flex;
+  // flex-wrap: nowrap;
+  // align-items: center;
+  .gallery {
+    position: relative;
+    height: 50vh;
+    display: grid;
+    gap: 8%;
+    grid-template-columns: 1.5%;
+    grid-auto-flow: column;
+    grid-auto-columns: calc(40%);
+
+    overflow-x: hidden;
+    // opacity: calc((var(--scrollpos) * 200 - 90)  / 25); // maybe use regular animation istead of scrolling for this.
+  }
+
+  .scroll-x {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: 20px;
+    display: grid;
+    align-content: flex-end;
+    justify-content: center;
+
+    // background-color: #000;
+    z-index: 4;
+
+    .gallery-arrow {
+      height: 40%;
+      width: 20px;
+      text-align: center;
+      font-size: 4rem;
+    }
+
+    // .left-arrow {
+    //   border-style: solid;
+    //   border-color: #0000 #fffa #0000 #0000;
+    //   border-width: 60px 21px 60px 0px;
+    // }
+
+    // .right-arrow {
+    //   border-style: solid;
+    //   border-color: #0000 #0000 #fffa  #0000;
+    //   border-width: 60px 0px 60px 21px;
+    // }
+  }
+
+  .scroll-left {
+    left: 0;
+  }
+
+  .scroll-right {
+    right: 0;
+  }
+}
+
+.gallery::before,
+.gallery::after {
+  content: "";
+  display: block;
+  width: 0.1px;
+  height: 1px;
+}
+
+.gallery::before {
+  left: 0;
+}
+
+.gallery::after {
+  right: 0;
+}
+
+
+

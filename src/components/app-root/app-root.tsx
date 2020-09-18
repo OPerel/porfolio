@@ -1,6 +1,19 @@
-import { Component, h, State, Listen } from '@stencil/core';
+/**
+ * TODO:
+ * 
+ * 1. mobile layout and animations
+ * 2. requestAnimationFrame
+ * 3. navigation bar animation
+ * 4. navigating arrows
+ * 5. contact form
+ * 6. gallery
+ * 7. Skills-Contact tri 
+ * 
+ * 8. CONTENT
+ */
 
-import { appScroll } from '../../helpers/scroll';
+import { Component, h, State, Listen, Element } from '@stencil/core';
+import { Navigation } from '../../helpers/navigation';
 
 @Component({
   tag: 'app-root',
@@ -8,105 +21,70 @@ import { appScroll } from '../../helpers/scroll';
   // shadow: true
 })
 export class AppRoot {
+  @Element() root: HTMLElement;
   @State() currentPage: number;
   @State() prevPage: number;
-  @State() frame: boolean;
-  @State() scrolling: boolean;
-  @Listen('navigate')
-  handleNavClicks(e: CustomEvent) {
-    this.prevPage = this.currentPage;
-    this.currentPage = e.detail;
-    // if (!this.scrolling && !this.frame) {
-      this.scroll(this.mapSectionNumToId(e.detail));
-    // }
-  } 
 
   constructor() {
     this.prevPage = 0
     this.currentPage = 0;
-    this.frame = false;
-    this.scrolling = false;
+  }
+  
+  @Listen('navigate')
+  handleNavClicks(e: CustomEvent<number>) {
+    const { cp, pp } = Navigation.scroll(e.detail);
+    console.log(`ROOT - cp: ${cp}, pp: ${pp}`);
+    this.currentPage = cp;
+    this.prevPage = pp;
+
+    this.getTranslateY();
+    this.setAnimationDuration();
+    this.getActiveNavLink();
   }
 
-  scroll(target: string) {
-    const section = document.getElementById(target);
-    appScroll(section, 500);
+  private getAnimeClass = (pageIdx: number): string => {
 
-  }
-
-  goToNextPage = (): void => {
-    this.prevPage = this.currentPage;
-    this.currentPage = this.prevPage < 3 ? this.prevPage + 1 : 3;
-    this.scroll(this.mapSectionNumToId(this.currentPage))
-    this.frame = false;
-  }
-
-  goToPrevPage = (): void => {
-    this.prevPage = this.currentPage;
-    this.currentPage = this.prevPage > 0 ? this.prevPage - 1 : 0;
-    this.scroll(this.mapSectionNumToId(this.currentPage))
-    this.frame = false;
-  }
-
-  mapSectionNumToId(num: number) {
-    return {
-      0: 'Home',
-      1: 'About',
-      2: 'Portfolio',
-      3: 'Skills',
-      // 4: 'Contact'
-    }[num]
-  }
-
-  onWheelEvent = (e) => {
-    e.preventDefault();
-    if (!this.frame) {
-      e.deltaY > 0 ? requestAnimationFrame(this.goToNextPage) : requestAnimationFrame(this.goToPrevPage);
+    if (this.currentPage === pageIdx) {
+      return 'on';
     }
-    this.frame = true
-  }
-
-  throttleWheel(callback, limit: number) {
-    return (...args) => {
-      if (!this.scrolling) {
-        callback(...args);
-        this.scrolling = true;
-        setTimeout(() => {
-          this.scrolling = false;
-        }, limit);
-      }
+    if (this.currentPage > pageIdx) {
+      return 'over';
     }
+    if (this.currentPage < pageIdx) {
+      return 'under';
+    }
+
+    return '';
+  };
+
+  private getTranslateY(): void {
+    const scrollpos = this.currentPage === 4 ? -375 : (this.currentPage) * -100;
+    this.root.style.setProperty('--scrollpos', `${scrollpos}`);
   }
 
-  componentWillLoad() {
-    document.addEventListener('wheel', this.throttleWheel(this.onWheelEvent, 900), {passive: false});
-    // window.addEventListener('resize', () => {
-    //   this.currentPage = 0;
-    //   this.prevPage = 0;
-    // });
+  private getActiveNavLink(): void {
+    const activeNav = this.currentPage === 4 ? 80 : this.currentPage * 20;
+    this.root.style.setProperty('--activeNav', `${activeNav}`);
+  }
+
+  private setAnimationDuration(): void {
+    const sectionGap = Math.abs(this.prevPage - this.currentPage);
+    this.root.style.setProperty('--sectionGap', `${sectionGap}`);
   }
 
   render() {
-    // console.log('current: ', this.currentPage);
-    return (
+    return ([
+      <header>
+        <app-nav />
+      </header>,
+      
       <main>
-
-        <header>
-          <app-nav currentLink={this.currentPage} prevLink={this.prevPage} />
-        </header>
-
-        <app-home id='Home' />
-        <app-about id='About' />
-        <app-portfolio id='Portfolio' />
-        <app-skills id='Skills' />
-
-        <arrow-nav currentPage={this.currentPage} />
-        
-      </main>
-    );
+        <app-home animeClass={this.getAnimeClass(0)} />
+        <app-about animeClass={this.getAnimeClass(1)} />
+        <app-portfolio animeClass={this.getAnimeClass(2)} />
+        <app-skills animeClass={this.getAnimeClass(3)} />
+      </main>,
+      <contact-footer />
+    ]);
   }
 }
-
-/***
- * 
- */

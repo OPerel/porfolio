@@ -11,22 +11,50 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 export namespace Components {
   interface AppAbout {
-    'from': number;
+    'animeClass': string;
   }
-  interface AppHome {}
-  interface AppNav {
-    'currentLink': number;
-    'prevLink': number;
+  interface AppHome {
+    'animeClass': string;
   }
+  interface AppNav {}
   interface AppPortfolio {
-    'cp': number;
-    'from': number;
+    'animeClass': string;
   }
   interface AppRoot {}
-  interface AppSkills {}
+  interface AppSkills {
+    'animeClass': string;
+  }
   interface ArrowNav {
     'currentPage': number;
     'prevLink': number;
+  }
+  interface ContactFooter {}
+  interface GrowingTri {
+    'color': string;
+    'cp': number;
+    'growDir': string;
+    'on': number;
+    'over': number;
+    'page': number;
+    'under': number;
+  }
+  interface ParallaxEl {
+    'animeClass': string;
+    'on': number;
+    'over': number;
+    'under': number;
+  }
+  interface ProjectCard {}
+  interface ProjectsGallery {}
+  interface RotatingTri {
+    'animeClass': string;
+    'color': string;
+    'dir': string;
+    'height': number;
+    'on': number;
+    'origin': string;
+    'over': number;
+    'under': number;
   }
 }
 
@@ -74,6 +102,42 @@ declare global {
     prototype: HTMLArrowNavElement;
     new (): HTMLArrowNavElement;
   };
+
+  interface HTMLContactFooterElement extends Components.ContactFooter, HTMLStencilElement {}
+  var HTMLContactFooterElement: {
+    prototype: HTMLContactFooterElement;
+    new (): HTMLContactFooterElement;
+  };
+
+  interface HTMLGrowingTriElement extends Components.GrowingTri, HTMLStencilElement {}
+  var HTMLGrowingTriElement: {
+    prototype: HTMLGrowingTriElement;
+    new (): HTMLGrowingTriElement;
+  };
+
+  interface HTMLParallaxElElement extends Components.ParallaxEl, HTMLStencilElement {}
+  var HTMLParallaxElElement: {
+    prototype: HTMLParallaxElElement;
+    new (): HTMLParallaxElElement;
+  };
+
+  interface HTMLProjectCardElement extends Components.ProjectCard, HTMLStencilElement {}
+  var HTMLProjectCardElement: {
+    prototype: HTMLProjectCardElement;
+    new (): HTMLProjectCardElement;
+  };
+
+  interface HTMLProjectsGalleryElement extends Components.ProjectsGallery, HTMLStencilElement {}
+  var HTMLProjectsGalleryElement: {
+    prototype: HTMLProjectsGalleryElement;
+    new (): HTMLProjectsGalleryElement;
+  };
+
+  interface HTMLRotatingTriElement extends Components.RotatingTri, HTMLStencilElement {}
+  var HTMLRotatingTriElement: {
+    prototype: HTMLRotatingTriElement;
+    new (): HTMLRotatingTriElement;
+  };
   interface HTMLElementTagNameMap {
     'app-about': HTMLAppAboutElement;
     'app-home': HTMLAppHomeElement;
@@ -82,29 +146,64 @@ declare global {
     'app-root': HTMLAppRootElement;
     'app-skills': HTMLAppSkillsElement;
     'arrow-nav': HTMLArrowNavElement;
+    'contact-footer': HTMLContactFooterElement;
+    'growing-tri': HTMLGrowingTriElement;
+    'parallax-el': HTMLParallaxElElement;
+    'project-card': HTMLProjectCardElement;
+    'projects-gallery': HTMLProjectsGalleryElement;
+    'rotating-tri': HTMLRotatingTriElement;
   }
 }
 
 declare namespace LocalJSX {
   interface AppAbout {
-    'from'?: number;
+    'animeClass'?: string;
   }
-  interface AppHome {}
+  interface AppHome {
+    'animeClass'?: string;
+  }
   interface AppNav {
-    'currentLink'?: number;
-    'onNavigate'?: (event: CustomEvent<any>) => void;
-    'prevLink'?: number;
+    'onNavigate'?: (event: CustomEvent<number>) => void;
   }
   interface AppPortfolio {
-    'cp'?: number;
-    'from'?: number;
+    'animeClass'?: string;
   }
   interface AppRoot {}
-  interface AppSkills {}
+  interface AppSkills {
+    'animeClass'?: string;
+  }
   interface ArrowNav {
     'currentPage'?: number;
     'onNavigate'?: (event: CustomEvent<any>) => void;
     'prevLink'?: number;
+  }
+  interface ContactFooter {}
+  interface GrowingTri {
+    'color'?: string;
+    'cp'?: number;
+    'growDir'?: string;
+    'on'?: number;
+    'over'?: number;
+    'page'?: number;
+    'under'?: number;
+  }
+  interface ParallaxEl {
+    'animeClass'?: string;
+    'on'?: number;
+    'over'?: number;
+    'under'?: number;
+  }
+  interface ProjectCard {}
+  interface ProjectsGallery {}
+  interface RotatingTri {
+    'animeClass'?: string;
+    'color'?: string;
+    'dir'?: string;
+    'height'?: number;
+    'on'?: number;
+    'origin'?: string;
+    'over'?: number;
+    'under'?: number;
   }
 
   interface IntrinsicElements {
@@ -115,6 +214,12 @@ declare namespace LocalJSX {
     'app-root': AppRoot;
     'app-skills': AppSkills;
     'arrow-nav': ArrowNav;
+    'contact-footer': ContactFooter;
+    'growing-tri': GrowingTri;
+    'parallax-el': ParallaxEl;
+    'project-card': ProjectCard;
+    'projects-gallery': ProjectsGallery;
+    'rotating-tri': RotatingTri;
   }
 }
 
@@ -131,6 +236,12 @@ declare module "@stencil/core" {
       'app-root': LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
       'app-skills': LocalJSX.AppSkills & JSXBase.HTMLAttributes<HTMLAppSkillsElement>;
       'arrow-nav': LocalJSX.ArrowNav & JSXBase.HTMLAttributes<HTMLArrowNavElement>;
+      'contact-footer': LocalJSX.ContactFooter & JSXBase.HTMLAttributes<HTMLContactFooterElement>;
+      'growing-tri': LocalJSX.GrowingTri & JSXBase.HTMLAttributes<HTMLGrowingTriElement>;
+      'parallax-el': LocalJSX.ParallaxEl & JSXBase.HTMLAttributes<HTMLParallaxElElement>;
+      'project-card': LocalJSX.ProjectCard & JSXBase.HTMLAttributes<HTMLProjectCardElement>;
+      'projects-gallery': LocalJSX.ProjectsGallery & JSXBase.HTMLAttributes<HTMLProjectsGalleryElement>;
+      'rotating-tri': LocalJSX.RotatingTri & JSXBase.HTMLAttributes<HTMLRotatingTriElement>;
     }
   }
 }

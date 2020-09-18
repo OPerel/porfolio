@@ -1,0 +1,19 @@
+@import '../../global/app.scss';
+
+.tri {
+  border-style: solid;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-top-width: 0vh;
+  border-color: transparent transparent var(--color) transparent;
+  z-index: 0;
+  transition: $scroll;
+}
+
+.on {border-bottom-width: calc(var(--on) * 1vh);}
+
+.over {border-bottom-width: calc(var(--over) * 1vh);}
+
+.under {border-bottom-width: calc(var(--under) * 1vh);}

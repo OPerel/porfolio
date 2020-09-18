@@ -18,7 +18,12 @@ $skills-background-color: #0D5452;
 $portfolio-background-color: #151e1e;
 
 $color-complement-1: #608D8B;
+// #226765
+// used directly via js
+$color-complement-2: #3E7A78;
 
+
+// not used so far
 // Main Primary color */
 $color-primary-0: #AA6B39;	
 // $color-primary-1: #E8BF9E;
@@ -43,20 +48,24 @@ $color-secondary-2-4: #09124A;
 // Main Complement color */
 
 
-$color-complement-2: #3E7A78;
+
 
 $color-complement-4: #00413F;
 
 // breakpoints
 
-$middle-bp: 768px;
+$medium-bp: 768px;
 $small-bp: 420px;
 
+// Animations
+
+$scroll: calc(calc(var(--sectionGap) / 1.4) * 1.8s) cubic-bezier(0.65, 0, 0.35, 1); /* easeInOutCubic --- calc(var(--sectionGap) * 1.s) */
 
 html, body {
   margin: 0px;
   padding: 0px;
   overflow: hidden;
+  height: 100vh;
   font-family: 'Londrina Solid', cursive;
   color: $main-text-color;
 }
@@ -83,20 +92,33 @@ p {
   }
 }
 
+a {
+  text-decoration: none;
+}
+
 section {
   display: grid;
   align-content: center;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   position: relative;
+  overflow: hidden;
+  z-index: 1;
 }
 
 .container {
   width: 90%;
-  margin: 0% auto;
+  margin: 5% auto 0;
+  
+  z-index: 2;
 
   @media only screen and (min-width: $small-bp) {
     width: 80%;
   }
-  // z-index: 2;
+
+  @media only screen and (min-width: $medium-bp) {
+    width: 70%;
+  }
 }
+
+
