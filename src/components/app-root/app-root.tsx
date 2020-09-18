@@ -58,12 +58,12 @@ export class AppRoot {
   };
 
   private getTranslateY(): void {
-    const scrollpos = this.currentPage === 4 ? -375 : (this.currentPage) * -100;
+    const scrollpos = this.currentPage === 4 ? -380 : (this.currentPage) * -100;
     this.root.style.setProperty('--scrollpos', `${scrollpos}`);
   }
 
   private getActiveNavLink(): void {
-    const activeNav = this.currentPage === 4 ? 80 : this.currentPage * 20;
+    const activeNav = this.currentPage * 20;
     this.root.style.setProperty('--activeNav', `${activeNav}`);
   }
 
@@ -84,7 +84,9 @@ export class AppRoot {
         <app-portfolio animeClass={this.getAnimeClass(2)} />
         <app-skills animeClass={this.getAnimeClass(3)} />
       </main>,
-      <contact-footer />
+      <contact-footer />,
+
+      <arrow-nav currentPage={this.currentPage}></arrow-nav>
     ]);
   }
 }

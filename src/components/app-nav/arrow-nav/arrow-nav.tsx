@@ -7,40 +7,36 @@ import { Component, h, Prop, Event, EventEmitter } from '@stencil/core';
 })
 export class ArrowNav {
   @Prop() currentPage: number;
-  @Prop() prevLink: number;
   @Event() navigate: EventEmitter;
 
   handleClick(dir: string) {
     const sectionNum = dir === 'down' ? this.currentPage + 1 : this.currentPage - 1;
+    if (!this.validator(sectionNum)) return;
     this.navigate.emit(sectionNum);
+  }
+
+  private validator(section: number): boolean {
+    return section >= 0 && section <= 4;
   }
 
   render() {
     return (
       <div class="arrow-nav">
 
-        <div
-          class={this.currentPage === 0 ? 'arrow-link arrow-up hide' : 'arrow-link arrow-up'}
+        <ion-icon
+          name="chevron-up"
+          class={this.currentPage === 0 ? 'arrow-link hide' : 'arrow-link'}
           onClick={() => this.handleClick('up')}
-        >
-          {/* <div class="outer"><div class="inner"></div></div> */}
-        </div>
+        ></ion-icon>
 
-        <div
-          class={this.currentPage === 3 ? 'arrow-link arrow-down hide' : 'arrow-link arrow-down'}
+        <ion-icon
+          name="chevron-down"
+          class={this.currentPage === 4 ? 'arrow-link hide' : 'arrow-link'}
           onClick={() => this.handleClick('down')}
-        >
-          {/* <div class="outer"><div class="inner"></div></div> */}
-        </div>
+        ></ion-icon>
 
       </div>
     );
   }
 
 }
-
-/**
- * TODOs
- * 1. design
- * 2. throttle
- */

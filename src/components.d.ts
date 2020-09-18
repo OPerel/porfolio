@@ -26,7 +26,6 @@ export namespace Components {
   }
   interface ArrowNav {
     'currentPage': number;
-    'prevLink': number;
   }
   interface ContactFooter {}
   interface GrowingTri {
@@ -175,7 +174,6 @@ declare namespace LocalJSX {
   interface ArrowNav {
     'currentPage'?: number;
     'onNavigate'?: (event: CustomEvent<any>) => void;
-    'prevLink'?: number;
   }
   interface ContactFooter {}
   interface GrowingTri {
