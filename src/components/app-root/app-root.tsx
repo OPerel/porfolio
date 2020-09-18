@@ -39,6 +39,7 @@ export class AppRoot {
 
     this.getTranslateY();
     this.setAnimationDuration();
+    this.getActiveNavLink();
   }
 
   private getAnimeClass = (pageIdx: number): string => {
@@ -59,6 +60,11 @@ export class AppRoot {
   private getTranslateY(): void {
     const scrollpos = this.currentPage === 4 ? -375 : (this.currentPage) * -100;
     this.root.style.setProperty('--scrollpos', `${scrollpos}`);
+  }
+
+  private getActiveNavLink(): void {
+    const activeNav = this.currentPage === 4 ? 80 : this.currentPage * 20;
+    this.root.style.setProperty('--activeNav', `${activeNav}`);
   }
 
   private setAnimationDuration(): void {

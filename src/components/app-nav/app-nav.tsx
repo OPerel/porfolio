@@ -23,13 +23,25 @@ export class AppNav {
   render() {
     return (
       <nav>
-        <h1>Ori Perelman</h1>
         <ul>
-        <li id="h" class={this.current === 0 ? 'active' : ''} onClick={() => this.handleNavClick(0)}>Home</li>
-          <li id="a" class={this.current === 1 ? 'active' : ''} onClick={() => this.handleNavClick(1)}>About</li>
-          <li id="p" class={this.current === 2 ? 'active' : ''} onClick={() => this.handleNavClick(2)}>Portfolio</li>
-          <li id="s" class={this.current === 3 ? 'active' : ''} onClick={() => this.handleNavClick(3)}>Skills</li>
-          <li id="c" class={this.current === 4 ? 'active' : ''} onClick={() => this.handleNavClick(4)}>Contact</li>
+          <div class="active-bg"></div>
+          <hr />
+          <li id="h" class={this.current === 0 ? 'active' : ''} onClick={() => this.handleNavClick(0)}>
+            Home
+            
+          </li>
+          <li id="a" class={this.current === 1 ? 'active' : ''} onClick={() => this.handleNavClick(1)}>
+            About
+          </li>
+          <li id="p" class={this.current === 2 ? 'active' : ''} onClick={() => this.handleNavClick(2)}>
+            Portfolio
+          </li>
+          <li id="s" class={this.current === 3 ? 'active' : ''} onClick={() => this.handleNavClick(3)}>
+            Skills
+          </li>
+          <li id="c" class={this.current === 4 ? 'active' : ''} onClick={() => this.handleNavClick(4)}>
+            Contact
+          </li>
         </ul>
       </nav>
     );

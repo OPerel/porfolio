@@ -24,8 +24,12 @@
 
 
 .on {
-  transform: rotateZ(calc(var(--on) * 1.2deg));
+  transform: rotateZ(calc(var(--on) * 2.6deg));
   transition: $scroll;
+
+  @media only screen and (min-width: $medium-bp) {
+    transform: rotateZ(calc(var(--on) * 1.2deg));
+  }
 }
 
 .over {
