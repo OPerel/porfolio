@@ -69,11 +69,16 @@ export class Footer {
               <ion-label position="floating">Message</ion-label>
               <ion-textarea
                 name="message"
+                rows={4}
                 value={message}
                 onInput={(e: Event) => {this.handleInputChange(e)}}
               ></ion-textarea>
             </ion-item>
-            <ion-button onClick={(e: Event) => this.handleSubmitForm(e)}>Submit</ion-button>
+            <ion-button
+              onClick={(e: Event) => this.handleSubmitForm(e)}
+            >
+              Submit
+            </ion-button>
           </form>
         
         </div>
