@@ -22,6 +22,9 @@ export namespace Components {
     interface AppSkills {
         "animeClass": string;
     }
+    interface ArrowNav {
+        "currentPage": number;
+    }
     interface ContactFooter {
     }
     interface GrowingTri {
@@ -46,11 +49,11 @@ export namespace Components {
     interface RotatingTri {
         "animeClass": string;
         "color": string;
-        "dir": string;
         "height": number;
         "on": number;
         "origin": string;
         "over": number;
+        "side": string;
         "under": number;
     }
 }
@@ -90,6 +93,12 @@ declare global {
     var HTMLAppSkillsElement: {
         prototype: HTMLAppSkillsElement;
         new (): HTMLAppSkillsElement;
+    };
+    interface HTMLArrowNavElement extends Components.ArrowNav, HTMLStencilElement {
+    }
+    var HTMLArrowNavElement: {
+        prototype: HTMLArrowNavElement;
+        new (): HTMLArrowNavElement;
     };
     interface HTMLContactFooterElement extends Components.ContactFooter, HTMLStencilElement {
     }
@@ -134,6 +143,7 @@ declare global {
         "app-portfolio": HTMLAppPortfolioElement;
         "app-root": HTMLAppRootElement;
         "app-skills": HTMLAppSkillsElement;
+        "arrow-nav": HTMLArrowNavElement;
         "contact-footer": HTMLContactFooterElement;
         "growing-tri": HTMLGrowingTriElement;
         "parallax-el": HTMLParallaxElElement;
@@ -160,6 +170,10 @@ declare namespace LocalJSX {
     interface AppSkills {
         "animeClass"?: string;
     }
+    interface ArrowNav {
+        "currentPage"?: number;
+        "onNavigate"?: (event: CustomEvent<any>) => void;
+    }
     interface ContactFooter {
     }
     interface GrowingTri {
@@ -184,11 +198,11 @@ declare namespace LocalJSX {
     interface RotatingTri {
         "animeClass"?: string;
         "color"?: string;
-        "dir"?: string;
         "height"?: number;
         "on"?: number;
         "origin"?: string;
         "over"?: number;
+        "side"?: string;
         "under"?: number;
     }
     interface IntrinsicElements {
@@ -198,6 +212,7 @@ declare namespace LocalJSX {
         "app-portfolio": AppPortfolio;
         "app-root": AppRoot;
         "app-skills": AppSkills;
+        "arrow-nav": ArrowNav;
         "contact-footer": ContactFooter;
         "growing-tri": GrowingTri;
         "parallax-el": ParallaxEl;
@@ -216,6 +231,7 @@ declare module "@stencil/core" {
             "app-portfolio": LocalJSX.AppPortfolio & JSXBase.HTMLAttributes<HTMLAppPortfolioElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "app-skills": LocalJSX.AppSkills & JSXBase.HTMLAttributes<HTMLAppSkillsElement>;
+            "arrow-nav": LocalJSX.ArrowNav & JSXBase.HTMLAttributes<HTMLArrowNavElement>;
             "contact-footer": LocalJSX.ContactFooter & JSXBase.HTMLAttributes<HTMLContactFooterElement>;
             "growing-tri": LocalJSX.GrowingTri & JSXBase.HTMLAttributes<HTMLGrowingTriElement>;
             "parallax-el": LocalJSX.ParallaxEl & JSXBase.HTMLAttributes<HTMLParallaxElElement>;
