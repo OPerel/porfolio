@@ -12,7 +12,7 @@ export class Tri {
   @Prop() on: number;
   @Prop() over: number;
   @Prop() under: number;
-  @Prop() dir: string;
+  @Prop() side: string;
   @Prop() origin: string;
   @Prop() height: number;
   @Prop() color: string;
@@ -27,7 +27,7 @@ export class Tri {
   }
 
   render() {
-    const borderStyles = this.dir === 'left' ?
+    const borderStyles = this.side === 'left' ?
     { borderRightWidth: '110vw', borderLeftWidth: '0' } : { borderLeftWidth: '110vw', borderRightWidth: '0' };
 
     return <div class={`rotating-tri ${this.animeClass}`} style={borderStyles}></div>;
