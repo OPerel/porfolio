@@ -20,20 +20,20 @@ nav {
       margin: 0;
       padding: 12px 0;
       text-align: center;
-      mix-blend-mode: luminosity;
+      mix-blend-mode: color-burn; // switch value with hover
       font-family: 'Share';
       font-size: 1rem;
       transition: 0.5s;
       background-color: #090a16;
 
+      &:hover {
+        cursor: pointer;
+        mix-blend-mode: luminosity;
+      }
+
       @media only screen and (min-width: $small-bp) {
         font-size: 1.2rem;
       }
-    }
-
-    li:hover {
-      cursor: pointer;
-      mix-blend-mode: color-burn;
     }
   }
 

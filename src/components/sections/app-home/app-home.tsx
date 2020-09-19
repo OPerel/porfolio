@@ -22,7 +22,7 @@ export class AppHome {
         </div>
 
         {/* <growing-tri color={`#226765`} cp={this.cp} page={0} on={0} over={30} under={0} growDir={`left`} /> */}
-        <rotating-tri color="#226765" dir="left" animeClass={this.animeClass} height={30} origin="bottom right" on={-10} under={30} over={0} />
+        <rotating-tri color="#226765" side="left" animeClass={this.animeClass} height={30} origin="bottom right" on={-10} under={30} over={0} />
         
       </section>
     );

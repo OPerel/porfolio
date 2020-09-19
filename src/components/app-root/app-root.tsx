@@ -58,12 +58,12 @@ export class AppRoot {
   };
 
   private getTranslateY(): void {
-    const scrollpos = this.currentPage === 4 ? -375 : (this.currentPage) * -100;
+    const scrollpos = this.currentPage === 4 ? -380 : (this.currentPage) * -100;
     this.root.style.setProperty('--scrollpos', `${scrollpos}`);
   }
 
   private getActiveNavLink(): void {
-    const activeNav = this.currentPage === 4 ? 80 : this.currentPage * 20;
+    const activeNav = this.currentPage * 20;
     this.root.style.setProperty('--activeNav', `${activeNav}`);
   }
 
@@ -73,18 +73,22 @@ export class AppRoot {
   }
 
   render() {
-    return ([
-      <header>
-        <app-nav />
-      </header>,
-      
-      <main>
-        <app-home animeClass={this.getAnimeClass(0)} />
-        <app-about animeClass={this.getAnimeClass(1)} />
-        <app-portfolio animeClass={this.getAnimeClass(2)} />
-        <app-skills animeClass={this.getAnimeClass(3)} />
-      </main>,
-      <contact-footer />
-    ]);
+    return (
+      <ion-app>
+        <header>
+          <app-nav />
+        </header>
+        
+        <main>
+          <app-home animeClass={this.getAnimeClass(0)} />
+          <app-about animeClass={this.getAnimeClass(1)} />
+          <app-portfolio animeClass={this.getAnimeClass(2)} />
+          <app-skills animeClass={this.getAnimeClass(3)} />
+        </main>,
+        <contact-footer />
+
+        <arrow-nav currentPage={this.currentPage}></arrow-nav>
+      </ion-app>
+    );
   }
 }
