@@ -26,6 +26,7 @@ export class ArrowNav {
         <ion-button
           class={this.currentPage === 0 ? 'hide' : ''}
           onClick={() => this.handleClick('up')}
+          disabled={this.currentPage === 0}
         >
           <ion-icon name="chevron-up"></ion-icon>
         </ion-button>
@@ -33,6 +34,7 @@ export class ArrowNav {
         <ion-button
           class={this.currentPage === 4 ? 'hide' : ''}
           onClick={() => this.handleClick('down')}
+          disabled={this.currentPage === 4}
         >
           <ion-icon name="chevron-down"></ion-icon>
         </ion-button>
