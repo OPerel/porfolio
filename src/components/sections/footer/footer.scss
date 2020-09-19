@@ -17,9 +17,35 @@ footer {
     display: grid;
     align-content: center;
     grid-template-columns: 1.5fr 2fr;
+    column-gap: 7%;
+    // column-rule: 1px solid black;
   }
 
   ion-item {
-    margin: 1.5%;
+    margin: 1.5% 0;
+    --color: $main-text-color;
+    --background: transparent;
+    --background-hover: #ffffff;
+    --highlight-color-focused: #E8BF9E;
+
+    transition: 0.3s;
   }
+}
+
+ion-item.item-has-focus {
+  background-color: #FFFFFF10 !important;
+}
+
+ion-item.item-has-focus > ion-label,
+ion-item.item-has-value > ion-label {
+  color: $secondary-text-color !important;
+}
+
+.item {
+  border-radius: 5px;
+}
+
+.item:hover {
+  transition: 0.3s;
+  background-color: #FFFFFF20;
 }
