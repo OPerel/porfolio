@@ -58,7 +58,7 @@ export class AppRoot {
   };
 
   private getTranslateY(): void {
-    const scrollpos = this.currentPage === 4 ? -375 : (this.currentPage) * -100;
+    const scrollpos = this.currentPage === 4 ? -380 : (this.currentPage) * -100;
     this.root.style.setProperty('--scrollpos', `${scrollpos}`);
   }
 

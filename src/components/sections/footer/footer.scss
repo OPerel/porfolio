@@ -10,6 +10,16 @@ footer {
   display: grid;
   align-content: center;
 
-  z-index: -2;
+  z-index: 0;
   background-color: #394b4b;
+
+  .contact {
+    display: grid;
+    align-content: center;
+    grid-template-columns: 1.5fr 2fr;
+  }
+
+  ion-item {
+    margin: 1.5%;
+  }
 }
