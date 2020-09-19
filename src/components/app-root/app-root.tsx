@@ -73,20 +73,22 @@ export class AppRoot {
   }
 
   render() {
-    return ([
-      <header>
-        <app-nav />
-      </header>,
-      
-      <main>
-        <app-home animeClass={this.getAnimeClass(0)} />
-        <app-about animeClass={this.getAnimeClass(1)} />
-        <app-portfolio animeClass={this.getAnimeClass(2)} />
-        <app-skills animeClass={this.getAnimeClass(3)} />
-      </main>,
-      <contact-footer />,
+    return (
+      <ion-app>
+        <header>
+          <app-nav />
+        </header>
+        
+        <main>
+          <app-home animeClass={this.getAnimeClass(0)} />
+          <app-about animeClass={this.getAnimeClass(1)} />
+          <app-portfolio animeClass={this.getAnimeClass(2)} />
+          <app-skills animeClass={this.getAnimeClass(3)} />
+        </main>,
+        <contact-footer />
 
-      <arrow-nav currentPage={this.currentPage}></arrow-nav>
-    ]);
+        <arrow-nav currentPage={this.currentPage}></arrow-nav>
+      </ion-app>
+    );
   }
 }

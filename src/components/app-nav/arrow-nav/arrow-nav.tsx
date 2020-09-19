@@ -23,17 +23,19 @@ export class ArrowNav {
     return (
       <div class="arrow-nav">
 
-        <ion-icon
-          name="chevron-up"
-          class={this.currentPage === 0 ? 'arrow-link hide' : 'arrow-link'}
+        <ion-button
+          class={this.currentPage === 0 ? 'hide' : ''}
           onClick={() => this.handleClick('up')}
-        ></ion-icon>
+        >
+          <ion-icon name="chevron-up"></ion-icon>
+        </ion-button>
 
-        <ion-icon
-          name="chevron-down"
-          class={this.currentPage === 4 ? 'arrow-link hide' : 'arrow-link'}
+        <ion-button
+          class={this.currentPage === 4 ? 'hide' : ''}
           onClick={() => this.handleClick('down')}
-        ></ion-icon>
+        >
+          <ion-icon name="chevron-down"></ion-icon>
+        </ion-button>
 
       </div>
     );
