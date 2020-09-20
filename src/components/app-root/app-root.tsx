@@ -85,7 +85,7 @@ export class AppRoot {
           <app-portfolio animeClass={this.getAnimeClass(2)} />
           <app-skills animeClass={this.getAnimeClass(3)} />
           {/* <rotating-tri color="#0D5452" side="left" animeClass={'on'} height={50} origin="top right" on={0} under={0} over={0} /> */}
-          <div class="end-tri"></div>
+          
         </main>
         
         <contact-footer />

@@ -1,6 +1,25 @@
 @import '../../../global/app.scss';
 
+.skills-wrapper {
+  position: relative;
+  height: 120vh;
+  overflow: hidden;
+}
+
 .app-skills {
   height: 100vh;
   background-color: $skills-background-color;
+  overflow: visible;
+}
+
+.end-tri {
+  position: absolute;
+  top: 100vh;
+  border-style: solid;
+  border-top-width: 20vh;
+  border-right-width: 110vw;
+  border-bottom-width: 0;
+  border-left-width: 0;
+  border-color: #0D5452 transparent transparent transparent;
+  z-index: -1;
 }
