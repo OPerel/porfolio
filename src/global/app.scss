@@ -95,7 +95,12 @@ p {
 }
 
 a {
+  color: $secondary-text-color;
   text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 section {
