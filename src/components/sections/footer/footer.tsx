@@ -1,11 +1,5 @@
 import { Component, h, State } from '@stencil/core';
 
-const initialFormState = {
-  name: '',
-  email: '',
-  message: ''
-}
-
 @Component({
   tag: 'contact-footer',
   styleUrl: 'footer.scss',
@@ -74,9 +68,7 @@ export class Footer {
                 onInput={(e: Event) => {this.handleInputChange(e)}}
               ></ion-textarea>
             </ion-item>
-            <ion-button
-              onClick={(e: Event) => this.handleSubmitForm(e)}
-            >
+            <ion-button onClick={(e: Event) => this.handleSubmitForm(e)}>
               Submit
             </ion-button>
           </form>
