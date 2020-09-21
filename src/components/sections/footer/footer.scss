@@ -20,6 +20,27 @@ footer {
     column-gap: 7%;
   }
 
+  .footer-icons {
+    margin: 20% 0;
+    width: 80%;
+    display: flex;
+    justify-content: space-evenly;
+
+    ion-icon {
+      position: relative;
+      font-size: 2.2rem;
+      padding: 0.8rem;
+      border-radius: 10%;
+      color: $main-text-color;
+
+      &:hover {
+        cursor: pointer;
+        color: $secondary-text-color;
+        background-color: #FFFFFF15;
+      }
+    }
+  }
+
   ion-item {
     margin: 1.5% 0;
     --color: $main-text-color;
@@ -57,13 +78,7 @@ footer {
     --color: $main-text-color;
     --background: #202e48; // #182d55;
     --background-hover: #599292;
-    // --transition: 3s;
     --box-shadow: none;
-
-    // &:hover {
-    //   background-color: #599292;
-    //   transition: 3s;
-    // }
   }
 }
 
