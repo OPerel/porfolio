@@ -4,12 +4,13 @@
  * 1. mobile layout and animations - SEE REAL MOBILE:
  *  - footer form
  *  - footer tri
- *  - gallery scrolling
- *  - upper nav arrow
+ *  - gallery scrolling - solved temporarily by css media query. 
+ *  - upper nav arrow - solved temporarily by css media query. 
  *  - browser bar scrolling up
  * 2. requestAnimationFrame
  * 5. contact form validation
  * 6. gallery
+ *  - scrollbar on Mozilla
  * 7. Skills-Contact tri 
  * 
  * 8. CONTENT
