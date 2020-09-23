@@ -2,7 +2,6 @@
 
 main {
   position: relative;
-  // margin-bottom: 75vh;
   transform: translateY(calc(var(--scrollpos) * 1vh));
   transition: $scroll;
   z-index: 1;

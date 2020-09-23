@@ -20,6 +20,34 @@ footer {
     column-gap: 7%;
   }
 
+  .footer-icons {
+    margin: 20% 0;
+    width: 80%;
+    display: flex;
+    justify-content: space-evenly;
+
+    a {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      border-radius: 10%;
+
+      &:hover {
+        background-color: #FFFFFF15;
+
+        ion-icon {
+          color: $secondary-text-color;
+        }
+      }
+    }
+
+    ion-icon {
+      font-size: 2.3rem;
+      padding: 0.8rem;
+      color: $main-text-color;
+    }
+  }
+
   ion-item {
     margin: 1.5% 0;
     --color: $main-text-color;
@@ -57,12 +85,14 @@ footer {
     --color: $main-text-color;
     --background: #202e48; // #182d55;
     --background-hover: #599292;
-    // --transition: 3s;
     --box-shadow: none;
-
-    // &:hover {
-    //   background-color: #599292;
-    //   transition: 3s;
-    // }
   }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-transition: color 9999s ease-out, background-color 9999s ease-out;
+          transition: color 9999s ease-out, background-color 9999s ease-out;
 }

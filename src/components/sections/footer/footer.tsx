@@ -38,6 +38,21 @@ export class Footer {
           <div>
             <h2>Contact Me!</h2>
             <p>bla bla bla bla bla bla bla ddaddaddad</p>
+          
+            <div class="footer-icons">
+              <a href="https://github.com/OPerel" target="_blank" class="ion-activatable">
+                <ion-icon name="logo-github"></ion-icon>
+                <ion-ripple-effect></ion-ripple-effect>
+              </a>
+              <a href="https://www.linkedin.com/in/ori-perelman-0144a5161/" target="_blank" class="ion-activatable">
+                <ion-icon name="logo-linkedin"></ion-icon>
+                <ion-ripple-effect></ion-ripple-effect>
+              </a>
+              <a href="mailto: oriperelman@gmail.com" class="ion-activatable"> 
+                <ion-icon name="mail-sharp"></ion-icon>
+                <ion-ripple-effect></ion-ripple-effect>
+              </a>
+            </div>
           </div>
 
           <form>
