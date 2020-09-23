@@ -3,9 +3,7 @@
  * 
  * 1. mobile layout and animations
  * 2. requestAnimationFrame
- * 3. navigation bar animation
- * 4. navigating arrows
- * 5. contact form
+ * 5. contact form validation
  * 6. gallery
  * 7. Skills-Contact tri 
  * 
