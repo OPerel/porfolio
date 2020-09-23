@@ -22,7 +22,6 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@ionic/core": "^5.3.3",
-    "jump.js": "^1.0.2"
+    "@ionic/core": "^5.3.3"
   }
 }

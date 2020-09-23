@@ -26,18 +26,25 @@ footer {
     display: flex;
     justify-content: space-evenly;
 
-    ion-icon {
+    a {
       position: relative;
-      font-size: 2.2rem;
-      padding: 0.8rem;
+      overflow: hidden;
+      display: flex;
       border-radius: 10%;
-      color: $main-text-color;
 
       &:hover {
-        cursor: pointer;
-        color: $secondary-text-color;
         background-color: #FFFFFF15;
+
+        ion-icon {
+          color: $secondary-text-color;
+        }
       }
+    }
+
+    ion-icon {
+      font-size: 2.3rem;
+      padding: 0.8rem;
+      color: $main-text-color;
     }
   }
 
