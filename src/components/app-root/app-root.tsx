@@ -1,7 +1,12 @@
 /**
  * TODO:
  * 
- * 1. mobile layout and animations
+ * 1. mobile layout and animations - SEE REAL MOBILE:
+ *  - footer form
+ *  - footer tri
+ *  - gallery scrolling
+ *  - upper nav arrow
+ *  - browser bar scrolling up
  * 2. requestAnimationFrame
  * 5. contact form validation
  * 6. gallery
