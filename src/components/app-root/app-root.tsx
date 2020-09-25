@@ -56,7 +56,8 @@ export class AppRoot {
   };
 
   private getTranslateY(): void {
-    const scrollpos = this.currentPage === 4 ? -380 : (this.currentPage) * -100;
+    const scrollpos = this.currentPage === 4 ? -395 : (this.currentPage) * -100;
+    console.log('scrollpos: ', scrollpos)
     this.root.style.setProperty('--scrollpos', `${scrollpos}`);
   }
 
@@ -68,6 +69,26 @@ export class AppRoot {
   private setAnimationDuration(): void {
     const sectionGap = Math.abs(this.prevPage - this.currentPage);
     this.root.style.setProperty('--sectionGap', `${sectionGap}`);
+  }
+
+  componentDidLoad() {
+
+    // disable animation on mobile keyboard open
+    let timer: NodeJS.Timeout;
+    window.addEventListener('resize', (e) => {
+      if (this.currentPage === 4) {
+        console.log('resize e: ', e);
+        this.root.querySelector('main').classList.add('keyboard-open');
+        if (timer) {
+          clearTimeout(timer)
+        };
+        timer = setTimeout(() => {
+          console.log('**** timeout ****')
+          this.root.querySelector('main').classList.remove('keyboard-open');
+          
+        }, 300)
+      }
+    })
   }
 
   render() {

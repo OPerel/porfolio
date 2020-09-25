@@ -6,3 +6,7 @@ main {
   transition: $scroll;
   z-index: 1;
 }
+
+.keyboard-open {
+  transition: none !important;
+}

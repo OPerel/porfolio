@@ -64,6 +64,7 @@ $large-bp: 1200px;
 $scroll: calc(calc(var(--sectionGap) / 1.4) * 1.8s) cubic-bezier(0.65, 0, 0.35, 1); /* easeInOutCubic --- calc(var(--sectionGap) * 1.s) */
 
 html, body {
+  position: relative;
   margin: 0px;
   padding: 0px;
   overflow: hidden;
