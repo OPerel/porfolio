@@ -16,8 +16,10 @@
  * 8. CONTENT
  */
 
-import { Component, h, State, Listen, Element } from '@stencil/core';
+import { Component, h, State, Listen, Element, Event, EventEmitter } from '@stencil/core';
 import { Navigation } from '../../helpers/navigation';
+
+import Xwiper from 'xwiper';
 
 @Component({
   tag: 'app-root',
@@ -28,10 +30,15 @@ export class AppRoot {
   @Element() root: HTMLElement;
   @State() currentPage: number;
   @State() prevPage: number;
+  @Event() navigate: EventEmitter;
+
+  private xwiper: Xwiper;
 
   constructor() {
     this.prevPage = 0
     this.currentPage = 0;
+
+    this.xwiper = new Xwiper('body');
   }
   
   @Listen('navigate')
@@ -78,6 +85,16 @@ export class AppRoot {
   }
 
   componentDidLoad() {
+
+    this.xwiper.onSwipeUp(() => {
+      console.log('swipe up');
+      this.navigate.emit(this.currentPage + 1);
+    });
+ 
+    this.xwiper.onSwipeDown(() => {
+      console.log('swipe down');
+      this.navigate.emit(this.currentPage - 1);
+    });
 
     // disable animation on mobile keyboard open
     let timer: NodeJS.Timeout;

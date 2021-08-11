@@ -166,6 +166,7 @@ declare namespace LocalJSX {
         "animeClass"?: string;
     }
     interface AppRoot {
+        "onNavigate"?: (event: CustomEvent<any>) => void;
     }
     interface AppSkills {
         "animeClass"?: string;

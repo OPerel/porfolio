@@ -23,6 +23,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@ionic/core": "^5.3.3"
+    "@ionic/core": "^5.3.3",
+    "xwiper": "^2.2.0"
   }
 }
