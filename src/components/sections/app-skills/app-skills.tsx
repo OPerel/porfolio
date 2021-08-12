@@ -19,9 +19,9 @@ export class AppSkills {
             <p>I've got SKILLS!</p>
           </div>
           <rotating-tri color="#023a38" side="left" animeClass={this.animeClass} height={130} origin="top left" on={0} under={-90} over={90} />
-          
+
         </section>
-        <div class="end-tri"></div>
+        <div class="end-tri" />
       </div>
     );
   }

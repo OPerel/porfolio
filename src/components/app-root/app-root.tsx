@@ -2,11 +2,9 @@
  * TODO:
  *
  * 1. mobile layout and animations - SEE REAL MOBILE:
- *  - footer form
- *  - footer tri
+ *  - footer tri ?
  *  - gallery scrolling - solved temporarily by css media query.
- *  - upper nav arrow - solved temporarily by css media query.
- *  - browser bar scrolling up
+ *  - upper nav arrow - solved temporarily by css media query. ?
  * 2. requestAnimationFrame
  * 5. contact form validation
  * 6. gallery
@@ -85,6 +83,7 @@ export class AppRoot {
       if (this.currentPage === 4) {
         console.log('resize e: ', e);
         this.root.querySelector('main').classList.add('keyboard-open');
+        this.root.querySelector('.contact').classList.toggle('keyboard');
         if (timer) {
           clearTimeout(timer)
         };

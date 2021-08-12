@@ -70,14 +70,15 @@ html, body {
   overflow: hidden;
   width: 100vw;
   height: 100vh;
-  font-family: 'Londrina Solid', cursive;
-  --ion-font-family: 'Londrina Solid', cursive;
+  font-family: 'Londrina Solid', sans-serif;
+  --ion-font-family: 'Londrina Solid', sans-serif;
   color: $main-text-color;
+  background-color: #394b4b;
 }
 
 h1, h2, h3, h4, h5, h6 {
   margin: 0.5em 0;
-  font-family: 'Londrina Solid', cursive;
+  font-family: 'Londrina Solid', sans-serif;
   font-size: 2rem;
 }
 

@@ -16,35 +16,61 @@ footer {
   .contact {
     display: grid;
     align-content: center;
-    grid-template-columns: 1.5fr 2fr;
-    column-gap: 7%;
+    grid-column: auto;
+
+    @media only screen and (min-width: $small-bp) {
+      grid-template-columns: 1.5fr 2fr;
+      column-gap: 7%;
+    }
   }
 
-  .footer-icons {
-    margin: 20% 0;
-    width: 80%;
+  .left-top {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    align-items: flex-end;
+    width: 100%;
 
-    a {
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      border-radius: 10%;
-
-      &:hover {
-        background-color: #FFFFFF15;
-
-        ion-icon {
-          color: $secondary-text-color;
-        }
-      }
+    @media only screen and (min-width: $small-bp) {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
     }
 
-    ion-icon {
-      font-size: 2.3rem;
-      padding: 0.8rem;
-      color: $main-text-color;
+    .footer-icons {
+      width: 20%;
+      display: flex;
+      justify-content: space-evenly;
+      flex-direction: column;
+
+      a {
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        width: 3.5rem;
+        border-radius: 10%;
+
+        &:hover {
+          background-color: #FFFFFF15;
+
+          ion-icon {
+            color: $secondary-text-color;
+          }
+        }
+      }
+
+      ion-icon {
+        font-size: 2.3rem;
+        margin: 0 auto;
+        padding: 0.5rem;
+        color: $main-text-color;
+      }
+
+      @media only screen and (min-width: $small-bp) {
+        width: 80%;
+        margin: 15% 0;
+        padding: 0.8rem;
+        flex-direction: row;
+      }
     }
   }
 
@@ -60,7 +86,7 @@ footer {
     &.item {
       border-radius: 5px;
     }
-    
+
     &.item:hover {
       transition: 0.3s;
       background-color: #FFFFFF15;
@@ -74,13 +100,20 @@ footer {
     &.item-has-focus {
       background-color: #FFFFFF10 !important;
     }
+
+    textarea {
+      line-height: 1.5em;
+      @media only screen and (min-width: $small-bp) {
+        line-height: 4em;
+      }
+    }
   }
 
   ion-button {
     display: block;
     margin: 5% auto;
     width: 50%;
-    font-family: 'Share';
+    font-family: 'Share', sans-serif;
     font-size: 1.3rem;
     --color: $main-text-color;
     --background: #202e48; // #182d55;
@@ -95,4 +128,8 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-transition: color 9999s ease-out, background-color 9999s ease-out;
           transition: color 9999s ease-out, background-color 9999s ease-out;
+}
+
+.keyboard {
+  padding-bottom: 35vh;
 }

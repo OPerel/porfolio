@@ -34,23 +34,25 @@ export class Footer {
     return (
       <footer>
         <div class="container contact">
-          
-          <div>
-            <h2>Contact Me!</h2>
-            <p>bla bla bla bla bla bla bla ddaddaddad</p>
-          
+
+          <div class="left-top">
+            <div>
+              <h2>Contact Me!</h2>
+              <p>I would love to hear from you.</p>
+            </div>
+
             <div class="footer-icons">
               <a href="https://github.com/OPerel" target="_blank" class="ion-activatable">
-                <ion-icon name="logo-github"></ion-icon>
-                <ion-ripple-effect></ion-ripple-effect>
+                <ion-icon name="logo-github" />
+                <ion-ripple-effect />
               </a>
               <a href="https://www.linkedin.com/in/ori-perelman-0144a5161/" target="_blank" class="ion-activatable">
-                <ion-icon name="logo-linkedin"></ion-icon>
-                <ion-ripple-effect></ion-ripple-effect>
+                <ion-icon name="logo-linkedin" />
+                <ion-ripple-effect />
               </a>
-              <a href="mailto: oriperelman@gmail.com" class="ion-activatable"> 
-                <ion-icon name="mail-sharp"></ion-icon>
-                <ion-ripple-effect></ion-ripple-effect>
+              <a href="mailto: oriperelman@gmail.com" class="ion-activatable">
+                <ion-icon name="mail-sharp" />
+                <ion-ripple-effect />
               </a>
             </div>
           </div>
@@ -63,7 +65,7 @@ export class Footer {
                 name="name"
                 value={name}
                 onInput={(e: Event) => {this.handleInputChange(e)}}
-              ></ion-input>
+              />
             </ion-item>
             <ion-item>
               <ion-label position="floating">Email</ion-label>
@@ -72,22 +74,22 @@ export class Footer {
                 name="email"
                 value={email}
                 onInput={(e: Event) => {this.handleInputChange(e)}}
-              ></ion-input>
+              />
             </ion-item>
             <ion-item>
               <ion-label position="floating">Message</ion-label>
               <ion-textarea
                 name="message"
-                rows={4}
+                enterkeyhint="done"
                 value={message}
                 onInput={(e: Event) => {this.handleInputChange(e)}}
-              ></ion-textarea>
+              />
             </ion-item>
             <ion-button onClick={(e: Event) => this.handleSubmitForm(e)}>
               Submit
             </ion-button>
           </form>
-        
+
         </div>
       </footer>
     );
