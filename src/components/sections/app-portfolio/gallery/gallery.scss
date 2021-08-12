@@ -1,57 +1,19 @@
 @import '../../../../global/app.scss';
 
-:host {
-  position: relative;
-  height: 40vh;
-  display: grid;
-  gap: 6%;
-  grid-template-columns: 0%;
-  grid-auto-flow: column;
-  grid-auto-columns: calc(66%);
-  overflow-x: auto;
-
-  &::-webkit-scrollbar {
-    display: none;
+ion-slides {
+  height: 60vh;
+  @media only screen and (min-width: $small-bp) {
+    height: 75vh;
   }
+}
+
+.gallery-container {
+  width: 95vw;
+  margin: 0 auto;
 
   @media only screen and (min-width: $small-bp) {
-    grid-template-columns: 3%;
+    width: 85vw;
   }
-
-  @media only screen and (min-width: $medium-bp) {
-    grid-auto-columns: calc(33%);
-    grid-template-columns: 9%;
-  }
-
-  @media only screen and (min-width: $large-bp) {
-    grid-auto-columns: calc(22.5%);
-    grid-template-columns: 12%;
-    gap: 3%
-  }
-}
-
-:host::before,
-:host::after {
-  content: "";
-  display: block;
-  width: 0.5vw;
-  height: 1px;
-
-  @media only screen and (min-width: $small-bp) {
-    width: 3.5vw;
-  }
-
-  @media only screen and (min-width: $medium-bp) {
-    width: 9vw;
-  }
-}
-
-:host::before {
-  left: 0;
-}
-
-:host::after {
-  right: 0;
 }
 
 

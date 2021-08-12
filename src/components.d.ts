@@ -43,6 +43,7 @@ export namespace Components {
         "under": number;
     }
     interface ProjectCard {
+        "slide": number;
     }
     interface ProjectsGallery {
     }
@@ -192,6 +193,7 @@ declare namespace LocalJSX {
         "under"?: number;
     }
     interface ProjectCard {
+        "slide"?: number;
     }
     interface ProjectsGallery {
     }

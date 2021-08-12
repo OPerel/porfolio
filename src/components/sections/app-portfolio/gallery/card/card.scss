@@ -2,32 +2,50 @@
 
 :host {
   height: 100%;
-  // width: 40vw;
-  background-color: $color-complement-1;
   border-radius: 5px;
-
-  // flex: 0 0 auto;
-
-  // margin: 0 0% 0 4%;
-  // display: inline-block;
-
   position: relative;
 }
 
-// :host::after {
-// // :host::before {
-//   content: "";
-//   display: block;
-//   position: absolute;
-//   // right: -2rem;
-//   width: 30px;
-//   height: 1px;
-// }
+ion-card {
+  margin: 0;
+  background-color: #033432;
+  text-align: start;
 
-// :host::before {
-//   left: -2rem;
-// }
+  ion-card-title {
+    --color: $secondary-text-color;
+    font-size: 2em;
 
-// :host::after {
-//   right: -2rem;
-// }
+    @media only screen and (min-width: $small-bp) {
+      font-size: 2em;
+    }
+  }
+
+  //ion-card-subtitle {
+  //  --color: #608D8B; //$color-complement-1;
+  //  font-size: 1.5em;
+  //}
+
+  ion-card-content {
+    color: $main-text-color;
+  }
+
+  ion-img {
+    padding: 1.5%;
+  }
+
+  ion-img::part(image){
+    height: 35%;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+  }
+}
+
+.card-buttons {
+  text-align: center;
+  margin: 1%;
+  ion-button {
+    --background: #5ca39d;
+    --color: #ffffff;
+  }
+}
+

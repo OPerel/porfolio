@@ -7,9 +7,8 @@
  *  - upper nav arrow - solved temporarily by css media query. ?
  * 2. requestAnimationFrame
  * 5. contact form validation
- * 6. gallery
- *  - scrollbar on Mozilla
- * 7. Skills-Contact tri
+ * 6. gallery ?
+ * 7. Skills-Contact tri ?
  *
  * 8. CONTENT
  */
