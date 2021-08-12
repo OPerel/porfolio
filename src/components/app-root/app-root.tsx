@@ -1,18 +1,18 @@
 /**
  * TODO:
- * 
+ *
  * 1. mobile layout and animations - SEE REAL MOBILE:
  *  - footer form
  *  - footer tri
- *  - gallery scrolling - solved temporarily by css media query. 
- *  - upper nav arrow - solved temporarily by css media query. 
+ *  - gallery scrolling - solved temporarily by css media query.
+ *  - upper nav arrow - solved temporarily by css media query.
  *  - browser bar scrolling up
  * 2. requestAnimationFrame
  * 5. contact form validation
  * 6. gallery
  *  - scrollbar on Mozilla
- * 7. Skills-Contact tri 
- * 
+ * 7. Skills-Contact tri
+ *
  * 8. CONTENT
  */
 
@@ -33,7 +33,7 @@ export class AppRoot {
     this.prevPage = 0
     this.currentPage = 0;
   }
-  
+
   @Listen('navigate')
   handleNavClicks(e: CustomEvent<number>) {
     const { cp, pp } = Navigation.scroll(e.detail);
@@ -91,7 +91,6 @@ export class AppRoot {
         timer = setTimeout(() => {
           console.log('**** timeout ****')
           this.root.querySelector('main').classList.remove('keyboard-open');
-          
         }, 300)
       }
     })
@@ -103,17 +102,16 @@ export class AppRoot {
         <header>
           <app-nav />
         </header>
-        
+
         <main>
           <app-home animeClass={this.getAnimeClass(0)} />
           <app-about animeClass={this.getAnimeClass(1)} />
           <app-portfolio animeClass={this.getAnimeClass(2)} />
           <app-skills animeClass={this.getAnimeClass(3)} />
         </main>
-        
         <contact-footer />
 
-        <arrow-nav currentPage={this.currentPage}></arrow-nav>
+        <arrow-nav currentPage={this.currentPage} />
       </ion-app>
     );
   }

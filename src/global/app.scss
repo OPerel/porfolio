@@ -26,7 +26,7 @@ $color-complement-2: #3E7A78;
 
 // not used so far
 // Main Primary color */
-$color-primary-0: #AA6B39;	
+$color-primary-0: #AA6B39;
 // $color-primary-1: #E8BF9E;
 $color-primary-2: #C99266;
 $color-primary-3: #8B4A16;
@@ -64,10 +64,11 @@ $large-bp: 1350px;
 $scroll: calc(calc(var(--sectionGap) / 1.4) * 1.8s) cubic-bezier(0.65, 0, 0.35, 1); /* easeInOutCubic --- calc(var(--sectionGap) * 1.s) */
 
 html, body {
-  position: relative;
-  margin: 0px;
-  padding: 0px;
+  position: fixed;
+  margin: 0;
+  padding: 0;
   overflow: hidden;
+  width: 100vw;
   height: 100vh;
   font-family: 'Londrina Solid', cursive;
   --ion-font-family: 'Londrina Solid', cursive;
@@ -118,7 +119,7 @@ section {
 .container {
   width: 90%;
   margin: 5% auto 0;
-  
+
   z-index: 2;
 
   @media only screen and (min-width: $small-bp) {
