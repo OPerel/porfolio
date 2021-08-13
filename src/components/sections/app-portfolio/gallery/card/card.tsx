@@ -7,47 +7,55 @@ import {Prop} from "@ionic/core/dist/types/stencil-public-runtime";
   shadow: true
 })
 export class Card {
-  @Prop() slide: number;
+  @Prop() project: any;
 
   render() {
+    const { images } = this.project;
+    const { desktop/*, mobile*/ } = images[0].resolutions;
+    console.log(desktop)
     return (
       <Host>
-        <ion-card button={true}>
-          <ion-img src="assets/israelmm.png" />
+        <ion-card>
+          <div class="img-wrapper">
+            <ion-img src={desktop.url} />
+          </div>
 
           <ion-card-header>
             <ion-card-title>
-              IsraelMM {this.slide}
+              {this.project.displayName}
             </ion-card-title>
-            {/*<ion-card-subtitle>*/}
-            {/*  Look at my project*/}
-            {/*</ion-card-subtitle>*/}
           </ion-card-header>
 
           <ion-card-content>
             <p style={{ fontSize: '1.4em' }}>
-              this is my first project. It is the most amazing project you have ever seen.
+              {this.project.summary}
             </p>
 
-            <div class="card-buttons">
-              <ion-button
-                fill="solid"
-                href="#"
-                rel="noopener noreferrer"
-              >
-                <ion-icon slot="start" name="rocket-outline" />
-                Demo
-              </ion-button>
-              <ion-button
-                fill="solid"
-                href="#"
-                rel="noopener noreferrer"
-              >
-                <ion-icon slot="start" name="logo-github" />
-                Source
-              </ion-button>
-            </div>
+            <ul>
+              {this.project.languages.map(l => (
+                <li>{l}</li>
+              ))}
+            </ul>
+
           </ion-card-content>
+          <div class="card-buttons">
+            <ion-button
+              fill="solid"
+              href="#"
+              rel="noopener noreferrer"
+            >
+              <ion-icon slot="start" name="rocket-outline" />
+              Live
+            </ion-button>
+            <ion-button
+              fill="solid"
+              href="#"
+              rel="noopener noreferrer"
+            >
+              <ion-icon slot="start" name="logo-github" />
+              Source
+            </ion-button>
+          </div>
         </ion-card>
       </Host>
     );

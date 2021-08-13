@@ -7,6 +7,7 @@ import { Component, h, Prop } from '@stencil/core';
 })
 export class AppPortfolio {
   @Prop() animeClass: string;
+  @Prop() projects: any[];
 
   render() {
     return (
@@ -15,7 +16,7 @@ export class AppPortfolio {
           <h2>Portfolio</h2>
         </div>
         <parallax-el animeClass={this.animeClass} on={0} over={-50} under={60}>
-          <projects-gallery />
+          <projects-gallery projects={this.projects} />
         </parallax-el>
       </section>
     );

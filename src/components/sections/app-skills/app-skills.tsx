@@ -8,6 +8,11 @@ import { Component, h, Prop } from '@stencil/core';
 export class AppSkills {
   @Prop() animeClass: string;
 
+  /**
+   * TODO:
+   * frontend, backend, DBs, ...?
+   */
+
   render() {
     return (
       <div class="skills-wrapper">

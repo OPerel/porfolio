@@ -25,6 +25,7 @@ export class AppRoot {
   @Element() root: HTMLElement;
   @State() currentPage: number;
   @State() prevPage: number;
+  @State() data: any;
 
   constructor() {
     this.prevPage = 0
@@ -85,7 +86,7 @@ export class AppRoot {
         this.root.querySelector('.contact').classList.toggle('keyboard');
         if (timer) {
           clearTimeout(timer)
-        };
+        }
         timer = setTimeout(() => {
           console.log('**** timeout ****')
           this.root.querySelector('main').classList.remove('keyboard-open');
@@ -94,17 +95,36 @@ export class AppRoot {
     })
   }
 
+  connectedCallback() {
+    // if (Build.isBrowser) {
+      console.log('running in client')
+      fetch('https://gitconnected.com/v1/portfolio/operel')
+        .then(res => res.json())
+        .then((res: any) => {
+          console.log('client res: ', res)
+          this.data = res;
+        })
+    // } else {
+    //   console.log('build time')
+    //   fetch('https://robohash.org/ssss')
+    //     .then(res => res.json())
+    //     .then((res: any) => {
+    //       console.log('build res: ', res)
+    //       this.test = res;
+    //     })
+    // }
+  }
+
   render() {
     return (
       <ion-app>
         <header>
           <app-nav />
         </header>
-
         <main>
           <app-home animeClass={this.getAnimeClass(0)} />
           <app-about animeClass={this.getAnimeClass(1)} />
-          <app-portfolio animeClass={this.getAnimeClass(2)} />
+          <app-portfolio animeClass={this.getAnimeClass(2)} projects={this.data?.projects || []} />
           <app-skills animeClass={this.getAnimeClass(3)} />
         </main>
         <contact-footer />

@@ -1,4 +1,5 @@
 import { Component, h, Host, Element } from '@stencil/core';
+import {Prop} from "@ionic/core/dist/types/stencil-public-runtime";
 
 @Component({
   tag: 'projects-gallery',
@@ -7,6 +8,7 @@ import { Component, h, Host, Element } from '@stencil/core';
 })
 export class Gallery {
   @Element() el: HTMLElement;
+  @Prop() projects: any[];
   private sliderOptions = {
     mousewheel: {
       forceToAxis: true
@@ -21,6 +23,9 @@ export class Gallery {
         spaceBetween: 10
       },
       780: {
+        mousewheel: {
+          forceToAxis: true
+        },
         slidesPerView: 2.4,
         spaceBetween: 30
       }
@@ -44,21 +49,11 @@ export class Gallery {
       <Host>
         <div class="gallery-container">
           <ion-slides pager={true} options={this.sliderOptions}>
-            <ion-slide>
-              <project-card slide={1}/>
-            </ion-slide>
-            <ion-slide>
-              <project-card slide={2}/>
-            </ion-slide>
-            <ion-slide>
-              <project-card slide={3}/>
-            </ion-slide>
-            <ion-slide>
-              <project-card slide={4}/>
-            </ion-slide>
-            <ion-slide>
-              <project-card slide={5}/>
-            </ion-slide>
+            {this.projects.map(project => (
+              <ion-slide>
+                <project-card project={project}/>
+              </ion-slide>
+            ))}
           </ion-slides>
         </div>
       </Host>
