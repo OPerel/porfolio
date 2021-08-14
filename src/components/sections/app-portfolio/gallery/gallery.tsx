@@ -19,7 +19,7 @@ export class Gallery {
     // },
     breakpoints: {
       320: {
-        slidesPerView: 1.4,
+        slidesPerView: 1.15,
         spaceBetween: 10
       },
       780: {

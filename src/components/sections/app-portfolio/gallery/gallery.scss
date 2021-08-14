@@ -1,18 +1,18 @@
 @import '../../../../global/app.scss';
 
 ion-slides {
-  height: 60vh;
-  @media only screen and (min-width: $small-bp) {
-    height: 75vh;
-  }
+  height: 75vh;
+  //@media only screen and (min-width: $small-bp) {
+  //  height: 75vh;
+  //}
 }
 
 .gallery-container {
-  width: 95vw;
+  width: 96vw;
   margin: 0 auto;
 
   @media only screen and (min-width: $small-bp) {
-    width: 85vw;
+    width: 90vw;
   }
 }
 

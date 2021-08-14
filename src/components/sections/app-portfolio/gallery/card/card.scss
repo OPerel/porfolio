@@ -1,6 +1,7 @@
 @import '../../../../../global/app.scss';
 
 :host {
+  width: 100%;
   height: 100%;
   border-radius: 5px;
   position: relative;
@@ -8,54 +9,110 @@
 
 ion-card {
   position: relative;
-  height: 80%;
+  height: 90%;
   margin: 0;
-  background-color: #033432;
+  background-color: transparent; //#02B4FA42; #033432
   text-align: start;
+  box-shadow: 2px 10px 15px -6px rgb(255 254 254 / 10%);
 
-  ion-card-title {
-    color: #ffc57d; // $main-text-color;
-    font-size: 2em;
+  @media only screen and (min-width: $small-bp) {
+    height: 85%;
+  }
+
+  ion-card-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 32%;
+    padding: 0 2%;
+    text-align: center;
 
     @media only screen and (min-width: $small-bp) {
-      font-size: 2em;
+      height: 42%;
     }
+
+    ion-card-title {
+      color: #fff; //#ffc57d;
+      font-size: 2em;
+
+      @media only screen and (min-width: $small-bp) {
+        font-size: 2em;
+      }
+    }
+
+    ion-card-subtitle {
+      color: #ffc57d; // $main-text-color;
+      font-size: 1.6em;
+    }
+  }
+
+  .role {
+    margin: 0;
+    padding: 0 2%;
+    font-size: 1.3em;
   }
 
   ion-card-content {
-    color: $main-text-color;
-  }
-
-  .img-wrapper {
-    height: 100px;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 55%;
+    color: #fff; //$main-text-color;
 
     @media only screen and (min-width: $small-bp) {
-      height: 200px;
+      height: 40%;
     }
   }
 
-  ion-img {
-    padding: 1.5%;
+  .img-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    overflow: hidden;
+    background-blend-mode: overlay;
+    background-color: #01212c;
+    background-size: cover;
+    z-index: -1;
+
+    @media only screen and (min-width: $small-bp) {
+      height: 40%;
+    }
   }
 
-  ion-img::part(image){
-    //height: 400px;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
+  ul {
+    margin: 0.5em 0;
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    padding: 0;
+    list-style: none;
+    font-size: 0.9em;
+
+    li {
+      padding-right: 5%;
+      font-family: 'Share', sans-serif;
+      color: $main-text-color;
+    }
   }
 }
 
 .card-buttons {
   position: absolute;
   bottom: 0;
+  right: 1px;
   width: 100%;
-  text-align: center;
+  text-align: end;
   margin: 1%;
   ion-button {
-    margin: 1% 2%;
-    --background: #5ca39d;
+    margin: 1% 0;
+    --background-hover: rgba(255, 255, 255, 0.1);
+    --background-hover-opacity: 0.1;
+    //--background: #5ca39d;
     --color: #ffffff;
+    --color-hover: #ffc57d;
   }
 }
 
