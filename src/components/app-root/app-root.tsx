@@ -66,7 +66,7 @@ export class AppRoot {
   }
 
   private getActiveNavLink(): void {
-    const activeNav = this.currentPage * 20;
+    const activeNav = this.currentPage * 8;
     this.root.style.setProperty('--activeNav', `${activeNav}`);
   }
 
