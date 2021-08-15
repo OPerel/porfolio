@@ -39,6 +39,7 @@ export namespace Components {
     }
     interface ParallaxEl {
         "animeClass": string;
+        "enterFrom"?: number;
         "on": number;
         "over": number;
         "under": number;
@@ -191,6 +192,7 @@ declare namespace LocalJSX {
     }
     interface ParallaxEl {
         "animeClass"?: string;
+        "enterFrom"?: number;
         "on"?: number;
         "over"?: number;
         "under"?: number;
