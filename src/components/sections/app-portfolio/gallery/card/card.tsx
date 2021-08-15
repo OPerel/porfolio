@@ -7,49 +7,61 @@ import {Prop} from "@ionic/core/dist/types/stencil-public-runtime";
   shadow: true
 })
 export class Card {
-  @Prop() slide: number;
+  @Prop() project: any;
 
   render() {
-    return (
+    const { images, libraries, languages, roles } = this.project;
+    const { url } = images[0].resolutions.desktop;
+    return this.project ? (
       <Host>
-        <ion-card button={true}>
-          <ion-img src="assets/israelmm.png" />
-
+        <ion-card>
+          <div class="img-wrapper" style={{backgroundImage: `url('${url}')` }} />
           <ion-card-header>
             <ion-card-title>
-              IsraelMM {this.slide}
+              {this.project.displayName}
             </ion-card-title>
-            {/*<ion-card-subtitle>*/}
-            {/*  Look at my project*/}
-            {/*</ion-card-subtitle>*/}
+            <ion-card-subtitle>
+              {this.project.summary}
+            </ion-card-subtitle>
           </ion-card-header>
 
-          <ion-card-content>
-            <p style={{ fontSize: '1.4em' }}>
-              this is my first project. It is the most amazing project you have ever seen.
-            </p>
+          {roles.length > 0 && <p class="role">{roles}</p>}
 
-            <div class="card-buttons">
-              <ion-button
-                fill="solid"
-                href="#"
-                rel="noopener noreferrer"
-              >
-                <ion-icon slot="start" name="rocket-outline" />
-                Demo
-              </ion-button>
-              <ion-button
-                fill="solid"
-                href="#"
-                rel="noopener noreferrer"
-              >
-                <ion-icon slot="start" name="logo-github" />
-                Source
-              </ion-button>
+          <ion-card-content style={{ fontSize: '1.3em' }}>
+            <div class="project-description">
+              {this.project.description}
             </div>
+            <ul>
+              {libraries.concat(languages).map((t: string) => <li>{t}</li>)}
+            </ul>
           </ion-card-content>
+
+          <div class="card-buttons">
+            <ion-button
+              fill="clear"
+              href={this.project.url}
+              target="__blank"
+              rel="noopener noreferrer"
+              disabled={!this.project.githubUrl}
+            >
+              <ion-ripple-effect />
+              <ion-icon slot="start" name="globe-outline"/>
+              Live
+            </ion-button>
+            <ion-button
+              fill="clear"
+              href={this.project.githubUrl}
+              target="__blank"
+              rel="noopener noreferrer"
+              disabled={!this.project.githubUrl}
+            >
+              <ion-ripple-effect />
+              <ion-icon slot="start" name="logo-github"/>
+              Source
+            </ion-button>
+          </div>
         </ion-card>
       </Host>
-    );
+    ) : <h2>Loading...</h2>;
   }
 }

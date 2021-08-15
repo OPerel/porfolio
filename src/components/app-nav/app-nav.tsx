@@ -9,7 +9,7 @@ export class AppNav {
   @State() current: number;
   @State() prev: number;
 
-  @Event() navigate: EventEmitter<number>; 
+  @Event() navigate: EventEmitter<number>;
 
   constructor() {
     this.current = 0;
@@ -24,11 +24,11 @@ export class AppNav {
     return (
       <nav>
         <ul>
-          <div class="active-bg"></div>
+          <div class="active-bg" />
           <hr />
           <li id="h" class={this.current === 0 ? 'active' : ''} onClick={() => this.handleNavClick(0)}>
             Home
-            
+
           </li>
           <li id="a" class={this.current === 1 ? 'active' : ''} onClick={() => this.handleNavClick(1)}>
             About

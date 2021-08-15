@@ -16,6 +16,7 @@ export namespace Components {
     }
     interface AppPortfolio {
         "animeClass": string;
+        "projects": any[];
     }
     interface AppRoot {
     }
@@ -38,14 +39,16 @@ export namespace Components {
     }
     interface ParallaxEl {
         "animeClass": string;
+        "enterFrom"?: number;
         "on": number;
         "over": number;
         "under": number;
     }
     interface ProjectCard {
-        "slide": number;
+        "project": any;
     }
     interface ProjectsGallery {
+        "projects": any[];
     }
     interface RotatingTri {
         "animeClass": string;
@@ -165,6 +168,7 @@ declare namespace LocalJSX {
     }
     interface AppPortfolio {
         "animeClass"?: string;
+        "projects"?: any[];
     }
     interface AppRoot {
     }
@@ -188,14 +192,16 @@ declare namespace LocalJSX {
     }
     interface ParallaxEl {
         "animeClass"?: string;
+        "enterFrom"?: number;
         "on"?: number;
         "over"?: number;
         "under"?: number;
     }
     interface ProjectCard {
-        "slide"?: number;
+        "project"?: any;
     }
     interface ProjectsGallery {
+        "projects"?: any[];
     }
     interface RotatingTri {
         "animeClass"?: string;

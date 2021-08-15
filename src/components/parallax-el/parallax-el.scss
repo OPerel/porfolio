@@ -1,7 +1,17 @@
 @import '../../global/app.scss';
 
+@keyframes enter {
+  0% {
+    transform: translateY(calc(var(--enterFrom) * 1vh));
+  }
+  100% {
+    transform: translateY(calc(var(--on) * 1vh));
+  }
+}
+
 div {
   transition: $scroll;
+  animation: enter 1s;
 }
 
 .over {
