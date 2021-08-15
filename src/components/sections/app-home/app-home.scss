@@ -5,8 +5,8 @@ app-home {
 }
 .app-home {
   //position: relative;
-  background-color: #061c24;//#113433;
-  color: $secondary-text-color;
+  background-color: #090a16;// #061c24;//#113433;
+  //color: $secondary-text-color;
   z-index: 0;
 
   .home-container {
@@ -14,13 +14,65 @@ app-home {
     margin: 0 auto;
 
     h1 {
-      margin: 1% 0;
+      margin: 0;
       font-size: 3rem;
     }
 
-    h3 {
+    h1, h2 {
+      font-weight: 100;
+    }
+
+    p {
       margin: 0;
-      font-weight: lighter;
+      font-family: 'Share', sans-serif;
+    }
+
+    h1, span.header, span.header-on-hover {
+      color: $secondary-text-color;
+    }
+
+    h2 {
+      min-width: 25em;
+      min-height: 36px;
+      margin: 2% 0;
+    }
+
+    span.header-on-hover{
+      display: inline-flex;
+      justify-content: space-between;
+      width: 5.5em;
+      cursor: text;
+      z-index: 3;
+    }
+    span.header-on-hover:hover span.header {
+      display: none;
+    }
+    span.header-on-hover:hover:before {
+      content: "Philosopher";
+    }
+    span.header-on-hover:hover div.rotating-wrapper {
+      display: inline-block;
+    }
+    span.header-on-hover:hover img.rotating {
+      display: inline-block;
+    }
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    div.rotating-wrapper {
+      display: none;
+    }
+    img.rotating {
+      display: none;
+      width: 20px;
+      height: 20px;
+      animation: rotate 7s linear 0s infinite;
+      vertical-align: middle;
     }
 
     @media only screen and (min-width: $small-bp) {
@@ -32,36 +84,27 @@ app-home {
       h1 {
         font-size: 5rem;
       }
+      h2 {
+        min-width: fit-content;
+      }
+    }
+  }
+  img.bg {
+    position: absolute;
+    top: 40vh;
+    left: -15vw;
+    transform: rotate(250deg);
+    opacity: 0.1;
+    height: 60vh;
+
+    @media only screen and (min-width: $small-bp) {
+      top: 10vh;
+      left: 0;
+      height: 90vh;
+      transform: rotate(230deg);
     }
   }
 }
 
-//.home-background {
-//  position: relative;
-  //bottom: 0;
-  //height: 100vh;
-  //width: 100vw;
-  //display: grid;
-  //align-content: center;
-  //transform: rotate(-50deg);
-  //background-image: url('../../../assets/bg.jpg');
-  //background-size: cover;
-  //background-blend-mode: overlay;
-
-  //color: $secondary-text-color;
-  //background-color: #113433; //#113433eb
-  //z-index: 2;
-
-  img {
-    position: absolute;
-    //left: 0;
-    //top: 35vh;
-    bottom: -101vh;
-    opacity: 0.15;
-    //width: 75vw;
-    //height: 75vh;
-    //z-index: 2;
-  }
-//}
 
 
