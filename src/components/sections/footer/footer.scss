@@ -50,10 +50,12 @@ footer {
         border-radius: 10%;
 
         &:hover {
-          background-color: #FFFFFF15;
+          //background-color: #FFFFFF15;
 
           ion-icon {
             color: $secondary-text-color;
+            transform: translateY(-5px);
+            transition: .4s;
           }
         }
       }
@@ -63,6 +65,7 @@ footer {
         margin: 0 auto;
         padding: 0.5rem;
         color: $main-text-color;
+        transition: .4s;
       }
 
       @media only screen and (min-width: $small-bp) {
@@ -70,6 +73,7 @@ footer {
         margin: 15% 0;
         padding: 0.8rem;
         flex-direction: row;
+        border-top: 0.5px solid;
       }
     }
   }
@@ -78,7 +82,7 @@ footer {
     margin: 1.5% 0;
     --color: $main-text-color;
     --background: transparent;
-    --highlight-color-focused: #E8BF9E;
+    --highlight-color-focused: #{$secondary-text-color}; // #E8BF9E;
     font-size: 1.2rem;
 
     transition: 0.3s;
@@ -112,13 +116,35 @@ footer {
   ion-button {
     display: block;
     margin: 5% auto;
-    width: 50%;
+    width: 30%;
+    border: 0.5px solid;
     font-family: 'Share', sans-serif;
     font-size: 1.3rem;
-    --color: $main-text-color;
-    --background: #202e48; // #182d55;
-    --background-hover: #599292;
+    --color: #{$secondary-text-color};
+    --background: transparent; // #202e48; // #182d55;
+    --background-hover: #{$secondary-text-color}aa; // #599292;
     --box-shadow: none;
+  }
+
+  p.credit {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    margin: 0;
+    padding: 1.8% 0;
+    text-align: center;
+    font-size: 1.2em;
+    font-family: 'Share', sans-serif;
+
+    a {
+      color: #{$main-text-color};
+      transition: .3s;
+
+      &:hover {
+        color: #{$secondary-text-color};
+        transition: .3s;
+      }
+    }
   }
 }
 
