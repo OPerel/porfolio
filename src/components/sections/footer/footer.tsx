@@ -37,7 +37,7 @@ export class Footer {
 
           <div class="left-top">
             <div>
-              <h2>Contact Me!</h2>
+              <h2>Get In Touch</h2>
               <p>I would love to hear from you.</p>
             </div>
 
