@@ -45,7 +45,7 @@ export class Gallery {
   }
 
   render() {
-    return (
+    return this.projects ? (
       <Host>
         <div class="gallery-container">
           <ion-slides pager={true} options={this.sliderOptions}>
@@ -57,7 +57,7 @@ export class Gallery {
           </ion-slides>
         </div>
       </Host>
-    );
+    ) : null;
   }
 
 }
