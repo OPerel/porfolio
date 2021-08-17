@@ -13,7 +13,7 @@
  * 8. CONTENT
  */
 
-import { Component, h, State, Listen, Element } from '@stencil/core';
+import { Component, h, State, Listen, Element/*, Build*/ } from '@stencil/core';
 import { Navigation } from '../../helpers/navigation';
 
 @Component({
@@ -26,10 +26,12 @@ export class AppRoot {
   @State() currentPage: number;
   @State() prevPage: number;
   @State() data: any;
+  @State() isLoading: boolean;
 
   constructor() {
     this.prevPage = 0
     this.currentPage = 0;
+    this.isLoading = true;
   }
 
   @Listen('navigate')
@@ -76,7 +78,7 @@ export class AppRoot {
   }
 
   componentDidLoad() {
-
+    console.log('componentDidLoad')
     // disable animation on mobile keyboard open
     let timer: NodeJS.Timeout;
     window.addEventListener('resize', (e) => {
@@ -92,19 +94,20 @@ export class AppRoot {
           this.root.querySelector('main').classList.remove('keyboard-open');
         }, 300)
       }
-    })
+    });
   }
 
-  connectedCallback() {
-    // if (Build.isBrowser) {
-      console.log('running in client')
+  async componentWillLoad() {
+    console.log('componentWillLoad')
+    // if (!Build.isBrowser) {
       fetch('https://gitconnected.com/v1/portfolio/operel')
         .then(res => res.json())
         .then((res: any) => {
-          console.log('client res: ', res)
-          this.data = res;
+          console.log('res: ', res)
+          this.data = { ...this.data, ...res };
         })
-    // } else {
+    // }
+    // else {
     //   console.log('build time')
     //   fetch('https://robohash.org/ssss')
     //     .then(res => res.json())
@@ -118,18 +121,24 @@ export class AppRoot {
   render() {
     return (
       <ion-app>
-        <header>
-          <app-nav />
-        </header>
-        <main>
-          <app-home animeClass={this.getAnimeClass(0)} />
-          <app-about animeClass={this.getAnimeClass(1)} />
-          <app-portfolio animeClass={this.getAnimeClass(2)} projects={this.data?.projects || []} />
-          <app-skills animeClass={this.getAnimeClass(3)} />
-        </main>
-        <contact-footer />
+        {this.isLoading ? (
+          <app-loader setDoneLoading={() => {
+            this.isLoading = false;
+          }}/>
+        ) : ([
+          <header>
+            <app-nav />
+          </header>,
+          <main>
+            <app-home animeClass={this.getAnimeClass(0)} />
+            <app-about animeClass={this.getAnimeClass(1)} />
+            <app-portfolio animeClass={this.getAnimeClass(2)} projects={this.data?.projects || []} />
+            <app-skills animeClass={this.getAnimeClass(3)} />
+          </main>,
+          <contact-footer />,
 
-        <arrow-nav currentPage={this.currentPage} />
+          <arrow-nav currentPage={this.currentPage} />
+        ])}
       </ion-app>
     );
   }

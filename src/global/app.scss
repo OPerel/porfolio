@@ -13,7 +13,7 @@
 
 $main-text-color: #AED6D4;
 $secondary-text-color: #f36344; //#E8BF9E; //#f57c62;
-
+$main-background-color: #090a16;
 $about-background-color: #226765;
 $skills-background-color: #0D5452;
 $portfolio-background-color: #151e1e;
@@ -73,7 +73,7 @@ html, body {
   font-family: 'Londrina Solid', sans-serif;
   --ion-font-family: 'Londrina Solid', sans-serif;
   color: $main-text-color;
-  background-color: #394b4b;
+  background-color: $main-background-color;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -113,8 +113,7 @@ section {
   height: 100vh;
   width: 100%;
   position: relative;
-  overflow: inherit;
-  z-index: 1;
+  overflow: hidden;
 }
 
 .container {

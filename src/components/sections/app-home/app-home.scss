@@ -1,11 +1,12 @@
 @import '../../../global/app.scss';
 
 .app-home {
-  background-color: #090a16;// #061c24;//#113433;
+  background-color: $main-background-color;
 
   .home-container {
     width: 90%;
     margin: 0 auto;
+    z-index: 2;
 
     h1 {
       margin: 0;
