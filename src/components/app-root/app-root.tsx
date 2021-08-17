@@ -13,7 +13,7 @@
  * 8. CONTENT
  */
 
-import { Component, h, State, Listen, Element } from '@stencil/core';
+import { Component, h, State, Listen, Element/*, Build*/ } from '@stencil/core';
 import { Navigation } from '../../helpers/navigation';
 
 @Component({
@@ -76,7 +76,7 @@ export class AppRoot {
   }
 
   componentDidLoad() {
-
+    console.log('componentDidLoad')
     // disable animation on mobile keyboard open
     let timer: NodeJS.Timeout;
     window.addEventListener('resize', (e) => {
@@ -95,16 +95,17 @@ export class AppRoot {
     })
   }
 
-  connectedCallback() {
-    // if (Build.isBrowser) {
-      console.log('running in client')
+  async componentWillLoad() {
+    console.log('componentWillLoad')
+    // if (!Build.isBrowser) {
       fetch('https://gitconnected.com/v1/portfolio/operel')
         .then(res => res.json())
         .then((res: any) => {
-          console.log('client res: ', res)
-          this.data = res;
+          console.log('res: ', res)
+          this.data = { ...this.data, ...res };
         })
-    // } else {
+    // }
+    // else {
     //   console.log('build time')
     //   fetch('https://robohash.org/ssss')
     //     .then(res => res.json())
