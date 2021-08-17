@@ -5,7 +5,7 @@
   "description": "Stencil App Starter",
   "scripts": {
     "build": "stencil build",
-    "build:s": "stencil build --prerender",
+    "build:s": "stencil build --prerender && npm run build:p",
     "build:p": "stencil prerender dist/hydrate/index.js",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --e2e test.e2e.ts",
@@ -16,10 +16,10 @@
     "@stencil/core": "^2.6.0",
     "@stencil/router": "^1.0.1",
     "@stencil/sass": "^1.4.1",
-    "@types/jest": "^27.0.1",
+    "@types/jest": "^26.0.24",
     "@types/puppeteer": "1.19.0",
-    "jest": "^27.0.6",
-    "jest-cli": "^27.0.6",
+    "jest": "^26.6.3",
+    "jest-cli": "^26.6.3",
     "puppeteer": "1.19.0"
   },
   "license": "MIT",

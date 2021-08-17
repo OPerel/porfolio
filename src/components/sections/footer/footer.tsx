@@ -91,6 +91,7 @@ export class Footer {
           </form>
 
         </div>
+        <p class="credit"><a href="#">Designed and developed by Ori Perelman &copy; {new Date().getFullYear()}</a></p>
       </footer>
     );
   }

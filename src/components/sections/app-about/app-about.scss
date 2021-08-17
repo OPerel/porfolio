@@ -1,5 +1,43 @@
 @import '../../../global/app.scss';
 
 .app-about {
-  background-color: $about-background-color;
+  background-color: #0e3634;// #001715; // $about-background-color;
+
+  .about {
+    display: grid;
+    grid-template-columns: 3.5fr 1fr 0.2fr;
+    justify-items: center;
+
+    .my-image {
+      border-radius: 3px;
+      width: 200px;
+      height: 266px;
+      background-image: url('../../../assets/IMG_2548-thumbnail.webp');
+      background-blend-mode: overlay;
+      background-color: rgba(24, 2, 2, 0.45);
+      transition: .3s;
+
+      &:hover {
+        background-color: rgba(99, 11, 11, 0.25);
+        transition: .3s;
+      }
+    }
+
+    div.left-line {
+      width: 2px;
+      height: 260px;
+      //margin: 0;
+      //justify-self: self-start;
+      //align-self: center;
+      background-color: #{$secondary-text-color};
+      z-index: -1;
+    }
+
+    div.bottom-line {
+      width: 95%;
+      height: 2px;
+      margin: 2% 0 0 0;
+      background-color: #{$secondary-text-color};
+    }
+  }
 }

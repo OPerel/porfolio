@@ -42,8 +42,8 @@ ion-card {
     }
 
     ion-card-subtitle {
-      color: #ffc57d; // $main-text-color;
-      font-size: 1.6em;
+      color: #{$secondary-text-color};//#ffc57d;
+      font-size: 1.7em;
     }
   }
 
@@ -112,7 +112,7 @@ ion-card {
     --background-hover-opacity: 0.1;
     //--background: #5ca39d;
     --color: #ffffff;
-    --color-hover: #ffc57d;
+    --color-hover: #{$secondary-text-color};//#ffc57d;
   }
 }
 
