@@ -5,7 +5,7 @@
   "description": "Stencil App Starter",
   "scripts": {
     "build": "stencil build",
-    "build:s": "stencil build --prerender --verbose",
+    "build:s": "stencil build --prerender && npm run build:p",
     "build:p": "stencil prerender dist/hydrate/index.js",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --e2e test.e2e.ts",
