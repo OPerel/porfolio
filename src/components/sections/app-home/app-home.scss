@@ -1,7 +1,7 @@
 @import '../../../global/app.scss';
 
 .app-home {
-  background-color: #090a16;// #061c24;//#113433;
+  background-color: $main-background-color;
 
   .home-container {
     width: 90%;

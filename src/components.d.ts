@@ -12,6 +12,9 @@ export namespace Components {
     interface AppHome {
         "animeClass": string;
     }
+    interface AppLoader {
+        "setDoneLoading": () => void;
+    }
     interface AppNav {
     }
     interface AppPortfolio {
@@ -73,6 +76,12 @@ declare global {
     var HTMLAppHomeElement: {
         prototype: HTMLAppHomeElement;
         new (): HTMLAppHomeElement;
+    };
+    interface HTMLAppLoaderElement extends Components.AppLoader, HTMLStencilElement {
+    }
+    var HTMLAppLoaderElement: {
+        prototype: HTMLAppLoaderElement;
+        new (): HTMLAppLoaderElement;
     };
     interface HTMLAppNavElement extends Components.AppNav, HTMLStencilElement {
     }
@@ -143,6 +152,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "app-about": HTMLAppAboutElement;
         "app-home": HTMLAppHomeElement;
+        "app-loader": HTMLAppLoaderElement;
         "app-nav": HTMLAppNavElement;
         "app-portfolio": HTMLAppPortfolioElement;
         "app-root": HTMLAppRootElement;
@@ -162,6 +172,9 @@ declare namespace LocalJSX {
     }
     interface AppHome {
         "animeClass"?: string;
+    }
+    interface AppLoader {
+        "setDoneLoading"?: () => void;
     }
     interface AppNav {
         "onNavigate"?: (event: CustomEvent<number>) => void;
@@ -216,6 +229,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "app-about": AppAbout;
         "app-home": AppHome;
+        "app-loader": AppLoader;
         "app-nav": AppNav;
         "app-portfolio": AppPortfolio;
         "app-root": AppRoot;
@@ -235,6 +249,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "app-about": LocalJSX.AppAbout & JSXBase.HTMLAttributes<HTMLAppAboutElement>;
             "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
+            "app-loader": LocalJSX.AppLoader & JSXBase.HTMLAttributes<HTMLAppLoaderElement>;
             "app-nav": LocalJSX.AppNav & JSXBase.HTMLAttributes<HTMLAppNavElement>;
             "app-portfolio": LocalJSX.AppPortfolio & JSXBase.HTMLAttributes<HTMLAppPortfolioElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;

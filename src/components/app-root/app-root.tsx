@@ -26,10 +26,12 @@ export class AppRoot {
   @State() currentPage: number;
   @State() prevPage: number;
   @State() data: any;
+  @State() isLoading: boolean;
 
   constructor() {
     this.prevPage = 0
     this.currentPage = 0;
+    this.isLoading = true;
   }
 
   @Listen('navigate')
@@ -92,7 +94,7 @@ export class AppRoot {
           this.root.querySelector('main').classList.remove('keyboard-open');
         }, 300)
       }
-    })
+    });
   }
 
   async componentWillLoad() {
@@ -119,18 +121,24 @@ export class AppRoot {
   render() {
     return (
       <ion-app>
-        <header>
-          <app-nav />
-        </header>
-        <main>
-          <app-home animeClass={this.getAnimeClass(0)} />
-          <app-about animeClass={this.getAnimeClass(1)} />
-          <app-portfolio animeClass={this.getAnimeClass(2)} projects={this.data?.projects || []} />
-          <app-skills animeClass={this.getAnimeClass(3)} />
-        </main>
-        <contact-footer />
+        {this.isLoading ? (
+          <app-loader setDoneLoading={() => {
+            this.isLoading = false;
+          }}/>
+        ) : ([
+          <header>
+            <app-nav />
+          </header>,
+          <main>
+            <app-home animeClass={this.getAnimeClass(0)} />
+            <app-about animeClass={this.getAnimeClass(1)} />
+            <app-portfolio animeClass={this.getAnimeClass(2)} projects={this.data?.projects || []} />
+            <app-skills animeClass={this.getAnimeClass(3)} />
+          </main>,
+          <contact-footer />,
 
-        <arrow-nav currentPage={this.currentPage} />
+          <arrow-nav currentPage={this.currentPage} />
+        ])}
       </ion-app>
     );
   }
