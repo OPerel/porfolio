@@ -2,19 +2,27 @@
 
 ion-slides {
   height: 75vh;
-  .swiper-pagination {
-    padding-left: 5%;
-    text-align: start;
-  }
-
   .swiper-pagination-bullet-active {
     background: #{$secondary-text-color};
+  }
+}
+
+.pagination-center {
+  .swiper-pagination {
+    transition: .5s;
+    transform: translateX(0);
+  }
+}
+
+.pagination-start {
+  .swiper-pagination {
+    transition: .5s;
+    transform: translateX(-27vw);
   }
 
   @media only screen and (min-width: $small-bp) {
     .swiper-pagination {
-      padding-left: 0;
-      text-align: center;
+      transform: translateX(0);
     }
   }
 }
@@ -38,10 +46,19 @@ ion-slides {
     --background-hover: #{$secondary-text-color}aa; // #599292;
     --box-shadow: none;
     z-index: 2;
+    visibility: visible;
+    transform: translateY(0);
+    transition: .5s;
 
     @media only screen and (min-width: $small-bp) {
       width: 10vw;
     }
+  }
+
+  .hide {
+    visibility: hidden;
+    transform: translateY(70px);
+    transition: .5s;
   }
 
   @media only screen and (min-width: $small-bp) {

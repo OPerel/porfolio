@@ -1,4 +1,4 @@
-import {Component, h, Host, State} from '@stencil/core';
+import {Component, h, Host, Listen, State} from '@stencil/core';
 import {Prop} from "@ionic/core/dist/types/stencil-public-runtime";
 
 @Component({
@@ -7,11 +7,21 @@ import {Prop} from "@ionic/core/dist/types/stencil-public-runtime";
   shadow: true
 })
 export class Gallery {
+  private slides: any;
+
   @State() displayAll: boolean;
+  @State() showBtn: boolean;
   @Prop() projects: any[];
+  @Listen('ionSlideDrag')
+  handle() {
+    this.slides.isEnd().then(res => {
+      this.showBtn = res;
+    })
+  }
 
   constructor() {
     this.displayAll = false;
+    this.showBtn = false;
   }
 
   private sliderOptions = {
@@ -33,7 +43,12 @@ export class Gallery {
     return this.projects ? (
       <Host>
         <div class="gallery-container">
-          <ion-slides pager={true} options={this.sliderOptions}>
+          <ion-slides
+            pager={true}
+            options={this.sliderOptions}
+            class={this.showBtn || this.displayAll ? 'pagination-start' : 'pagination-center'}
+            ref={el => this.slides = el}
+          >
             {displayProjects.map(project => (
               <ion-slide>
                 <project-card project={project}/>
@@ -41,6 +56,7 @@ export class Gallery {
             ))}
           </ion-slides>
           <ion-button
+            class={this.showBtn || this.displayAll ? '' : 'hide'}
             onClick={() => this.displayAll = !this.displayAll}
           >
             <ion-icon
