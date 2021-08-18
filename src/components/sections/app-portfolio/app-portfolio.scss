@@ -2,6 +2,22 @@
 
 .app-portfolio {
   background-color: $portfolio-background-color;
-}
+  .container {
+    margin-top: 0;
 
+    h2 {
+      margin-top: 0;
+    }
+  }
+
+  @media only screen and (min-width: $small-bp){
+    .container {
+      margin-top: 5%;
+
+      h2 {
+        margin-top: 0.5em;
+      }
+    }
+  }
+}
 

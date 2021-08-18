@@ -1,4 +1,4 @@
-import {Component, h, Host, Element, State} from '@stencil/core';
+import {Component, h, Host, State} from '@stencil/core';
 import {Prop} from "@ionic/core/dist/types/stencil-public-runtime";
 
 @Component({
@@ -8,7 +8,6 @@ import {Prop} from "@ionic/core/dist/types/stencil-public-runtime";
 })
 export class Gallery {
   @State() displayAll: boolean;
-  @Element() el: HTMLElement;
   @Prop() projects: any[];
 
   constructor() {
@@ -16,34 +15,17 @@ export class Gallery {
   }
 
   private sliderOptions = {
-    mousewheel: {
-      forceToAxis: true
-    },
+    mousewheel: true,
     breakpoints: {
       320: {
         slidesPerView: 1.15,
         spaceBetween: 10
       },
       780: {
-        mousewheel: {
-          forceToAxis: true
-        },
         slidesPerView: 2.4,
         spaceBetween: 30
       }
     }
-  }
-
-  trackXScrolling = (e): void => {
-    e.preventDefault();
-    if (e.deltaY > 0) this.el.scrollLeft += 35;
-    if (e.deltaY < 0) this.el.scrollLeft -= 35;
-  }
-
-  componentWillLoad() {
-    this.el.addEventListener('wheel', (e) => {
-      this.trackXScrolling(e);
-    });
   }
 
   render() {
@@ -65,7 +47,7 @@ export class Gallery {
               slot={this.displayAll ? "start" : "end"}
               name={this.displayAll ? "chevron-back" : "chevron-forward"}
             />
-            {this.displayAll ? 'hide' : 'see more'}
+            {this.displayAll ? 'Hide' : 'See More'}
           </ion-button>
         </div>
       </Host>
