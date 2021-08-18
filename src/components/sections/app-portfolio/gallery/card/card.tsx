@@ -11,7 +11,7 @@ export class Card {
 
   render() {
     const { images, libraries, languages, roles } = this.project;
-    const { url } = images[0].resolutions.desktop;
+    const { url } = images[0]?.resolutions.desktop || '';
     return this.project ? (
       <Host>
         <ion-card>
@@ -42,7 +42,7 @@ export class Card {
               href={this.project.url}
               target="__blank"
               rel="noopener noreferrer"
-              disabled={!this.project.githubUrl}
+              disabled={!this.project.url}
             >
               <ion-ripple-effect />
               <ion-icon slot="start" name="globe-outline"/>

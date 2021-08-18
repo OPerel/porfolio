@@ -1,4 +1,4 @@
-import { Component, h, Host, Element } from '@stencil/core';
+import {Component, h, Host, Element, State} from '@stencil/core';
 import {Prop} from "@ionic/core/dist/types/stencil-public-runtime";
 
 @Component({
@@ -7,16 +7,18 @@ import {Prop} from "@ionic/core/dist/types/stencil-public-runtime";
   shadow: true
 })
 export class Gallery {
+  @State() displayAll: boolean;
   @Element() el: HTMLElement;
   @Prop() projects: any[];
+
+  constructor() {
+    this.displayAll = false;
+  }
+
   private sliderOptions = {
     mousewheel: {
       forceToAxis: true
     },
-    // pagination: {
-    //   el: '.swiper-pagination',
-    //   type: 'progressbar'
-    // },
     breakpoints: {
       320: {
         slidesPerView: 1.15,
@@ -45,16 +47,26 @@ export class Gallery {
   }
 
   render() {
+    const displayProjects = this.displayAll ? this.projects : this.projects.filter((_, i) => i < 5);
     return this.projects ? (
       <Host>
         <div class="gallery-container">
           <ion-slides pager={true} options={this.sliderOptions}>
-            {this.projects.map(project => (
+            {displayProjects.map(project => (
               <ion-slide>
                 <project-card project={project}/>
               </ion-slide>
             ))}
           </ion-slides>
+          <ion-button
+            onClick={() => this.displayAll = !this.displayAll}
+          >
+            <ion-icon
+              slot={this.displayAll ? "start" : "end"}
+              name={this.displayAll ? "chevron-back" : "chevron-forward"}
+            />
+            {this.displayAll ? 'hide' : 'see more'}
+          </ion-button>
         </div>
       </Host>
     ) : null;

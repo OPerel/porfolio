@@ -1,15 +1,51 @@
 @import '../../../../global/app.scss';
 
 ion-slides {
-  height: 75vh;
-  //@media only screen and (min-width: $small-bp) {
-  //  height: 75vh;
-  //}
+  height: 65vh;
+  .swiper-pagination {
+    padding-top: 2%;
+    padding-left: 5%;
+    text-align: start;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: #{$secondary-text-color};
+  }
+
+  @media only screen and (min-width: $small-bp) {
+    height: 75vh;
+    .swiper-pagination {
+      padding-left: 0;
+      text-align: center;
+    }
+  }
 }
 
 .gallery-container {
+  position: relative;
   width: 96vw;
   margin: 0 auto;
+
+  ion-button {
+    position: absolute;
+    right: 5%;
+    bottom: -2%;
+
+    width: 30vw;
+    //padding: 0 1%;
+    border: 0.5px solid;
+    font-family: 'Share', sans-serif;
+    font-size: 1rem;
+    --color: #{$secondary-text-color};
+    --background: transparent; // #202e48; // #182d55;
+    --background-hover: #{$secondary-text-color}aa; // #599292;
+    --box-shadow: none;
+    z-index: 2;
+
+    @media only screen and (min-width: $small-bp) {
+      width: 10vw;
+    }
+  }
 
   @media only screen and (min-width: $small-bp) {
     width: 90vw;
