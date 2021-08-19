@@ -24,12 +24,12 @@ ion-card {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 32%;
+    height: 27%;
     padding: 0 2%;
     text-align: center;
 
     @media only screen and (min-width: $small-bp) {
-      height: 42%;
+      height: 37%;
     }
 
     ion-card-title {
@@ -57,11 +57,40 @@ ion-card {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 55%;
+    height: 60%;
     color: #fff; //$main-text-color;
 
+    .project-description {
+      padding-bottom: 2%;
+      overflow-y: auto;
+
+      -ms-overflow-style: none;  // IE and Edge
+      scrollbar-width: none;  // Firefox
+    }
+
+    // Chrome and Safari
+    .project-description::-webkit-scrollbar {
+      display: none;
+    }
+
+    ul {
+      margin: 0.5em 0;
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      padding: 0;
+      list-style: none;
+      font-size: 0.9em;
+
+      li {
+        padding-right: 5%;
+        font-family: 'Share', sans-serif;
+        color: $main-text-color;
+      }
+    }
+
     @media only screen and (min-width: $small-bp) {
-      height: 40%;
+      height: 45%;
     }
   }
 
@@ -70,7 +99,7 @@ ion-card {
     top: 0;
     left: 0;
     width: 100%;
-    height: 30%;
+    height: 25%;
     overflow: hidden;
     background-blend-mode: overlay;
     background-color: #01212c;
@@ -78,23 +107,7 @@ ion-card {
     z-index: -1;
 
     @media only screen and (min-width: $small-bp) {
-      height: 40%;
-    }
-  }
-
-  ul {
-    margin: 0.5em 0;
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    padding: 0;
-    list-style: none;
-    font-size: 0.9em;
-
-    li {
-      padding-right: 5%;
-      font-family: 'Share', sans-serif;
-      color: $main-text-color;
+      height: 35%;
     }
   }
 }

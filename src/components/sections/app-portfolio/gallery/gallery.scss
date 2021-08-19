@@ -57,12 +57,12 @@ ion-slides {
 
   .hide {
     visibility: hidden;
-    transform: translateY(70px);
+    transform: translateY(100px);
     transition: .5s;
   }
 
   @media only screen and (min-width: $small-bp) {
-    width: 90vw;
+    width: 92vw;
   }
 }
 
