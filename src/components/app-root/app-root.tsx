@@ -1,16 +1,27 @@
 /**
  * TODO:
+ * 1. Skills (and work experience?)
+ * 2. contact form validation and Netlify
+ * 3. SEO
+ * 4. extra projects content
+ * 5. remove logs on production
  *
- * 1. mobile layout and animations - SEE REAL MOBILE:
- *  - footer tri ?
- *  - gallery scrolling - solved temporarily by css media query.
- *  - upper nav arrow - solved temporarily by css media query. ?
- * 2. requestAnimationFrame
- * 5. contact form validation
- * 6. gallery ?
- * 7. Skills-Contact tri ?
- *
- * 8. CONTENT
+ * TODO: NOT MANDATORY!
+ * 5. mobile scroll on swipe
+ * 6. performance:
+ * - bundling
+ * - maybe fetch data at build?
+ * - fonts
+ * - requestAnimationFrame
+ * - check the loader's impact on scores
+ * 7. use labels instead of hard coded text
+ * 8. contact on homepage (social icons or link to footer)
+ * 9. correlate scroll position with url hash
+ * 10. animate horizontal line in about
+ * 11. animate something in footer
+ * 12. more bg images?
+ * 13. changes background and parallax?
+ * 14. more data from API (image) or make as much as possible configurable for other developers
  */
 
 import {Component, h, State, Listen, Element} from '@stencil/core';
@@ -80,7 +91,6 @@ export class AppRoot {
   }
 
   componentDidLoad() {
-    console.log('componentDidLoad')
     // disable animation on mobile keyboard open
     let timer: NodeJS.Timeout;
     window.addEventListener('resize', (e) => {
@@ -100,25 +110,13 @@ export class AppRoot {
   }
 
   async componentWillLoad() {
-    console.log('componentWillLoad')
-    // if (!Build.isBrowser) {
-      fetch('https://gitconnected.com/v1/portfolio/operel')
-        .then(res => res.json())
-        .then((res: any) => {
-          console.log('res: ', res)
-          this.loaded = true;
-          this.data = { ...this.data, ...res };
-        })
-    // }
-    // else {
-    //   console.log('build time')
-    //   fetch('https://robohash.org/ssss')
-    //     .then(res => res.json())
-    //     .then((res: any) => {
-    //       console.log('build res: ', res)
-    //       this.test = res;
-    //     })
-    // }
+    fetch('https://gitconnected.com/v1/portfolio/operel')
+      .then(res => res.json())
+      .then((res: any) => {
+        console.log('res: ', res)
+        this.loaded = true;
+        this.data = { ...this.data, ...res };
+      })
   }
 
   render() {
