@@ -1,4 +1,4 @@
-import { Component, Element, h, Prop } from '@stencil/core';
+import {Component, Element, h, Prop, Watch} from '@stencil/core';
 
 @Component({
   tag: 'app-loader',
@@ -6,31 +6,22 @@ import { Component, Element, h, Prop } from '@stencil/core';
   shadow: true
 })
 export class Loader {
+  private container: HTMLElement;
   @Prop() setDoneLoading: () => void;
+  @Prop() loaded: boolean;
   @Element() el: HTMLElement;
-  // @Watch('isLoading')
-  // isLoadingHandler(next: boolean, prev: boolean) {
-  //   // if (!newIsLoading) {
-  //   console.log('isLoading changed: ', next, prev)
-  //     const el = this.el.shadowRoot.querySelector('.loader-container');
-  //     console.log('el: ', el);
-  //     // el.classList.remove('flex');
-  //     el.classList.add('leave');
-  //   // }
-  // }
-  connectedCallback() {
-    setTimeout(() => {
-      console.log('done loading')
-      this.setDoneLoading();
-    }, 1000);
+  @Watch('loaded')
+  handleLoaded(next: boolean) {
+    if (next) {
+      this.container.classList.add('leave');
+      setTimeout(() => {
+        this.setDoneLoading();
+      }, 600);
+    }
   }
 
   componentDidLoad() {
-    const el = this.el.shadowRoot.querySelector('.loader-container');
-    el.classList.add('leave');
-    (document as any).fonts.ready.then(e => {
-      console.log('fonts loaded: ', e)
-    })
+    this.container = this.el.shadowRoot.querySelector('.loader-container');
   }
 
   render() {

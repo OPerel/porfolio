@@ -8,11 +8,15 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface AppAbout {
         "animeClass": string;
+        "summary": string;
     }
     interface AppHome {
         "animeClass": string;
+        "label": string;
+        "name": string;
     }
     interface AppLoader {
+        "loaded": boolean;
         "setDoneLoading": () => void;
     }
     interface AppNav {
@@ -169,11 +173,15 @@ declare global {
 declare namespace LocalJSX {
     interface AppAbout {
         "animeClass"?: string;
+        "summary"?: string;
     }
     interface AppHome {
         "animeClass"?: string;
+        "label"?: string;
+        "name"?: string;
     }
     interface AppLoader {
+        "loaded"?: boolean;
         "setDoneLoading"?: () => void;
     }
     interface AppNav {

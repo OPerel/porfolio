@@ -13,7 +13,7 @@
  * 8. CONTENT
  */
 
-import { Component, h, State, Listen, Element/*, Build*/ } from '@stencil/core';
+import {Component, h, State, Listen, Element} from '@stencil/core';
 import { Navigation } from '../../helpers/navigation';
 
 @Component({
@@ -27,11 +27,13 @@ export class AppRoot {
   @State() prevPage: number;
   @State() data: any;
   @State() isLoading: boolean;
+  @State() loaded: boolean;
 
   constructor() {
     this.prevPage = 0
     this.currentPage = 0;
     this.isLoading = true;
+    this.loaded = false;
   }
 
   @Listen('navigate')
@@ -104,6 +106,7 @@ export class AppRoot {
         .then(res => res.json())
         .then((res: any) => {
           console.log('res: ', res)
+          this.loaded = true;
           this.data = { ...this.data, ...res };
         })
     // }
@@ -119,26 +122,41 @@ export class AppRoot {
   }
 
   render() {
+    if (this.isLoading) {
+      return (
+        <app-loader
+          loaded={this.loaded}
+          setDoneLoading={() => {
+            this.isLoading = false;
+          }}
+        />
+      )
+    }
+    const { name, label, summary } = this.data.basics;
     return (
       <ion-app>
-        {this.isLoading ? (
-          <app-loader setDoneLoading={() => {
-            this.isLoading = false;
-          }}/>
-        ) : ([
-          <header>
-            <app-nav />
-          </header>,
-          <main>
-            <app-home animeClass={this.getAnimeClass(0)} />
-            <app-about animeClass={this.getAnimeClass(1)} />
-            <app-portfolio animeClass={this.getAnimeClass(2)} projects={this.data?.projects || []} />
-            <app-skills animeClass={this.getAnimeClass(3)} />
-          </main>,
-          <contact-footer />,
+        <header>
+          <app-nav />
+        </header>,
+        <main>
+          <app-home
+            animeClass={this.getAnimeClass(0)}
+            name={name}
+            label={label}
+          />
+          <app-about
+            animeClass={this.getAnimeClass(1)}
+            summary={summary}
+          />
+          <app-portfolio
+            animeClass={this.getAnimeClass(2)}
+            projects={this.data.projects}
+          />
+          <app-skills animeClass={this.getAnimeClass(3)} />
+        </main>,
+        <contact-footer />,
 
-          <arrow-nav currentPage={this.currentPage} />
-        ])}
+        <arrow-nav currentPage={this.currentPage} />
       </ion-app>
     );
   }
