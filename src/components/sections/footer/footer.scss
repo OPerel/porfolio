@@ -17,6 +17,7 @@ footer {
     display: grid;
     align-content: center;
     grid-column: auto;
+    margin-top: 10vh;
 
     @media only screen and (min-width: $small-bp) {
       grid-template-columns: 1.5fr 2fr;

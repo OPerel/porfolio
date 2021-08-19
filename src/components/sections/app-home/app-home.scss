@@ -76,11 +76,13 @@
 
     @media only screen and (min-width: $medium-bp) {
       width: fit-content;
+      width: -moz-fit-content; // Mozilla
       h1 {
         font-size: 5rem;
       }
       h2 {
         min-width: fit-content;
+        min-width: -moz-fit-content; // Mozilla
       }
     }
   }
