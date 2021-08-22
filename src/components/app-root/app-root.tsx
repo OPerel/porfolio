@@ -139,8 +139,8 @@ export class AppRoot {
         <main>
           <app-home
             animeClass={this.getAnimeClass(0)}
-            name={this.data?.basics.name || ''}
-            label={this.data?.basics.label || ''}
+            // name={this.data?.basics.name || ''}
+            // label={this.data?.basics.label || ''}
           />
           <app-about
             animeClass={this.getAnimeClass(1)}

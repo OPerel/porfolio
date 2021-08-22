@@ -12,8 +12,6 @@ export namespace Components {
     }
     interface AppHome {
         "animeClass": string;
-        "label": string;
-        "name": string;
     }
     interface AppLoader {
     }
@@ -175,8 +173,6 @@ declare namespace LocalJSX {
     }
     interface AppHome {
         "animeClass"?: string;
-        "label"?: string;
-        "name"?: string;
     }
     interface AppLoader {
     }
