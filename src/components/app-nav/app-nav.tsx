@@ -28,7 +28,6 @@ export class AppNav {
           <hr />
           <li id="h" class={this.current === 0 ? 'active' : ''} onClick={() => this.handleNavClick(0)}>
             Home
-
           </li>
           <li id="a" class={this.current === 1 ? 'active' : ''} onClick={() => this.handleNavClick(1)}>
             About
