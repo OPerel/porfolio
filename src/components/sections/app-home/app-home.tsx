@@ -30,7 +30,7 @@ export class AppHome {
         </div>
 
         <parallax-el animeClass={this.animeClass} on={-60} over={100} under={0} enterFrom={-100}>
-          <img class="bg" src="../../../assets/home-bg.png" alt="hex" />
+          <img class="bg" src="../../../assets/home-bg.webp" alt="hex" />
         </parallax-el>
       </section>
     );

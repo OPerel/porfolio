@@ -38,13 +38,13 @@ export class AppRoot {
   @State() prevPage: number;
   @State() data: any;
   @State() isLoading: boolean;
-  @State() loaded: boolean;
+  // @State() loaded: boolean;
 
   constructor() {
     this.prevPage = 0
     this.currentPage = 0;
     this.isLoading = true;
-    this.loaded = false;
+    // this.loaded = false;
   }
 
   @Listen('navigate')
@@ -114,8 +114,8 @@ export class AppRoot {
       .then(res => res.json())
       .then((res: any) => {
         console.log('res: ', res)
-        this.loaded = true;
         this.data = { ...this.data, ...res };
+        this.isLoading = false;
       })
   }
 
@@ -123,10 +123,10 @@ export class AppRoot {
     if (this.isLoading) {
       return (
         <app-loader
-          loaded={this.loaded}
-          setDoneLoading={() => {
-            this.isLoading = false;
-          }}
+          // loaded={this.loaded}
+          // setDoneLoading={() => {
+          //   this.isLoading = false;
+          // }}
         />
       )
     }

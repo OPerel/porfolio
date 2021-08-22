@@ -1,4 +1,4 @@
-import {Component, Element, h, Prop, Watch} from '@stencil/core';
+import {Component, /*Element,*/ h/*, Prop, Watch*/} from '@stencil/core';
 
 @Component({
   tag: 'app-loader',
@@ -6,23 +6,23 @@ import {Component, Element, h, Prop, Watch} from '@stencil/core';
   shadow: true
 })
 export class Loader {
-  private container: HTMLElement;
-  @Prop() setDoneLoading: () => void;
-  @Prop() loaded: boolean;
-  @Element() el: HTMLElement;
-  @Watch('loaded')
-  handleLoaded(next: boolean) {
-    if (next) {
-      this.container.classList.add('leave');
-      setTimeout(() => {
-        this.setDoneLoading();
-      }, 600);
-    }
-  }
-
-  componentDidLoad() {
-    this.container = this.el.shadowRoot.querySelector('.loader-container');
-  }
+  // private container: HTMLElement;
+  // @Prop() setDoneLoading: () => void;
+  // @Prop() loaded: boolean;
+  // @Element() el: HTMLElement;
+  // @Watch('loaded')
+  // handleLoaded(next: boolean) {
+  //   if (next) {
+  //     this.container.classList.add('leave');
+  //     setTimeout(() => {
+  //       this.setDoneLoading();
+  //     }, 600);
+  //   }
+  // }
+  //
+  // componentDidLoad() {
+  //   this.container = this.el.shadowRoot.querySelector('.loader-container');
+  // }
 
   render() {
     return (
