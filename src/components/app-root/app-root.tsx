@@ -37,13 +37,13 @@ export class AppRoot {
   @State() currentPage: number;
   @State() prevPage: number;
   @State() data: any;
-  @State() isLoading: boolean;
+  // @State() isLoading: boolean;
   // @State() loaded: boolean;
 
   constructor() {
     this.prevPage = 0
     this.currentPage = 0;
-    this.isLoading = true;
+    // this.isLoading = true;
     // this.loaded = false;
   }
 
@@ -115,22 +115,22 @@ export class AppRoot {
       .then((res: any) => {
         console.log('res: ', res)
         this.data = { ...this.data, ...res };
-        this.isLoading = false;
+        // this.isLoading = false;
       })
   }
 
   render() {
-    if (this.isLoading) {
-      return (
-        <app-loader
-          // loaded={this.loaded}
-          // setDoneLoading={() => {
-          //   this.isLoading = false;
-          // }}
-        />
-      )
-    }
-    const { name, label, summary } = this.data.basics;
+    // if (this.isLoading) {
+    //   return (
+    //     <app-loader
+    //       // loaded={this.loaded}
+    //       // setDoneLoading={() => {
+    //       //   this.isLoading = false;
+    //       // }}
+    //     />
+    //   )
+    // }
+    // const { name, label, summary } = this.data.basics;
     return (
       <ion-app>
         <header>
@@ -139,16 +139,16 @@ export class AppRoot {
         <main>
           <app-home
             animeClass={this.getAnimeClass(0)}
-            name={name}
-            label={label}
+            name={this.data?.basics.name || ''}
+            label={this.data?.basics.label || ''}
           />
           <app-about
             animeClass={this.getAnimeClass(1)}
-            summary={summary}
+            summary={this.data?.basics.summary || ''}
           />
           <app-portfolio
             animeClass={this.getAnimeClass(2)}
-            projects={this.data.projects}
+            projects={this.data?.projects || []}
           />
           <app-skills animeClass={this.getAnimeClass(3)} />
         </main>,
