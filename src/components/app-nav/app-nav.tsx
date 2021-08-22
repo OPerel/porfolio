@@ -1,4 +1,4 @@
-import { Component, h, State, Event, EventEmitter } from '@stencil/core';
+import {Component, h, Event, EventEmitter, Prop} from '@stencil/core';
 
 @Component({
   tag: 'app-nav',
@@ -6,18 +6,11 @@ import { Component, h, State, Event, EventEmitter } from '@stencil/core';
   shadow: true
 })
 export class AppNav {
-  @State() current: number;
-  @State() prev: number;
-
+  @Prop() current: number;
   @Event() navigate: EventEmitter<number>;
-
-  constructor() {
-    this.current = 0;
-  }
 
   handleNavClick(sec: number) {
     this.navigate.emit(sec);
-    this.current = sec;
   }
 
   render() {

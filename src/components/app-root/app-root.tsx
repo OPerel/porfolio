@@ -6,6 +6,8 @@
  * 4. extra projects content
  * 5. remove logs on production
  *
+ * BUGS:
+ *
  * TODO: NOT MANDATORY!
  * 5. mobile scroll on swipe
  * 6. performance:
@@ -127,7 +129,7 @@ export class AppRoot {
     return (
       <ion-app>
         <header>
-          <app-nav />
+          <app-nav current={this.currentPage} />
         </header>,
         <main>
           <app-home
