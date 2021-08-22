@@ -42,11 +42,21 @@ export class Footer {
             </div>
 
             <div class="footer-icons">
-              <a href="https://github.com/OPerel" target="_blank" class="ion-activatable">
+              <a
+                href="https://github.com/OPerel"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="ion-activatable"
+              >
                 <ion-icon name="logo-github" />
                 <ion-ripple-effect />
               </a>
-              <a href="https://www.linkedin.com/in/ori-perelman-0144a5161/" target="_blank" class="ion-activatable">
+              <a
+                href="https://www.linkedin.com/in/ori-perelman-0144a5161/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="ion-activatable"
+              >
                 <ion-icon name="logo-linkedin" />
                 <ion-ripple-effect />
               </a>

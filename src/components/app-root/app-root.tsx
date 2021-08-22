@@ -9,11 +9,9 @@
  * TODO: NOT MANDATORY!
  * 5. mobile scroll on swipe
  * 6. performance:
- * - bundling
- * - maybe fetch data at build?
- * - fonts
+ * - gallery photos to webp
  * - requestAnimationFrame
- * - check the loader's impact on scores
+ * - check the loader's impact on scores - probably bad... for now without delete component if sure
  * 7. use labels instead of hard coded text
  * 8. contact on homepage (social icons or link to footer)
  * 9. correlate scroll position with url hash
