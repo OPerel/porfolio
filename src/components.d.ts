@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { Skill } from "./components/sections/app-skills/app-skills";
 export namespace Components {
     interface AppAbout {
         "animeClass": string;
@@ -25,6 +26,8 @@ export namespace Components {
     }
     interface AppSkills {
         "animeClass": string;
+        "skills": Skill[];
+        "work": any[];
     }
     interface ArrowNav {
         "currentPage": number;
@@ -62,6 +65,9 @@ export namespace Components {
         "over": number;
         "side": string;
         "under": number;
+    }
+    interface WorkTabs {
+        "work": any[];
     }
 }
 declare global {
@@ -149,6 +155,12 @@ declare global {
         prototype: HTMLRotatingTriElement;
         new (): HTMLRotatingTriElement;
     };
+    interface HTMLWorkTabsElement extends Components.WorkTabs, HTMLStencilElement {
+    }
+    var HTMLWorkTabsElement: {
+        prototype: HTMLWorkTabsElement;
+        new (): HTMLWorkTabsElement;
+    };
     interface HTMLElementTagNameMap {
         "app-about": HTMLAppAboutElement;
         "app-home": HTMLAppHomeElement;
@@ -164,6 +176,7 @@ declare global {
         "project-card": HTMLProjectCardElement;
         "projects-gallery": HTMLProjectsGalleryElement;
         "rotating-tri": HTMLRotatingTriElement;
+        "work-tabs": HTMLWorkTabsElement;
     }
 }
 declare namespace LocalJSX {
@@ -187,6 +200,8 @@ declare namespace LocalJSX {
     }
     interface AppSkills {
         "animeClass"?: string;
+        "skills"?: Skill[];
+        "work"?: any[];
     }
     interface ArrowNav {
         "currentPage"?: number;
@@ -226,6 +241,9 @@ declare namespace LocalJSX {
         "side"?: string;
         "under"?: number;
     }
+    interface WorkTabs {
+        "work"?: any[];
+    }
     interface IntrinsicElements {
         "app-about": AppAbout;
         "app-home": AppHome;
@@ -241,6 +259,7 @@ declare namespace LocalJSX {
         "project-card": ProjectCard;
         "projects-gallery": ProjectsGallery;
         "rotating-tri": RotatingTri;
+        "work-tabs": WorkTabs;
     }
 }
 export { LocalJSX as JSX };
@@ -261,6 +280,7 @@ declare module "@stencil/core" {
             "project-card": LocalJSX.ProjectCard & JSXBase.HTMLAttributes<HTMLProjectCardElement>;
             "projects-gallery": LocalJSX.ProjectsGallery & JSXBase.HTMLAttributes<HTMLProjectsGalleryElement>;
             "rotating-tri": LocalJSX.RotatingTri & JSXBase.HTMLAttributes<HTMLRotatingTriElement>;
+            "work-tabs": LocalJSX.WorkTabs & JSXBase.HTMLAttributes<HTMLWorkTabsElement>;
         }
     }
 }

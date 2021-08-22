@@ -57,19 +57,14 @@ export class AppRoot {
     this.getActiveNavLink();
   }
 
-  private getAnimeClass = (pageIdx: number): string => {
-
-    if (this.currentPage === pageIdx) {
-      return 'on';
-    }
+  private getAnimeClass = (pageIdx: number): 'on' | 'over' | 'under' => {
     if (this.currentPage > pageIdx) {
       return 'over';
     }
     if (this.currentPage < pageIdx) {
       return 'under';
     }
-
-    return '';
+    return 'on';
   };
 
   private getTranslateY(): void {
@@ -148,7 +143,11 @@ export class AppRoot {
             animeClass={this.getAnimeClass(2)}
             projects={this.data?.projects || []}
           />
-          <app-skills animeClass={this.getAnimeClass(3)} />
+          <app-skills
+            animeClass={this.getAnimeClass(3)}
+            skills={this.data?.skills || []}
+            work={this.data?.work || []}
+          />
         </main>,
         <contact-footer />,
 
