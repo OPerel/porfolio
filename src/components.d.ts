@@ -16,8 +16,6 @@ export namespace Components {
         "name": string;
     }
     interface AppLoader {
-        "loaded": boolean;
-        "setDoneLoading": () => void;
     }
     interface AppNav {
     }
@@ -181,8 +179,6 @@ declare namespace LocalJSX {
         "name"?: string;
     }
     interface AppLoader {
-        "loaded"?: boolean;
-        "setDoneLoading"?: () => void;
     }
     interface AppNav {
         "onNavigate"?: (event: CustomEvent<number>) => void;
