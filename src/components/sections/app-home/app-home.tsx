@@ -7,8 +7,8 @@ import { Component, h, Prop } from '@stencil/core';
 })
 export class AppHome {
   @Prop() animeClass: string;
-  @Prop() name: string;
-  @Prop() label: string;
+  // @Prop() name: string;
+  // @Prop() label: string;
 
   render() {
     return (
@@ -16,12 +16,12 @@ export class AppHome {
         <div class="home-container">
           <p>Hello, my name is</p>
           <parallax-el animeClass={this.animeClass} on={0} over={-60} under={0} enterFrom={45}>
-            <h1>{this.name}</h1>
+            <h1>Ori Perelman</h1>
           </parallax-el>
           <p>and I'm a</p>
           <parallax-el animeClass={this.animeClass} on={0} over={-90} under={0} enterFrom={35}>
             <h2>Full Stack <span class="header-on-hover">
-              <span class="header">{this.label}</span>
+              <span class="header">Web Developer</span>
               <div class="rotating-wrapper">
                 <img src="../../../assets/wheel.svg" alt="wheel of dhamma" class="rotating" />
               </div>
