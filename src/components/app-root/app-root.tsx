@@ -92,7 +92,7 @@ export class AppRoot {
       if (this.currentPage === 4) {
         console.log('resize e: ', e);
         this.root.querySelector('main').classList.add('keyboard-open');
-        this.root.querySelector('.contact').classList.toggle('keyboard-footer');
+        this.root.querySelector('footer').classList.toggle('keyboard-footer');
         this.root.querySelector('.skills-container').classList.toggle('keyboard-skills');
         if (timer) {
           clearTimeout(timer)

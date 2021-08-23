@@ -12,6 +12,35 @@ export interface FormControls {
   email: FieldControl;
   message: FieldControl;
   formIsValid: boolean;
+  submitted: boolean;
+  error: string | null;
+}
+
+function encode(data) {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&")
+}
+
+const initialFormState: FormControls = {
+  name: {
+    value: '',
+    isValid: false,
+    touched: false
+  },
+  email: {
+    value: '',
+    isValid: false,
+    touched: false
+  },
+  message: {
+    value: '',
+    isValid: false,
+    touched: false
+  },
+  formIsValid: false,
+  submitted: false,
+  error: null
 }
 
 @Component({
@@ -23,24 +52,7 @@ export class Footer {
   @State() formControls: FormControls;
 
   constructor() {
-    this.formControls = {
-      name: {
-        value: '',
-        isValid: false,
-        touched: false
-      },
-      email: {
-        value: '',
-        isValid: false,
-        touched: false
-      },
-      message: {
-        value: '',
-        isValid: false,
-        touched: false
-      },
-      formIsValid: false
-    }
+    this.formControls = initialFormState;
   }
 
   handleInputChange(e: Event): void {
@@ -66,14 +78,36 @@ export class Footer {
     }
   }
 
-  handleSubmitForm(e: Event): void {
+  async handleSubmitForm(e: Event): Promise<void> {
     e.preventDefault();
     const { name, email, message } = this.formControls;
-    console.log('submit form: ', name, email, message)
+    console.log('submit form: ', name, email, message);
 
-    // this.name = '';
-    // this.email = '';
-    // this.message = '';
+    try {
+      const res = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({
+          "form-name": {
+            name: name.value,
+            email: email.value,
+            message: message.value
+          }
+        })
+      });
+      const json = await res.json();
+      console.log('res: ', json);
+      this.formControls = {
+        ...initialFormState,
+        submitted: true
+      };
+    } catch (err) {
+      console.log('error sending form: ', err);
+      this.formControls = {
+        ...this.formControls,
+        error: err
+      };
+    }
   }
 
   render() {
@@ -114,7 +148,8 @@ export class Footer {
             </div>
           </div>
 
-          <form>
+          <form name="contact" data-netlify="true">
+            <input type="hidden" name="form-name" value="contact" />
             <ion-item
               class={name.touched && !name.isValid ? 'ion-invalid' : ''}
             >
@@ -154,6 +189,8 @@ export class Footer {
             >
               Submit
             </ion-button>
+            {this.formControls.submitted && <span>Thank you!</span>}
+            {this.formControls.error && <span>{this.formControls.error}</span>}
           </form>
 
         </div>

@@ -133,7 +133,7 @@ footer {
 
   p.credit {
     position: absolute;
-    bottom: 0;
+    bottom: 8vh;
     width: 100vw;
     margin: 0;
     padding: 1.8% 0;
@@ -150,6 +150,10 @@ footer {
         transition: .3s;
       }
     }
+
+    @media only screen and (min-width: $small-bp) {
+      bottom: 0;
+    }
   }
 }
 
@@ -162,5 +166,9 @@ input:-webkit-autofill:active {
 }
 
 .keyboard-footer {
-  padding-bottom: 35vh;
+  padding-bottom: 15vh;
+
+  p.credit {
+    bottom: 0;
+  }
 }
