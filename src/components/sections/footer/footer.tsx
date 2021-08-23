@@ -94,8 +94,8 @@ export class Footer {
           message: message.value
         })
       });
-      const json = await res.json();
-      console.log('res: ', json);
+      // const json = await res.json();
+      console.log('res: ', res);
       this.formControls = {
         ...initialFormState,
         submitted: true
