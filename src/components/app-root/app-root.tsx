@@ -127,37 +127,37 @@ export class AppRoot {
     //   )
     // }
     // const { name, label, summary } = this.data.basics;
-    return (
+    return this.data ? (
       <ion-app>
         <header>
           <app-nav current={this.currentPage} />
-        </header>,
+        </header>
         <main>
           <app-home
             animeClass={this.getAnimeClass(0)}
-            // name={this.data?.basics.name || ''}
-            // label={this.data?.basics.label || ''}
+            name={this.data.basics.name}
+            label={this.data.basics.label}
           />
-          {this.data && ([
+          {/*{this.data && ([*/}
             <app-about
               animeClass={this.getAnimeClass(1)}
               summary={this.data.basics.summary}
-            />,
+            />
             <app-portfolio
               animeClass={this.getAnimeClass(2)}
               projects={this.data.projects}
-            />,
+            />
             <app-skills
               animeClass={this.getAnimeClass(3)}
               skills={this.data.skills}
               work={this.data.work}
             />
-          ])}
-        </main>,
-        <contact-footer />,
+          {/*])}*/}
+        </main>
+        <contact-footer />
 
         <arrow-nav currentPage={this.currentPage} />
       </ion-app>
-    );
+    ) : null;
   }
 }
