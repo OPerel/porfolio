@@ -45,7 +45,6 @@ export class Footer {
 
   handleInputChange(e: Event): void {
     const { name, value } = (e.target as HTMLInputElement);
-    console.log('value: ', value)
     this.formControls = {
       ...this.formControls,
       [name]: {
@@ -78,7 +77,6 @@ export class Footer {
   }
 
   render() {
-    console.log(this.formControls)
     const { name, email, message } = this.formControls;
     return (
       <footer>
