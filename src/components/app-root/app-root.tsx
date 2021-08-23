@@ -6,6 +6,8 @@
  * 4. extra projects content
  * 5. remove logs on production
  *
+ * BUGS:
+ *
  * TODO: NOT MANDATORY!
  * 5. mobile scroll on swipe
  * 6. performance:
@@ -90,7 +92,8 @@ export class AppRoot {
       if (this.currentPage === 4) {
         console.log('resize e: ', e);
         this.root.querySelector('main').classList.add('keyboard-open');
-        this.root.querySelector('.contact').classList.toggle('keyboard');
+        this.root.querySelector('footer').classList.toggle('keyboard-footer');
+        this.root.querySelector('.skills-container').classList.toggle('keyboard-skills');
         if (timer) {
           clearTimeout(timer)
         }
@@ -127,7 +130,7 @@ export class AppRoot {
     return (
       <ion-app>
         <header>
-          <app-nav />
+          <app-nav current={this.currentPage} />
         </header>,
         <main>
           <app-home

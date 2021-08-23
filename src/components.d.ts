@@ -17,6 +17,7 @@ export namespace Components {
     interface AppLoader {
     }
     interface AppNav {
+        "current": number;
     }
     interface AppPortfolio {
         "animeClass": string;
@@ -190,6 +191,7 @@ declare namespace LocalJSX {
     interface AppLoader {
     }
     interface AppNav {
+        "current"?: number;
         "onNavigate"?: (event: CustomEvent<number>) => void;
     }
     interface AppPortfolio {
