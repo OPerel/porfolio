@@ -6,7 +6,7 @@
   "scripts": {
     "build": "stencil build",
     "build:s": "stencil build --prerender",
-    "build:p": "stencil prerender dist/hydrate/index.js",
+    "build:p": "rm -rf www && stencil prerender dist/hydrate/index.js",
     "build:sp": "npm run build:s && npm run build:p",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --e2e test.e2e.ts",
