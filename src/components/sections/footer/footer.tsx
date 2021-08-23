@@ -88,11 +88,10 @@ export class Footer {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: encode({
-          "form-name": {
-            name: name.value,
-            email: email.value,
-            message: message.value
-          }
+          "form-name": 'contact',
+          name: name.value,
+          email: email.value,
+          message: message.value
         })
       });
       const json = await res.json();
@@ -190,7 +189,7 @@ export class Footer {
               Submit
             </ion-button>
             {this.formControls.submitted && <span>Thank you!</span>}
-            {this.formControls.error && <span>{this.formControls.error}</span>}
+            {this.formControls.error && <span>Not sent!</span>}
           </form>
 
         </div>
