@@ -138,19 +138,21 @@ export class AppRoot {
             // name={this.data?.basics.name || ''}
             // label={this.data?.basics.label || ''}
           />
-          <app-about
-            animeClass={this.getAnimeClass(1)}
-            summary={this.data?.basics.summary || ''}
-          />
-          <app-portfolio
-            animeClass={this.getAnimeClass(2)}
-            projects={this.data?.projects || []}
-          />
-          <app-skills
-            animeClass={this.getAnimeClass(3)}
-            skills={this.data?.skills || []}
-            work={this.data?.work || []}
-          />
+          {this.data && ([
+            <app-about
+              animeClass={this.getAnimeClass(1)}
+              summary={this.data.basics.summary}
+            />,
+            <app-portfolio
+              animeClass={this.getAnimeClass(2)}
+              projects={this.data.projects}
+            />,
+            <app-skills
+              animeClass={this.getAnimeClass(3)}
+              skills={this.data.skills}
+              work={this.data.work}
+            />
+          ])}
         </main>,
         <contact-footer />,
 
