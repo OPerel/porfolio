@@ -116,19 +116,18 @@ export class AppRoot {
   }
 
   render() {
-    if (!this.data) {
-      return null
-      // (
-        // <app-loader
-          // loaded={this.loaded}
-          // setDoneLoading={() => {
-          //   this.isLoading = false;
-          // }}
-        {/*/>*/}
-      // )
-    }
-    const { projects, work, skills, basics: { name, label, summary } } = this.data;
-    return this.data ? (
+    // if (!this.data) {
+    //   return (
+    //     <app-loader
+    //       // loaded={this.loaded}
+    //       // setDoneLoading={() => {
+    //       //   this.isLoading = false;
+    //       // }}
+    //     />
+    //   )
+    // }
+    // const { projects, work, skills, basics: { name, label, summary } } = this.data;
+    return (
       <ion-app>
         <header>
           <app-nav current={this.currentPage} />
@@ -136,29 +135,29 @@ export class AppRoot {
         <main>
           <app-home
             animeClass={this.getAnimeClass(0)}
-            name={name}
-            label={label}
+            name={'Ori Perelman'}
+            label={'Web Developer'}
           />
-          {/*{this.data && ([*/}
+          {this.data && ([
             <app-about
               animeClass={this.getAnimeClass(1)}
-              summary={summary}
+              summary={this.data.basics.summary}
             />,
             <app-portfolio
               animeClass={this.getAnimeClass(2)}
-              projects={projects}
+              projects={this.data.projects}
             />,
             <app-skills
               animeClass={this.getAnimeClass(3)}
-              skills={skills}
-              work={work}
+              skills={this.data.skills}
+              work={this.data.work}
             />
-          {/*])}*/}
+          ])}
         </main>
         <contact-footer />
 
         <arrow-nav currentPage={this.currentPage} />
       </ion-app>
-    ) : null;
+    );
   }
 }
